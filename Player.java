@@ -1,19 +1,22 @@
-package pack;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Random;
 
-public class Player extends CardGame {
+
+public class Player {
 
     final private int playerNumber;
     
-    
-
-    //[[1,1,3,4], [4,5,6,4]]
-
     /*
-     * has n players 
+     * has n players
      */
     public Player(int playerNumber){
         this.playerNumber = playerNumber;
-
     }
+
+
+
+
 
 }

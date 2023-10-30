@@ -1,4 +1,3 @@
-package pack;
 
 import java.util.*;
 /*
@@ -20,14 +19,29 @@ public class CardGame {
     public int getInput() {
         Scanner scan = new Scanner(System.in);
         String playerNum = scan.nextLine();
-        return 0;
+
+        try {
+            int num = Integer.parseInt(playerNum); 
+            return num;
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid number as number of players : \n");
+            return getInput(); 
+        }
     }
+
 
     public static void main(String[] args) {
         CardGame obj = new CardGame();
-        Card card = new Card(4);
+        Card card = new Card(obj.getInput());
 
-        System.out.println(card.createPack(4));
+        System.out.println(card.getPack());
+        System.out.println(card.getPack());
+        card.setPlayers();
+        System.out.println(card.getPlayers());
+        System.out.println(card.dealHands(card.getPack()));
+        System.out.println(card.getPack());
+        card.setDecks();
+        System.out.println(card.dealDecks(card.getPack()));
 
 
         Thread t1 = new Thread(new Runnable() {
