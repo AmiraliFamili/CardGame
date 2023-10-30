@@ -1,0 +1,22 @@
+Amirali : 
+    1. how can we make use of threads and wait/sleep method to implement the round robin fashion 
+    2. give better structure to the methods created so far 
+    3. map the relevant methods to their classes and find a way to pass the pack !
+    4. how to get the classes to communicate to each other ? nested classes ? super ? through main and threads ? 
+
+Kaylum : 
+    1. input and output files with use of threads 
+    2. read the code and try to understand 
+    3. when you finish your work please push it through github and write down how long you were working on 
+        the code / structure of it and write a small description about the specific work below your log 
+        You can check out my example in log.txt file and follow the same format 
+    4. get familiar with use of threads we should make the hole project synchronized once we are finished 
+
+    Notes for Kaylum : i have made all methods inside the card.java which is incorrect they should be in their 
+        relevant classes , in our next meeting we should talk about how we can make use of the round robin fashion 
+        , please finish the tasks I mentioned above before 12 
+        if you couldn't get them to finish before that time that's fine too but we should have a meeting soon. 
+
+
+meeting content : we should pay more attention to the report part and in regards, we should start taking about how we can design 
+the code and the overall structure of it better and thoroughly, we should make notes of our meetings and use it as report material 
