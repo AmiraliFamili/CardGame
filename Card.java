@@ -19,11 +19,13 @@ public class Card extends Player {
     protected LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
     protected LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
     private LinkedList<Integer> pack;
+    private LinkedList<Integer> deck;
 
     public Card(int playerNumber) {
         super(playerNumber);
         this.deckNumber = playerNumber;
         createPack(playerNumber);
+        setPlayers();
     }
 
     public void emptyPack() {
@@ -133,7 +135,7 @@ public class Card extends Player {
             while (!win) {
                 for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
                     // Make sure to use synchronization mechanisms to coordinate turns
-                    synchronized (players) {
+                    synchronized (players) { // now that it's in synchronized is it running in parallel ? 
                         LinkedList<Integer> player = this.players.get(playerIndex % deckNumber);
                         LinkedList<Integer> insertTop = this.decks.get(playerIndex % deckNumber);
                         LinkedList<Integer> discardBottom = this.decks.get((playerIndex + 1) % deckNumber);

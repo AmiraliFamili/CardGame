@@ -7,7 +7,6 @@ import java.util.*;
  * how should we approach the cards of the game ? 
  * how can we define multiple variables for players and decks to work together 
  *      or should we use nested lists approach for both players and decks
- * 
  * The card they discard must display a value which is not of their preferred denomination.
 Additionally, a player must not hold onto a non-preferred denomination card indefinitely, so you
 must implement your Player class to reflect this restriction (otherwise the game may stagnate).
@@ -18,6 +17,8 @@ public class CardGame {
 
     public int getInput() {
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("Please enter the number of players : \n");
         String playerNum = scan.nextLine();
 
         try {
@@ -32,17 +33,18 @@ public class CardGame {
 
     public static void main(String[] args) {
         CardGame obj = new CardGame();
+        int playernum = obj.getInput();
         Card card = new Card(obj.getInput());
 
         System.out.println(card.getPack());
         System.out.println(card.getPack());
-        card.setPlayers();
+        card.setPlayers(); // main 
         System.out.println(card.getPlayers());
-        System.out.println(card.dealHands(card.getPack()));
+        System.out.println(card.dealHands(card.getPack())); // main 
         System.out.println(card.getPack());
-        card.setDecks();
-        System.out.println(card.dealDecks(card.getPack()));
-        card.startGame();
+        card.setDecks(); // main 
+        System.out.println(card.dealDecks(card.getPack())); // main 
+        card.startGame();// main 
 
 
         Thread t1 = new Thread(new Runnable() {
