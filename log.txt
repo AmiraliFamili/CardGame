@@ -6,9 +6,12 @@ Developer, Role, duration, Date & Time, Description
 Amirali, Designer, 2hrs,  2023/10/28 - 13:00 to 15:00, read through the specification and came up with the 
     main methods to implement, the overall structure of the game and wrote a method for generating pack 
 
-Amirali, Developer/Designer, 5hrs, 2023/10/20 - 16:30 to 21:30,  after I had my first meeting with Kaylum
+Amirali, Developer/Designer, 5hrs, 2023/10/30 - 16:30 to 21:30,  after I had my first meeting with Kaylum
     I created this git repository, log sheet, specification of what each of use should do, finished the methods
     for creating pack, hands and decks and a little of the main game's method. 
+
+Amirali, Developer, 2hrs, 2023/10/31 - 10:00 to 12:00, I started working on the main game's methods and 
+    finished the main game, so you can play it now.
 
 
 
