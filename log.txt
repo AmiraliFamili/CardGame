@@ -13,6 +13,11 @@ Amirali, Developer/Designer, 5hrs, 2023/10/30 - 16:30 to 21:30,  after I had my 
 Amirali, Developer, 2hrs, 2023/10/31 - 10:00 to 12:00, I started working on the main game's methods and 
     finished the main game, so you can play it now.
 
+Amirali, Designer/Developer, 1.5hrs, 2023/10/31 - 12:00 to 13:30, the game is now running in parallel and each player 
+    have their own thread and i made some synchronized blocks to avoid race conditions, i also created a report Content file 
+    to remind us that we should start working on the report at the same time , also did a little commenting 
+
+
 
 
 

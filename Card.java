@@ -1,9 +1,16 @@
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /*
  * 
- * you can use super() to activate all classes simultaneously and revive the system's state 
+ * you can use super() to activate all classes simultaneously and revive the system's state
+ * 
+ * player and card class should take two nested lists created by the card game and they should have their own instance 
+ * of card and player or hand 
+ * 
+ *  
  */
 public class Card extends Player {
     final private int timeslice = 90;
@@ -85,9 +92,6 @@ public class Card extends Player {
         return decks;
     }
 
-    // try if you can get from the deck n+1 if something wen't wrong take from the
-    // first deck
-
     public String handToString(LinkedList<Integer> hand) {
         String sHand = "";
         if (hand.size() > 4) {
@@ -121,96 +125,96 @@ public class Card extends Player {
         }
     }
 
-    public boolean validateCard(int card, LinkedList<Integer> hand) {
-        for (Integer cards : hand) {
-            if (card == cards) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private Boolean win = false;
-
     public void startGame() {
-        int round = 0;
-        while (!win) {
-            int Card;
-            LinkedList<Integer> player = this.players.get(round % deckNumber);
-            LinkedList<Integer> insertTop = this.decks.get(round % deckNumber);
-            LinkedList<Integer> discardBottom = this.decks.get((round + 1) % deckNumber);
+        ExecutorService executorService = Executors.newFixedThreadPool(players.size());
+        executorService.execute(() -> {
+            while (!win) {
+                for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
+                    // Make sure to use synchronization mechanisms to coordinate turns
+                    synchronized (players) {
+                        LinkedList<Integer> player = this.players.get(playerIndex % deckNumber);
+                        LinkedList<Integer> insertTop = this.decks.get(playerIndex % deckNumber);
+                        LinkedList<Integer> discardBottom = this.decks.get((playerIndex + 1) % deckNumber);
 
+                        System.out.println(
+                                "player_" + (playerIndex + 1) % deckNumber + " remove one card from Hand : "
+                                        + handToString(player) + "\n");
+                        int Card = getCard(player);
+                        System.out.println("1.Card : " + Card);
+                        System.out.println("1.player hand : " + player);
+                        System.out.println("1.discardBottom : " + discardBottom);
+                        System.out.println("1.insertTop : " + insertTop);
 
-            System.out.println(
-                    "player_" + round + 1 % deckNumber + " remove one card from Hand : " + handToString(player));
-            Card = getCard(player);
-            System.out.println("1.Card : " + Card);
-            System.out.println("1.player hand : " + player);
-            System.out.println("1.discardBottom : " + discardBottom);
-            System.out.println("1.insertTop : " + insertTop);
+                        int index = player.indexOf(Card);
 
-            int index = player.indexOf(Card);
-            // Check if the card is found in the player's hand
-            player.remove(index);
-            player.add(insertTop.removeFirst());
-            discardBottom.add(Card);
-        
-            System.out.println("2.player hand : " + player);
-            System.out.println("2.discardBottom : " + discardBottom);
-            System.out.println("2.insertTop : " + insertTop);
+                        player.remove(index);
+                        synchronized (decks) { // with this block all actions to decks are monitored and happen one at a
+                                               // time
+                            player.add(insertTop.removeFirst());
+                            discardBottom.add(Card);
+                        }
+                        // we should take the same approach with players list
+                        System.out.println("2.player hand :  " + player);
+                        System.out.println("2.discardBottom : " + discardBottom);
+                        System.out.println("2.insertTop : " + insertTop);
 
-            // round robin
-            // Threads
-            // GUI
-            // get input from terminal ?
-            // should we write to the file here ?
+                        // round robin
+                        // Threads
 
-            if (player.get(0) == player.get(1) && player.get(1) == player.get(2) && player.get(2) == player.get(3)) {
-                win = true;
-                
-            } else {
-                round++;
+                        // writing to files should happen in an synchronized block for each player
+
+                        if (player.get(0) == player.get(1) && player.get(1) == player.get(2)
+                                && player.get(2) == player.get(3)) {
+                            win = true;
+                                System.out.println("player " + (playerIndex + 1) % deckNumber + " Wins !");
+                        }
+                    }
+
+                }
             }
+        });
 
-        }
-
+        executorService.shutdown();
     }
 
-    public void playerWon(){
+    public void playerWon() {
 
     }
-
-
-
 
     /*
+
+    Another Approach : 
+
+
      * import java.util.Scanner;
-
-public class CardGame {
-    public static void main(String[] args) {
-        int numPlayers = 4;
-        // Initialize game state, decks, players, etc.
-
-        for (int i = 0; i < numPlayers; i++) {
-            int playerIndex = i;
-            Thread playerThread = new Thread(() -> {
-                while (!gameIsOver()) {
-                    // Player's turn
-                    System.out.println("Player " + playerIndex + ", it's your turn.");
-                    // Read player input and perform actions based on game rules
-                    // Use synchronization mechanisms to coordinate turns
-                }
-            });
-            playerThread.start();
-        }
-    }
-
-    private static boolean gameIsOver() {
-        // Implement the game end condition
-        // Return true when a player wins, signaling the end of the game
-        return false;
-    }
-}
-
+     * 
+     * public class CardGame {
+     * public static void main(String[] args) {
+     * int numPlayers = 4;
+     * // Initialize game state, decks, players, etc.
+     * 
+     * for (int i = 0; i < numPlayers; i++) {
+     * int playerIndex = i;
+     * Thread playerThread = new Thread(() -> {
+     * while (!gameIsOver()) {
+     * // Player's turn
+     * System.out.println("Player " + playerIndex + ", it's your turn.");
+     * // Read player input and perform actions based on game rules
+     * // Use synchronization mechanisms to coordinate turns
+     * }
+     * });
+     * playerThread.start();
+     * }
+     * }
+     * 
+     * private static boolean gameIsOver() {
+     * // Implement the game end condition
+     * // Return true when a player wins, signaling the end of the game
+     * return false;
+     * }
+     * }
+     * 
      */
 }

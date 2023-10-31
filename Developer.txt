@@ -2,7 +2,7 @@ Amirali :
     1. how can we make use of threads and wait/sleep method to implement the round robin fashion 
     2. give better structure to the methods created so far 
     3. map the relevant methods to their classes and find a way to pass the pack !
-    4. how to get the classes to communicate to each other ? nested classes ? super ? through main and threads ? 
+    4. 
 
 Kaylum : 
     1. input and output files with use of threads 

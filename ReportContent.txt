@@ -1,0 +1,11 @@
+In our first meeting we discussed for 1 hour regarding how to approach the game so that it would run with a round robin fashion 
+after we started to work on the code separately we noticed that we should make the project in a way that players play the game 
+simultaneously (in parallel) therefore we should have made a thread for each player and communicate among them ... 
+
+
+what strategy we used for development : navigator / driver -> V model 
+-- problem with synchronization and parallel : if everything is in a synchronized block is it running in parallel ? 
+-- problem with round robin : how can players play simultaneously and the game is played in round robin fashion 
+-- can we only use threads to make the project run in round robin ? 
+-- what time slice should we use to avoid slow programs and avoid collisions 
+-- why V model ? 
