@@ -42,6 +42,7 @@ public class CardGame {
         System.out.println(card.getPack());
         card.setDecks();
         System.out.println(card.dealDecks(card.getPack()));
+        card.startGame();
 
 
         Thread t1 = new Thread(new Runnable() {
