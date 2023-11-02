@@ -1,5 +1,6 @@
 
 import java.util.*;
+
 /*
  * should we use GUI
  * number of player 
@@ -15,44 +16,102 @@ D
  */
 public class CardGame {
 
-    public int getInput() {
-        Scanner scan = new Scanner(System.in);
+    private int playerNum;
+    protected LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
+    protected LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
+    private LinkedList<Integer> pack;
 
-        System.out.println("Please enter the number of players : \n");
-        String playerNum = scan.nextLine();
+    public CardGame(int playerNumber) {
+        this.playerNum = playerNumber;
+        createPack(playerNumber);// all these actions should always happen in order
+        setPlayers();
+        setDecks();
+        this.players = dealHands(pack);
+        this.decks = dealDecks(pack);
+    }
 
-        try {
-            int num = Integer.parseInt(playerNum); 
-            return num;
-        } catch (NumberFormatException e) {
-            System.out.println("Please enter a valid number as number of players : \n");
-            return getInput(); 
+    public void emptyPack() {
+        this.pack = new LinkedList<Integer>();
+    }
+
+    public LinkedList<Integer> getPack() {
+        return this.pack;
+    }
+
+    public LinkedList<Integer> createPack(int n) {
+        if (this.pack == null) {
+            emptyPack();
+        }
+        Random random = new Random();
+        for (int i = 1; i <= (n * 2); i++) {
+            for (int j = 1; j <= 4; j++)
+                pack.add(i);
+        }
+        Collections.shuffle(pack);
+        return pack;
+    }
+
+    public int get1FromPack() {
+        int card = this.pack.poll();
+        return card;
+    }
+
+    public void setPlayers() {
+        for (int i = 0; i < playerNum; i++) {
+            this.players.add(new LinkedList<Integer>());
         }
     }
 
+    public void setDecks() {
+        for (int i = 0; i < playerNum; i++) {
+            this.decks.add(new LinkedList<Integer>());
+        }
+    }
+
+    public LinkedList<LinkedList<Integer>> dealHands(LinkedList<Integer> pack) {
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < playerNum; j++) {
+                LinkedList<Integer> playerN = this.players.get(j);
+                int card = get1FromPack();
+                playerN.add(card);
+            }
+        }
+
+        return this.players;
+    }
+
+    public LinkedList<LinkedList<Integer>> dealDecks(LinkedList<Integer> pack) {
+
+        int index = 0;
+        for (Integer card : pack) {
+            LinkedList<Integer> deck = this.decks.get(index);
+            deck.add(card);
+            index = (index + 1) % playerNum;
+        }
+        return decks;
+    }
+
+    public LinkedList<LinkedList<Integer>> getHands() {
+        return this.players;
+    }
+
+    public LinkedList<LinkedList<Integer>> getDecks() {
+        return this.decks;
+    }
 
     public static void main(String[] args) {
-        CardGame obj = new CardGame();
-        int playernum = obj.getInput();
-        Card card = new Card(obj.getInput());
-
-        System.out.println(card.getPack());
-        System.out.println(card.getPack());
-        card.setPlayers(); // main 
-        System.out.println(card.getPlayers());
-        System.out.println(card.dealHands(card.getPack())); // main 
-        System.out.println(card.getPack());
-        card.setDecks(); // main 
-        System.out.println(card.dealDecks(card.getPack())); // main 
-        card.startGame();// main 
-
+        InputOutput obj = new InputOutput();
+        CardGame cardGame = new CardGame(obj.getInput());
+        Card card = new Card(cardGame.getDecks(), cardGame.getHands());
+        card.startGame();// main
 
         Thread t1 = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                
+
             }
         });
 

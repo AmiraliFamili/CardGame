@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
  * 
  *  
  */
-public class Card extends Player {
+public class Card {
     final private int timeslice = 90;
     final private int deckNumber;
 
@@ -21,77 +21,10 @@ public class Card extends Player {
     private LinkedList<Integer> pack;
     private LinkedList<Integer> deck;
 
-    public Card(int playerNumber) {
-        super(playerNumber);
-        this.deckNumber = playerNumber;
-        createPack(playerNumber);
-        setPlayers();
-    }
-
-    public void emptyPack() {
-        this.pack = new LinkedList<Integer>();
-    }
-
-    public LinkedList<Integer> getPack() {
-        return this.pack;
-    }
-
-    public LinkedList<Integer> createPack(int n) {
-        if (this.pack == null) {
-            emptyPack();
-        }
-        Random random = new Random();
-        for (int i = 1; i <= (n * 2); i++) {
-            for (int j = 1; j <= 4; j++)
-                pack.add(i);
-        }
-        Collections.shuffle(pack);
-        return pack;
-    }
-
-    public int get1FromPack() {
-        int card = this.pack.poll();
-        return card;
-    }
-
-    public void setPlayers() {
-        for (int i = 0; i < deckNumber; i++) {
-            this.players.add(new LinkedList<Integer>());
-        }
-    }
-
-    public void setDecks() {
-        for (int i = 0; i < deckNumber; i++) {
-            this.decks.add(new LinkedList<Integer>());
-        }
-    }
-
-    public LinkedList<LinkedList<Integer>> getPlayers() {
-        return this.players;
-    }
-
-    public LinkedList<LinkedList<Integer>> dealHands(LinkedList<Integer> pack) {
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < deckNumber; j++) {
-                LinkedList<Integer> playerN = this.players.get(j);
-                int card = get1FromPack();
-                playerN.add(card);
-            }
-        }
-
-        return this.players;
-    }
-
-    public LinkedList<LinkedList<Integer>> dealDecks(LinkedList<Integer> pack) {
-
-        int index = 0;
-        for (Integer card : pack) {
-            LinkedList<Integer> deck = this.decks.get(index);
-            deck.add(card);
-            index = (index + 1) % deckNumber;
-        }
-        return decks;
+    public Card(LinkedList<LinkedList<Integer>> decks, LinkedList<LinkedList<Integer>> players) {
+        this.decks = decks;
+        this.deckNumber = decks.size();
+        this.players = players;
     }
 
     public String handToString(LinkedList<Integer> hand) {
@@ -102,16 +35,15 @@ public class Card extends Player {
         for (Integer card : hand) {
             sHand = sHand + Integer.toString(card) + " ";
         }
-
         return sHand;
     }
 
     public int getCard(LinkedList<Integer> hand) {
         Scanner scan = new Scanner(System.in);
-        String playerNum = scan.nextLine();
+        String card = scan.nextLine();
 
         try {
-            int num = Integer.parseInt(playerNum);
+            int num = Integer.parseInt(card);
             for (Integer cards : hand) {
                 if (num == cards) {
                     return num;
@@ -122,20 +54,33 @@ public class Card extends Player {
             return getCard(hand);
         } catch (NumberFormatException e) {
             System.out.println("Please enter a valid Integer from hand : " + hand);
-            System.out.println("Entered Value : " + playerNum + "\n");
+            System.out.println("Entered Value : " + card + "\n");
             return getCard(hand);
         }
     }
 
+    /*
+     * maybe we can use left deck and right deck of the player to use multithreading
+     * without any conflict
+     * 
+     * if we use synchronized like this then we aren't using multithreading we are
+     * playing sequentially
+     * if we don't use them the project will crash instantly because all threads are
+     * trying to access the same shared resource
+     * 
+     * should we separate the players and decks ? how ?
+     */
 
     private Boolean win = false;
-    public void startGame() {
+/*
+
+public void startGame() {
         ExecutorService executorService = Executors.newFixedThreadPool(players.size());
         executorService.execute(() -> {
             while (!win) {
                 for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
                     // Make sure to use synchronization mechanisms to coordinate turns
-                    synchronized (players) { // now that it's in synchronized is it running in parallel ? 
+                    synchronized (players) { // now that it's in synchronized is it running in parallel ?
                         LinkedList<Integer> player = this.players.get(playerIndex % deckNumber);
                         LinkedList<Integer> insertTop = this.decks.get(playerIndex % deckNumber);
                         LinkedList<Integer> discardBottom = this.decks.get((playerIndex + 1) % deckNumber);
@@ -152,8 +97,8 @@ public class Card extends Player {
                         int index = player.indexOf(Card);
 
                         player.remove(index);
-                        synchronized (decks) { // with this block all actions to decks are monitored and happen one at a
-                                               // time
+                        synchronized (decks) {
+                            // with this block all actions to decks are monitored and happen one at a time
                             player.add(insertTop.removeFirst());
                             discardBottom.add(Card);
                         }
@@ -170,7 +115,9 @@ public class Card extends Player {
                         if (player.get(0) == player.get(1) && player.get(1) == player.get(2)
                                 && player.get(2) == player.get(3)) {
                             win = true;
-                                System.out.println("player " + (playerIndex + 1) % deckNumber + " Wins !");
+                            System.out.println("player " + (playerIndex + 1) % deckNumber + " Wins !");
+                            // notifyAll(); this doesn't work but we have to notify the other players that
+                            // player n has won the game
                         }
                     }
 
@@ -180,16 +127,70 @@ public class Card extends Player {
 
         executorService.shutdown();
     }
+    */
+
+
+    public void startGame() { // this code will show that how the players are running in parallel 
+        // if we can update the code so that it performs correctly 
+        // mainly to understand how can we communicate with the game in way that it's parallel 
+        ExecutorService executorService = Executors.newFixedThreadPool(players.size());
+
+        for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
+            final int currentIndex = playerIndex;
+
+            executorService.execute(() -> {
+                while (!win) {
+                    LinkedList<Integer> player = players.get(currentIndex % deckNumber);
+                    LinkedList<Integer> insertTop = decks.get(currentIndex % deckNumber);
+                    LinkedList<Integer> discardBottom = decks.get((currentIndex + 1) % deckNumber);
+
+                    System.out.println(
+                            "player_" + (currentIndex + 1) % deckNumber + " remove one card from Hand: "
+                                    + handToString(player) + "\n");
+                    int card = getCard(player);
+                    System.out.println("1.Card: " + card);
+                    System.out.println("1.player hand: " + player);
+                    System.out.println("1.discardBottom: " + discardBottom);
+                    System.out.println("1.insertTop: " + insertTop);
+
+                    int index = player.indexOf(card);
+                    
+
+                    synchronized (decks) {
+                        player.remove(index);
+                        player.add(insertTop.removeFirst());
+                        discardBottom.add(card);
+                    }
+
+                    System.out.println("2.player hand: " + player);
+                    System.out.println("2.discardBottom: " + discardBottom);
+                    System.out.println("2.insertTop: " + insertTop);
+
+                    if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
+                            && player.get(2).equals(player.get(3))) {
+                        win = true;
+                        System.out.println("Player " + (currentIndex + 1) % deckNumber + " Wins!");
+                    }
+                }
+            });
+        }
+
+        executorService.shutdown();
+    }
+
+
+
+    
 
     public void playerWon() {
 
     }
 
     /*
-
-    Another Approach : 
-
-
+     * 
+     * Another Approach :
+     * 
+     * 
      * import java.util.Scanner;
      * 
      * public class CardGame {

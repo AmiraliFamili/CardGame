@@ -1,8 +1,7 @@
 Amirali : 
     1. how can we make use of threads and wait/sleep method to implement the round robin fashion 
-    2. give better structure to the methods created so far 
-    3. map the relevant methods to their classes and find a way to pass the pack !
-    4. 
+    2. how to use multi threading and avoid any race conditions or conflicts between threads 
+    3. left and right deck problem 
 
 Kaylum : 
     1. input and output files with use of threads 
