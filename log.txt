@@ -17,6 +17,15 @@ Amirali, Designer/Developer, 1.5hrs, 2023/10/31 - 12:00 to 13:30, the game is no
     have their own thread and i made some synchronized blocks to avoid race conditions, i also created a report Content file 
     to remind us that we should start working on the report at the same time , also did a little commenting 
 
+Amirali, Designer, 1.5hrs, 2023/11/03 - 15:00 to 16:30, I have worked on the structure of the code and placed the relevant methods 
+    in their own classes and I worked on the multi threading problem and found a solution to use threadpool
+
+Amirali, Developer, 1.5hrs, 2023/11/04 - 15:00 to 18:00, I worked no the threads of players and managed to make a system where players are playing independently
+    and are playing in their own threads, the program can be considered thread safe but there is a small problem with the left and right deck they are not being updated 
+    properly so changing the structure of the game might be the solution.
+
+
+
 
 
 
