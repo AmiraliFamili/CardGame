@@ -61,7 +61,7 @@ public class Card {
 
             for (int c : hand) {
                 if (cardCount.get(c) == 1) {
-                    System.out.println(c + " is not a duplicate in " + hand );
+                    System.out.println(c + " is not a duplicate in " + hand);
                     card = c;
                     break;
                 }
@@ -98,49 +98,36 @@ public class Card {
         private final Object lock = new Object();
 
         public void playTurn() {
-            boolean hasPlayed = false;
-            
-            while (!hasPlayed) {
-                synchronized (lock) {
-                    while (insertTop.isEmpty()) {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                            return;
-                        }
-                    }
-                    
-                    System.out.println("player_" + (counter + 1) % deckNumber + " remove one card from Hand: " + handToString(player));
-        
-                    System.out.println("1.player hand: " + player);
-                    System.out.println("1.discardBottom: " + discardBottom);
-                    System.out.println("1.insertTop: " + insertTop);
-        
-                    synchronized (players) {
-                        int card = getCard(player);
-                        player.remove( player.indexOf(getCard(player)));
-                        player.add(insertTop.removeFirst());
-                        discardBottom.add(card);
-                    }
-                    System.out.println("2.player hand: " + player);
-                    System.out.println("2.discardBottom: " + discardBottom);
-                    System.out.println("2.insertTop: " + insertTop);
-        
-                    if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
-                            && player.get(2).equals(player.get(3))) {
-                        this.win = true;
-                        System.out.println("Player" + (players.indexOf(player) + 1) + " wins!");
-                        break;
-                    }
-                    
-                    hasPlayed = true;
-                    counter++;
-                }
+
+            synchronized (players) { // the problem is with passing the insert top and discard bottom we have to use the shared resources 
+                System.out.println(
+                        "player_" + (counter + 1) % deckNumber + " remove one card from Hand: " + handToString(player));
+
+                System.out.println("1.player hand: " + player);
+                System.out.println("1.discardBottom: " + discardBottom);
+                System.out.println("1.insertTop: " + insertTop);
+
+                int card = getCard(player);
+                player.remove(player.indexOf(getCard(player)));
+                player.add(insertTop.removeFirst());
+                discardBottom.add(card);
+                System.out.println("2.player hand: " + player);
+                System.out.println("2.discardBottom: " + discardBottom);
+                System.out.println("2.insertTop: " + insertTop);
+
             }
+
+            if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
+                    && player.get(2).equals(player.get(3))) {
+                this.win = true;
+                System.out.println("Player" + (players.indexOf(player) + 1) + " wins!");
+                System.exit(0);
+            }
+
+            counter++;
         }
     }
-        
+
     /*
      * maybe we can use left deck and right deck of the player to use multithreading
      * without any conflict
@@ -166,7 +153,7 @@ public class Card {
 
             PlayerThread playerThread = new PlayerThread(player, insertTop, discardBottom);
             executorService.execute(playerThread);
-            
+
         }
 
         executorService.shutdown();

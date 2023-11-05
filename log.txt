@@ -25,6 +25,9 @@ Amirali, Developer, 1.5hrs, 2023/11/04 - 15:00 to 18:00, I worked no the threads
     properly so changing the structure of the game might be the solution.
 
 
+Amirali, Developer, 0.5hrs, 2023/11/05 - 18:00 to 18:30, worked on the game method and found the problem of the code.
+
+
 
 
 
