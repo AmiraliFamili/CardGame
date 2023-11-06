@@ -4,11 +4,11 @@ Amirali :
     3. left and right deck problem 
 
 Kaylum : 
-    1. input and output files with use of threads 
-    2. read the code and try to understand 
+    1. input and output files with use of threads        --            i have completed partially just needs better intergration
+    2. read the code and try to understand               --            i ahve complted this
     3. when you finish your work please push it through github and write down how long you were working on 
         the code / structure of it and write a small description about the specific work below your log 
-        You can check out my example in log.txt file and follow the same format 
+        You can check out my example in log.txt file and follow the same format                - i have complted this
     4. get familiar with use of threads we should make the hole project synchronized once we are finished 
 
     Notes for Kaylum : i have made all methods inside the card.java which is incorrect they should be in their 
@@ -17,5 +17,11 @@ Kaylum :
         if you couldn't get them to finish before that time that's fine too but we should have a meeting soon. 
 
 
+    
+
+
 meeting content : we should pay more attention to the report part and in regards, we should start taking about how we can design 
-the code and the overall structure of it better and thoroughly, we should make notes of our meetings and use it as report material 
+the code and the overall structure of it better and thoroughly, we should make notes of our meetings and use it as report material
+
+
+    6/nov -- to do: during meeting 8pm today need to talk about steps towards implementaion

@@ -17,6 +17,14 @@ Amirali, Designer/Developer, 1.5hrs, 2023/10/31 - 12:00 to 13:30, the game is no
     have their own thread and i made some synchronized blocks to avoid race conditions, i also created a report Content file 
     to remind us that we should start working on the report at the same time , also did a little commenting 
 
+kaylum, 1.5h, 2023/10/31 - 20:00 - 21:30, after my second meeting with Amirali and where he showed me the code and and explained his part, 
+    i spend an hour and a hald trying to undertstand the code that night before trying to undertsand how to implement the work and coming up with ideas
+    how to do so.
+
+kaylum, 4h, 2023/11/01 - 10:00 - 14:00, i tried spend the hours working on output files where the code would output the work into
+    a seperate txt output file, though i got a bit stuck on getting the code tow ork with the rest of the code outside of the Player.Java
+    ive also added a folder output/test/ where all 'txt' file shoud be added from the player.java
+
 Amirali, Designer, 1.5hrs, 2023/11/03 - 15:00 to 16:30, I have worked on the structure of the code and placed the relevant methods 
     in their own classes and I worked on the multi threading problem and found a solution to use threadpool
 
@@ -26,6 +34,14 @@ Amirali, Developer, 1.5hrs, 2023/11/04 - 15:00 to 18:00, I worked no the threads
 
 
 Amirali, Developer, 0.5hrs, 2023/11/05 - 18:00 to 18:30, worked on the game method and found the problem of the code.
+
+
+kaylum, 2h, 2023/11/05 - 19:00-21:00, after having spending a couple days away from the work i have come back in and got aqaunated with teh work
+    Amirali has done in my abscence
+
+kaylum 2h, 2023/11/05 - 22:00-24:00,  seeing that threads have been added i did some reserach on it spend some time researching threads and best 
+    implement them into the work of player.java and have annoted the place where it hsould be implemented, ive additonly wriiten on the developer.txt
+    where i have complted the task needed
 
 
 
