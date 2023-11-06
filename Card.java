@@ -88,55 +88,71 @@ public class Card {
 
         private Boolean win = false;
         private final Object lock = new Object();
+        private final Object lock2 = new Object();
 
         public void playTurn() {
-
             synchronized (lock) { // the problem is with passing the insert top and discard bottom we have to use
                                   // the shared resources
                 LinkedList<Integer> player = players.get(counter % deckNumber);
                 LinkedList<Integer> insertTop = decks.get(counter % deckNumber);
                 LinkedList<Integer> discardBottom = decks.get((counter + 1) % deckNumber);
 
-                if (!insertTop.isEmpty() && !discardBottom.isEmpty()) {
+                playerWon(player);
 
-                    System.out.println("Decks : " + decks);
-                    System.out.println("Hands : " + players);
-                    System.out.println("InsertTop : " + insertTop);
-                    System.out.println("DiscardBottom : " + discardBottom);
-                    System.out.println("Counter : " + counter + " counter % playernum : " + counter % deckNumber);
-
-                    System.out.println(
-                            "player_" + (counter + 1) % deckNumber + " remove one card from Hand: "
-                                    + handToString(player));
-
-                    System.out.println("1.player hand: " + player);
-                    System.out.println("1.discardBottom: " + discardBottom);
-                    System.out.println("1.insertTop: " + insertTop);
-
-                    int card = getCard(player);
-                    System.out.println("1.Card: " + card);
-                    player.remove(player.indexOf(card));
-                    player.add(insertTop.removeFirst());
-                    discardBottom.add(card);
-
-                    System.out.println("2.player hand: " + player);
-                    System.out.println("2.discardBottom: " + discardBottom);
-                    System.out.println("2.insertTop: " + insertTop);
-                    counter++;
+                while (insertTop.isEmpty()) {
+                    try {
+                        if (insertTop.isEmpty()) {
+                            lock.wait();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-                lock.notifyAll();
-            }
+                System.out.println("Decks : " + decks);
+                System.out.println("Hands : " + players);
+                System.out.println("InsertTop : " + insertTop);
+                System.out.println("DiscardBottom : " + discardBottom);
+                System.out.println("Counter : " + counter + " counter % playernum : " + counter % deckNumber);
 
-            playerWon(counter);
+                System.out.println(
+                        "player_" + (counter + 1) % deckNumber + " remove one card from Hand: "
+                                + handToString(player));
+
+                System.out.println("1.player hand: " + player);
+                System.out.println("1.discardBottom: " + discardBottom);
+                System.out.println("1.insertTop: " + insertTop);
+
+                System.out.println("1.Card: " + getCard(player));
+
+                synchronized (lock2) {
+                    int card = getCard(player);
+                    if (player.contains(card) && !insertTop.isEmpty()) {
+                        player.remove(player.indexOf(card));
+                        player.add(insertTop.removeFirst());
+                        discardBottom.add(card);
+                    } else {
+                        try {
+                            lock2.wait();
+                        } catch (InterruptedException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                System.out.println("2.player hand: " + player);
+                System.out.println("2.discardBottom: " + discardBottom);
+                System.out.println("2.insertTop: " + insertTop);
+                counter++;
+            }
 
         }
 
-        public void playerWon(int counter) {
-            LinkedList<Integer> player = players.get(counter % deckNumber);
+        public void playerWon(LinkedList<Integer> player) {
             if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
                     && player.get(2).equals(player.get(3))) {
                 this.win = true;
-                System.out.println("Player" + (players.indexOf(player) + 1) + " wins!");
+                System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!");
                 System.exit(0);
             }
         }
@@ -165,6 +181,7 @@ public class Card {
             PlayerThread playerThread = new PlayerThread();
             executorService.execute(playerThread);
         }
+
         executorService.shutdown();
     }
 

@@ -22,7 +22,6 @@ public class Player {
 
     //more work needs to be done between line 23-50
     public void initalHand(int playerNumber) {
-        return dealHands
     }
     
 
@@ -31,7 +30,7 @@ public class Player {
     }
 
     public void drawCard(int playerNumber) {
-        this.cardDrawn = cardDrawn;
+    
         // Implementation here need to be added so code undertsand that a player has drawn card to listen to card.java
     }
  
@@ -78,19 +77,19 @@ public class Player {
 
     public void startGame() {
         //start of the game requires this (got the "dealHands" from cardGame.java)
-        logAction("Player " + playerNumber + " innital hand is " + dealHands);
+        logAction("Player " + playerNumber + " innital hand is ");
 
         //this logs the what cards player has drawn (needs to find correct function name fpr cardDrawn)
-        logAction("Player " + playerNumber + " has drawn a " + cardDrawn);
+        logAction("Player " + playerNumber + " has drawn a ");
         //this logs the what cards player discarded (got "getCard" from card.java)
-        logAction("Player " + playerNumber + " has discarded a " + getCard);
+        logAction("Player " + playerNumber + " has discarded a " );
         //this logs the what cards player currently has (got "getHands" form cardGAme.java)
-        logAction("Player " + playerNumber + "'s is " + getHands);
+        logAction("Player " + playerNumber + "'s is " );
         //action taken when there is a winner
         if (hasWon()){
             logAction("Player " + playerNumber + " wins");
             logAction("Player" + playerNumber + " exits");
-            logAction("Player " + playerNumber + " final hand " + hand);
+            logAction("Player " + playerNumber + " final hand " );
             }
     }
 
