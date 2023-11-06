@@ -38,7 +38,7 @@ public class Card {
         return sHand;
     }
 
-    public boolean hasDuplicates(LinkedList<Integer> hand) {
+    public synchronized boolean hasDuplicates(LinkedList<Integer> hand) {
         Set<Integer> seen = new HashSet<>();
 
         for (Integer card : hand) {
@@ -49,8 +49,9 @@ public class Card {
         return false;
     }
 
-    public int getCard(LinkedList<Integer> hand) { // this method will chose for the players what card should be
-                                                   // discarded
+    public synchronized int getCard(LinkedList<Integer> hand) { // this method will chose for the players what card
+                                                                // should be
+        // discarded
         int card = 0;
 
         if (hasDuplicates(hand)) {
@@ -63,7 +64,7 @@ public class Card {
                 if (cardCount.get(c) == 1) {
                     System.out.println(c + " is not a duplicate in " + hand);
                     card = c;
-                    break;
+                    return c;
                 }
             }
         } else {
@@ -71,21 +72,12 @@ public class Card {
             card = hand.getFirst();
         }
 
-        return card;
+        return hand.getLast();
     }
 
-    private class PlayerThread extends Thread {
-        private LinkedList<Integer> player;
-        private LinkedList<Integer> insertTop;
-        private LinkedList<Integer> discardBottom;
-        int counter = 0;
+    private int counter = 0;
 
-        public PlayerThread(LinkedList<Integer> player, LinkedList<Integer> insertTop,
-                LinkedList<Integer> discardBottom) {
-            this.player = player;
-            this.insertTop = insertTop;
-            this.discardBottom = discardBottom;
-        }
+    private class PlayerThread extends Thread {
 
         @Override
         public void run() {
@@ -99,33 +91,56 @@ public class Card {
 
         public void playTurn() {
 
-            synchronized (players) { // the problem is with passing the insert top and discard bottom we have to use the shared resources 
-                System.out.println(
-                        "player_" + (counter + 1) % deckNumber + " remove one card from Hand: " + handToString(player));
+            synchronized (lock) { // the problem is with passing the insert top and discard bottom we have to use
+                                  // the shared resources
+                LinkedList<Integer> player = players.get(counter % deckNumber);
+                LinkedList<Integer> insertTop = decks.get(counter % deckNumber);
+                LinkedList<Integer> discardBottom = decks.get((counter + 1) % deckNumber);
 
-                System.out.println("1.player hand: " + player);
-                System.out.println("1.discardBottom: " + discardBottom);
-                System.out.println("1.insertTop: " + insertTop);
+                if (!insertTop.isEmpty() && !discardBottom.isEmpty()) {
 
-                int card = getCard(player);
-                player.remove(player.indexOf(getCard(player)));
-                player.add(insertTop.removeFirst());
-                discardBottom.add(card);
-                System.out.println("2.player hand: " + player);
-                System.out.println("2.discardBottom: " + discardBottom);
-                System.out.println("2.insertTop: " + insertTop);
+                    System.out.println("Decks : " + decks);
+                    System.out.println("Hands : " + players);
+                    System.out.println("InsertTop : " + insertTop);
+                    System.out.println("DiscardBottom : " + discardBottom);
+                    System.out.println("Counter : " + counter + " counter % playernum : " + counter % deckNumber);
 
+                    System.out.println(
+                            "player_" + (counter + 1) % deckNumber + " remove one card from Hand: "
+                                    + handToString(player));
+
+                    System.out.println("1.player hand: " + player);
+                    System.out.println("1.discardBottom: " + discardBottom);
+                    System.out.println("1.insertTop: " + insertTop);
+
+                    int card = getCard(player);
+                    System.out.println("1.Card: " + card);
+                    player.remove(player.indexOf(card));
+                    player.add(insertTop.removeFirst());
+                    discardBottom.add(card);
+
+                    System.out.println("2.player hand: " + player);
+                    System.out.println("2.discardBottom: " + discardBottom);
+                    System.out.println("2.insertTop: " + insertTop);
+                    counter++;
+                }
+                lock.notifyAll();
             }
 
+            playerWon(counter);
+
+        }
+
+        public void playerWon(int counter) {
+            LinkedList<Integer> player = players.get(counter % deckNumber);
             if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
                     && player.get(2).equals(player.get(3))) {
                 this.win = true;
                 System.out.println("Player" + (players.indexOf(player) + 1) + " wins!");
                 System.exit(0);
             }
-
-            counter++;
         }
+
     }
 
     /*
@@ -147,20 +162,10 @@ public class Card {
         ExecutorService executorService = Executors.newFixedThreadPool(players.size());
 
         for (int i = 0; i < players.size(); i++) {
-            LinkedList<Integer> player = players.get(i);
-            LinkedList<Integer> insertTop = decks.get(i);
-            LinkedList<Integer> discardBottom = decks.get((i + 1) % deckNumber);
-
-            PlayerThread playerThread = new PlayerThread(player, insertTop, discardBottom);
+            PlayerThread playerThread = new PlayerThread();
             executorService.execute(playerThread);
-
         }
-
         executorService.shutdown();
-    }
-
-    public void playerWon() {
-
     }
 
     /*
