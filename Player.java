@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.io.BufferedWriter;
 
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ public class Player {
 
     final private int playerNumber;
     static ArrayList<Player> players = new ArrayList<>();
+    LinkedList<Integer> pack = new LinkedList<Integer>();
     boolean firstT;
 
     
@@ -25,7 +27,7 @@ public class Player {
     }
     
 
-     public void getHands(int playerNumber) {
+    public void getHands(int playerNumber) {
 
     }
 

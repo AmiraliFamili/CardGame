@@ -106,14 +106,7 @@ public class CardGame {
         Card card = new Card(cardGame.getDecks(), cardGame.getHands());
         card.startGame();// main
 
-        Thread t1 = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-
-            }
-        });
+        cardGame.getPack();
 
     }
 }
