@@ -1,103 +1,213 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 import java.io.BufferedWriter;
-
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 
-public class Player {
 
-    final private int playerNumber;
-    static ArrayList<Player> players = new ArrayList<>();
-    LinkedList<Integer> pack = new LinkedList<Integer>();
-    boolean firstT;
 
-    
-    //to get player number
-    
-    public Player(int playerNumber){
-        this.playerNumber = playerNumber;
-        players.add(this);
-        this.firstT = true;
-    }
 
-    //more work needs to be done between line 23-50
-    public void initalHand(int playerNumber) {
-    }
-    
+public class Player{
 
-    public void getHands(int playerNumber) {
+//instance attributes
 
-    }
-
-    public void drawCard(int playerNumber) {
-    
-        // Implementation here need to be added so code undertsand that a player has drawn card to listen to card.java
-    }
- 
-    public void discardCard(int cardDiscarded) {
-       // same here i dont unsetrdan how be simple code need to be added to it knows when a player has discarded a cad from the
-       //main card game
-    }
-
+    private int playerNumber;
+    private LinkedList<Card> hand = new LinkedList<Card>();    //used prevously: static LinkedList<Integer> hand = new LinkedList<Integer>();
+    private Card pickupLeft;   //left  was: discardBottom
+    private Card discardRight;      //right  was insertTop
+    private CardGame game;       //might not be "game" but something else
    
- 
-    public boolean hasWon() {
-        return false;
-        // Implementation here
-    }
 
+
+//constructor:
+//   -------------------------------------------------------------------------
+
+
+
+    Player(int playerNumber, Card discard, Card pickup, CardGame game, ArrayList<Card> hand) throws IOException{
+        this.playerNumber = playerNumber;
+        this.discardRight = discard;
+        this.pickupLeft = pickup;
+        this.game = game;
+
+       
     
-
-//this section is where the code will use to create logs for output/logs folder
-    public void logAction(String action) {
-        try {
-            String directoryPath = "output/logs/";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(directoryPath + "player" + playerNumber + "_output.txt", true));
-            writer.append(action);
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        /* 
-        try {
-            String directoryPath = "output/logs";
-            File directory = new File(directoryPath);
-            
-            BufferedWriter writer = new BufferedWriter(new FileWriter(directoryPath + "player" + playerNumber + "_output.txt", true));
-            writer.append(action);
-            writer.newLine();
-            writer.close();
-            } catch (IOException e) {
-            e.printStackTrace();
-            }
-*/
         
     }
 
-    public void startGame() {
-        //start of the game requires this (got the "dealHands" from cardGame.java)
-        logAction("Player " + playerNumber + " innital hand is ");
 
-        //this logs the what cards player has drawn (needs to find correct function name fpr cardDrawn)
-        logAction("Player " + playerNumber + " has drawn a ");
-        //this logs the what cards player discarded (got "getCard" from card.java)
-        logAction("Player " + playerNumber + " has discarded a " );
-        //this logs the what cards player currently has (got "getHands" form cardGAme.java)
-        logAction("Player " + playerNumber + "'s is " );
-        //action taken when there is a winner
-        if (hasWon()){
-            logAction("Player " + playerNumber + " wins");
-            logAction("Player" + playerNumber + " exits");
-            logAction("Player " + playerNumber + " final hand " );
-            }
+
+//setters and getters:
+// -----------------------------------------------------------------------------
+
+    
+
+//METHODS:
+//   ---------------------------------------------------------------------------
+
+   // ------------------main methods for writting to the output --------------------
+/*
+ * 
+ * we need to have a meeting on my code to help get some implemnation with your code as i found it hard to understand
+ */
+
+
+    //method to create files in the correct location
+
+    public void SetupOutputFile(){        //look into then name of the method if that matters
+        try{
+            File newFile = new File("player" + playerNumber + "_output.txt"); // use this to create code
+            newFile.createNewFile();
+            System.out.println("File created: " + newFile.getName());
+        } catch (IOException e) {
+            System.out.println("error occurred while trying to create file");
+            e.printStackTrace();
+        }
     }
+    
+
+    //method to write into new file the inital hand
+    public void initialHand(){
+        String initialHand = "";
+        for (Card card:hand) {
+            initialHand += " " + card.getHand();//work on this
+        }
+
+        try{
+            FileWriter writer = new FileWriter("player" + playerNumber + "_output.txt", true);
+            writer.write("player " + playerNumber + " initial hand " + initialHand + "\n");
+            writer.close();
+            //add part of function to gte correct hand -- need more work 
+
+        } catch (IOException e) {
+            System.out.println("error occurred in initalhand method");
+            e.printStackTrace();
+        }
+    }
+
+    public void discardAndPickUp(){
+        Card card = new Card(decks, players);
+        int selectedCard = game.getCard(hand);
+        hand.add(pickupLeft);
+        hand.remove(selectedCard);
+        
+        try {
+            
+            FileWriter writer = new FileWriter("player" + playerNumber + "output.txt", true);
+            writer.write("player " + playerNumber + " draws a " + hand.add(pickupLeft.getCard()) + " from deck \n" /*+ leftCardDeck.getDeckNumber()*/ );
+            writer.write("\nplayer " + playerNumber + " discards a " + hand.remove(selectedCard) + " to deck \n" /*+ rightCardDeck.getDeckNumber() */);   // look at sorting this part and get rifd and think of implmentation of deck
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred during writting of draw/discard card");
+            e.printStackTrace();
+        }
+    
+    }
+
+
+    public void currentHand(){
+        String currentHand = "";
+        for (Card card:hand) {
+            currentHand += " " + card.getCard();//work on this
+        }
+
+        try {
+            FileWriter writer = new FileWriter("player" + playerNumber + "output.txt", true);
+            writer.write("player " + playerNumber + " currents hand " + currentHand +"\n");   // look at sorting this part and get rifd and think of implmentation of deck
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred during writting of draw/discard card");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void winner(){
+        try{
+        FileWriter writer = new FileWriter("player"+ playerNumber +"_output.txt", true);
+            writer.write("\nplayer " + playerNumber + " wins\n");
+            writer.write("player " + playerNumber + " exits\n");
+            writer.close();
+
+
+        } catch (IOException e) {
+            System.out.println("An error occurred writing this player's win to a file.");
+            e.printStackTrace();
+
+        }
+    }
+
+
+
+    public void finalhand(){
+        String finalHand = "";
+        for (Card card:hand) {
+            finalHand += " " + card.getHand();//work on this
+        }
+        try {
+            FileWriter writer = new FileWriter("player"+ playerNumber +"_output.txt", true);
+            writer.write("player " + playerNumber + " final hand " + finalHand + "\n");
+            writer.close();
+
+        } catch (IOException e) {
+            System.out.println("An error occurred writing players final hand");
+            e.printStackTrace();
+        }
+    }
+
+
+
+            // ------------------  other  methods  ---------------------
+    
+    
+        
+        
+               
+
+    
+
+
+
+
 
 
 
 }
+
+    
+
+/*for later use
+ * 
+ *  // creates a string of the starting hand
+        String initialHand = "player " + id + " initial hand";
+        for (Card c:hand) {
+            initialHand += " " + card.getValue();
+        }
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -108,3 +218,18 @@ public class Player {
     In the Player class, the call() method is implemented, which is the method that will be called when a Player object is used with an executor service, 
     such as ExecutorService.submit(Callable<T> task)
  */
+
+
+
+
+
+ /*
+  * to get the player output
+  need output file for player an card deck
+
+  for each one you need an attribute which is an output file for the objects
+
+  in the constructor need to inistilise the outoutfile
+
+  where card 
+  */

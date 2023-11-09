@@ -48,6 +48,7 @@ public class Card {
         }
         return false;
     }
+    
 
     public synchronized int getCard(LinkedList<Integer> hand) { // this method will chose for the players what card
                                                                 // should be
@@ -126,7 +127,7 @@ public class Card {
 
                 synchronized (lock2) {
                     int card = getCard(player);
-                    if (player.contains(card) && !insertTop.isEmpty()) {
+                    if (player.contains(card) && !insertTop.isEmpty()) {//write methode
                         player.remove(player.indexOf(card));
                         player.add(insertTop.removeFirst());
                         discardBottom.add(card);

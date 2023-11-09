@@ -45,6 +45,13 @@ kaylum 2h, 2023/11/05 - 22:00-24:00,  seeing that threads have been added i did 
     implement them into the work of player.java and have annoted the place where it hsould be implemented, ive additonly wriiten on the developer.txt
     where i have complted the task needed
 
+kaylum 8h, 2023/11/07 - 9:30-17:30, spend a few hours implmenting the player.java and spending hours trying to undertsand the other code and how the 
+    methods work so when i call on the methods in the player class they will work
+    the main structure for the pkayer calss is set up
+
+kaylum, 5h, 2023/11/08 - 15:00-18:00, stuggled with the impkmentation and sopent a few hours trying to resolve some major problem that would affcet the game to complie
+    trying to use the getCard() method in player class but struggling
+
 
 
 

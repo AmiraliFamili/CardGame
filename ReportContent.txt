@@ -9,3 +9,6 @@ what strategy we used for development : navigator / driver -> V model
 -- can we only use threads to make the project run in round robin ? 
 -- what time slice should we use to avoid slow programs and avoid collisions 
 -- why V model ? 
+
+
+
