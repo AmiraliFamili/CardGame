@@ -49,7 +49,7 @@ kaylum 8h, 2023/11/07 - 9:30-17:30, spend a few hours implmenting the player.jav
     methods work so when i call on the methods in the player class they will work
     the main structure for the pkayer calss is set up
 
-kaylum, 5h, 2023/11/08 - 15:00-18:00, stuggled with the impkmentation and sopent a few hours trying to resolve some major problem that would affcet the game to complie
+kaylum, 5h, 2023/11/08 - 15:00-18:00, stuggled with the impkmentation and spent a few hours trying to resolve some major problem that would affcet the game to complie
     trying to use the getCard() method in player class but struggling
 
 
