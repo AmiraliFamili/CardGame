@@ -35,7 +35,7 @@ Amirali, Developer, 1.5hrs, 2023/11/04 - 15:00 to 18:00, I worked no the threads
 
 Amirali, Developer, 0.5hrs, 2023/11/05 - 18:00 to 18:30, worked on the game method and found the problem of the code.
 
-Amirali, Developer, 1.5hrs, 2023/11/05 - 12:45 to 14:15, fixed the decks problem and finished making the game in parallel and worked on synchronization
+Amirali, Developer, 1.5hrs, 2023/11/06 - 12:45 to 14:15, fixed the decks problem and finished making the game in parallel and worked on synchronization
 
 
 kaylum, 2h, 2023/11/05 - 19:00-21:00, after having spending a couple days away from the work i have come back in and got aqaunated with teh work
@@ -53,7 +53,9 @@ kaylum, 5h, 2023/11/08 - 15:00-18:00, stuggled with the impkmentation and spent 
     trying to use the getCard() method in player class but struggling
 
 
-
+Amirali, Developer/Designer, 3hrs, 2023/11/09 - 15:00 to 18:00, reviewed kaylum's code and tried to find a way to fit it in the code , research 
+    on the tests that need to be made , test methods and unit testing , reviewed the hole structure of the code and found an alternative, 
+    specified some instructions to be made by me and kaylum  
 
 
 

@@ -19,7 +19,6 @@ public class Player{
     private Card pickupLeft;   //left  was: discardBottom
     private Card discardRight;      //right  was insertTop
     private CardGame game;       //might not be "game" but something else
-   
 
 
 //constructor:
@@ -32,10 +31,6 @@ public class Player{
         this.discardRight = discard;
         this.pickupLeft = pickup;
         this.game = game;
-
-       
-    
-        
     }
 
 
@@ -162,19 +157,6 @@ public class Player{
 
 
             // ------------------  other  methods  ---------------------
-    
-    
-        
-        
-               
-
-    
-
-
-
-
-
-
 
 }
 

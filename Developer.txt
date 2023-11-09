@@ -1,27 +1,21 @@
 Amirali : 
-    1. how can we make use of threads and wait/sleep method to implement the round robin fashion 
-    2. how to use multi threading and avoid any race conditions or conflicts between threads 
-    3. left and right deck problem 
+    1. implementation of the code 
+    2. Structure of the code and the classes 
+    3. writing the test methods for each method and class that we have 
+    4. Documentation of the code , better to do with javaDoc 
+    5. Start working on the report
 
-Kaylum : 
-    1. input and output files with use of threads        --            i have completed partially just needs better intergration
-    2. read the code and try to understand               --            i ahve complted this
-    3. when you finish your work please push it through github and write down how long you were working on 
-        the code / structure of it and write a small description about the specific work below your log 
-        You can check out my example in log.txt file and follow the same format                - i have complted this
-    4. get familiar with use of threads we should make the hole project synchronized once we are finished 
-
-    Notes for Kaylum : i have made all methods inside the card.java which is incorrect they should be in their 
-        relevant classes , in our next meeting we should talk about how we can make use of the round robin fashion 
-        , please finish the tasks I mentioned above before 12 
-        if you couldn't get them to finish before that time that's fine too but we should have a meeting soon. 
+Kaylum :
+    1. successfully printing the player data and deck data to their relevant file names in the obtained location 
+    2. writing the test methods for the code written above 
+    3. working with Junit 4 and how to use it ... 
+    4. read the website 
+    5. write down the problems you had to face during the paired programming in the ReportContent.txt file 
+    6. meeting ??
 
 
-    
 
+    https://www.browserstack.com/guide/junit-test-suite
 
-meeting content : we should pay more attention to the report part and in regards, we should start taking about how we can design 
-the code and the overall structure of it better and thoroughly, we should make notes of our meetings and use it as report material
+    this website will help us for writing the test methods how to use Junit 4 and the assertEquals method ... 
 
-
-    6/nov -- to do: during meeting 8pm today need to talk about steps towards implementaion

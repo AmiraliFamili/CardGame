@@ -5,12 +5,7 @@ import java.util.concurrent.Executors;
 
 /*
  * 
- * you can use super() to activate all classes simultaneously and revive the system's state
- * 
- * player and card class should take two nested lists created by the card game and they should have their own instance 
- * of card and player or hand 
- * 
- *  
+ *  how can we implement the round robin fashion 
  */
 public class Card {
     final private int timeslice = 90;
@@ -50,9 +45,7 @@ public class Card {
     }
     
 
-    public synchronized int getCard(LinkedList<Integer> hand) { // this method will chose for the players what card
-                                                                // should be
-        // discarded
+    public synchronized int getCard(LinkedList<Integer> hand) {
         int card = 0;
 
         if (hasDuplicates(hand)) {
@@ -77,7 +70,6 @@ public class Card {
     }
 
     private int counter = 0;
-
     private class PlayerThread extends Thread {
 
         @Override
@@ -97,6 +89,8 @@ public class Card {
                 LinkedList<Integer> player = players.get(counter % deckNumber);
                 LinkedList<Integer> insertTop = decks.get(counter % deckNumber);
                 LinkedList<Integer> discardBottom = decks.get((counter + 1) % deckNumber);
+
+                //Player j = new Player(deckNumber, null, null, null, null);
 
                 playerWon(player);
 
@@ -149,7 +143,7 @@ public class Card {
 
         }
 
-        public void playerWon(LinkedList<Integer> player) {
+        public void playerWon(LinkedList<Integer> player) { // wining strategy 
             if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
                     && player.get(2).equals(player.get(3))) {
                 this.win = true;

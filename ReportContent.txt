@@ -11,4 +11,14 @@ what strategy we used for development : navigator / driver -> V model
 -- why V model ? 
 
 
+we should mention the problems we had i had to struggle with the main game class and extracting the correct 
+    output from the main pack as well as making the entire game parallel in a round robin fashion and in a way that 
+    their threads wouldn't interrupt each other and i had some problems with race condition as well, there was times when it was 
+    a players turn but their left deck was empty and they had to wait for the shared resources to be freed (or filled) again so that 
+    they could play their turn ... 
+
+hey kaylum , please write some problems you had to face as both a designer and as a developer, i wrote some of mine as an example 
+we have to start with the report as well as test methods we don't have much time left either.
+
+
 

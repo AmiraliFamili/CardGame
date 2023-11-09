@@ -24,6 +24,10 @@ public class CardGame {
     public CardGame(int playerNumber) {
         this.playerNum = playerNumber;
         createPack(playerNumber);// all these actions should always happen in order
+        // here we should save the file
+        // since the program removes the cards when dealHands and dealDecks methods are called 
+        InputOutput in = new InputOutput();
+
         setPlayers();
         setDecks();
         this.players = dealHands(pack);
@@ -86,9 +90,9 @@ public class CardGame {
     public LinkedList<LinkedList<Integer>> dealDecks(LinkedList<Integer> pack) {
 
         int index = 0;
-        for (Integer card : pack) {
+        while (!this.pack.isEmpty()) {
             LinkedList<Integer> deck = this.decks.get(index);
-            deck.add(card);
+            deck.add(get1FromPack());
             index = (index + 1) % playerNum;
         }
         return decks;
@@ -109,10 +113,10 @@ public class CardGame {
         Card card = new Card(cardGame.getDecks(), cardGame.getHands());
         card.startGame();// main
 
-        cardGame.getPack();
 
-
-       
+    System.out.println("Hand : " +cardGame.getHands());
+    System.out.println(cardGame.getDecks());
+        System.out.println(cardGame.getPack());
 
     }
 }
