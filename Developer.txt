@@ -11,8 +11,6 @@ Kaylum :
     3. working with Junit 4 and how to use it ... 
     4. read the website 
     5. write down the problems you had to face during the paired programming in the ReportContent.txt file 
-    6. meeting ??
-
 
 
     https://www.browserstack.com/guide/junit-test-suite
