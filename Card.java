@@ -4,34 +4,37 @@ import java.util.Random;
 
 public class Card {
 
-    private int playerNum;
+    protected int playerNum;
     protected LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
     protected LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
-    private LinkedList<Integer> pack;
+    protected LinkedList<Integer> pack;
 
     public Card(int playerNumber) {
-        this.playerNum = playerNumber;
+        if (playerNumber > 0) {
+            this.playerNum = playerNumber;
+        } else {
+            this.playerNum = 1;
+        }
+
         createPack(playerNumber);// all these actions should always happen in order
         // here we should save the file
-        // since the program removes the cards when dealHands and dealDecks methods are called 
-        //InputOutput in = new InputOutput(); // pack is full here 
+        // since the program removes the cards when dealHands and dealDecks methods are
+        // called
+        // InputOutput in = new InputOutput(); // pack is full here
 
         setPlayers();
         setDecks();
-        this.players = dealHands(pack);
-        this.decks = dealDecks(pack);
+        this.players = dealHands();
+        this.decks = dealDecks();
 
-        //InputOutput inn = new InputOutput();// pack is empty here 
+        // InputOutput inn = new InputOutput();// pack is empty here
 
-        //InputOutput in = new InputOutput();
+        // InputOutput in = new InputOutput();
     }
-
-    
 
     public Card() {
+        // default constructor
     }
-
-
 
     public void emptyPack() {
         this.pack = new LinkedList<Integer>();
@@ -46,56 +49,71 @@ public class Card {
             emptyPack();
         }
         Random random = new Random();
-        for (int i = 1; i <= (n * 2); i++) {
-            for (int j = 1; j <= 4; j++)
-                pack.add(i);
+        try { // if fails due to the over load of the lists
+            for (int i = 1; i <= (n * 2); i++) {
+                for (int j = 1; j <= 4; j++)
+                    pack.add(i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         Collections.shuffle(pack);
         return pack;
     }
 
     public int get1FromPack() {
-        int card = this.pack.poll();
-        return card;
+        try {
+            int card = this.pack.poll();
+            return card;
+        } catch (Exception e) {
+            // e.printStackTrace();
+            return -1;
+        }
     }
 
     public void setPlayers() {
+        this.players = new LinkedList<LinkedList<Integer>>();
         for (int i = 0; i < playerNum; i++) {
             this.players.add(new LinkedList<Integer>());
         }
     }
 
     public void setDecks() {
+        this.decks = new LinkedList<LinkedList<Integer>>();
         for (int i = 0; i < playerNum; i++) {
             this.decks.add(new LinkedList<Integer>());
         }
     }
 
-    public LinkedList<LinkedList<Integer>> dealHands(LinkedList<Integer> pack) {
-
+    public LinkedList<LinkedList<Integer>> dealHands() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < playerNum; j++) {
                 LinkedList<Integer> playerN = this.players.get(j);
                 int card = get1FromPack();
+                if (card != -1) {
                 playerN.add(card);
+                }
             }
         }
 
         return this.players;
     }
 
-    public LinkedList<LinkedList<Integer>> dealDecks(LinkedList<Integer> pack) {
+    public LinkedList<LinkedList<Integer>> dealDecks() {
 
         int index = 0;
         while (!this.pack.isEmpty()) {
             LinkedList<Integer> deck = this.decks.get(index);
-            deck.add(get1FromPack());
+            int card = get1FromPack();
+            if (card != -1) {
+                deck.add(card);
+            }
             index = (index + 1) % playerNum;
         }
         return decks;
     }
 
-    public LinkedList<LinkedList<Integer>> getHands() {
+    public LinkedList<LinkedList<Integer>> getPlayers() {
         return this.players;
     }
 

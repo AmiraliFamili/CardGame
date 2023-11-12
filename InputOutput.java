@@ -74,6 +74,11 @@ public class InputOutput {
 
     //method to create files in the correct location
 
+    public InputOutput() {
+    }
+
+
+
     public void SetupOutputFile(){        //look into then name of the method if that matters
         try{
             File newFile = new File("player" + playerNumber + "_output.txt"); // use this to create code
@@ -84,9 +89,9 @@ public class InputOutput {
             e.printStackTrace();
         }
     }
-    
 
-    //method to write into new file the inital hand
+    /** @see please fix the errors 
+     *    //method to write into new file the inital hand
     public void initialHand(){
         String initialHand = "";
         for (Card card:hand) {
@@ -114,8 +119,8 @@ public class InputOutput {
         try {
             
             FileWriter writer = new FileWriter("player" + playerNumber + "output.txt", true);
-            writer.write("player " + playerNumber + " draws a " + hand.add(pickupLeft.getCard()) + " from deck \n" /*+ leftCardDeck.getDeckNumber()*/ );
-            writer.write("\nplayer " + playerNumber + " discards a " + hand.remove(selectedCard) + " to deck \n" /*+ rightCardDeck.getDeckNumber() */);   // look at sorting this part and get rifd and think of implmentation of deck
+            writer.write("player " + playerNumber + " draws a " + hand.add(pickupLeft.getCard()) + " from deck \n" // leftCardDeck.getDeckNumber() );
+            writer.write("\nplayer " + playerNumber + " discards a " + hand.remove(selectedCard) + " to deck \n" // rightCardDeck.getDeckNumber() );   // look at sorting this part and get rifd and think of implmentation of deck
             writer.close();
         } catch (IOException e) {
             System.out.println("An error occurred during writting of draw/discard card");
@@ -177,6 +182,7 @@ public class InputOutput {
     }
 
 
+     */
 
             // ------------------  other  methods  ---------------------
 

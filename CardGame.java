@@ -16,17 +16,10 @@ D
  */
 public class CardGame {
     public static void main(String[] args) {
-        //InputOutput obj = new InputOutput();
-        Card cardGame = new Card(10);
-
-        Player player = new Player(cardGame.getDecks(), cardGame.getHands());
+        InputOutput obj = new InputOutput();
+        Card cardGame = new Card(obj.getInput());
+        Player player = new Player(cardGame.getDecks(), cardGame.getPlayers());
         player.startGame();// main
-
-
-    System.out.println("Hand : " +cardGame.getHands());
-    System.out.println(cardGame.getDecks());
-        System.out.println(cardGame.getPack());
-
     }
 }
 

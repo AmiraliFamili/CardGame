@@ -57,6 +57,20 @@ Amirali, Developer/Designer, 3hrs, 2023/11/09 - 15:00 to 18:00, reviewed kaylum'
     on the tests that need to be made , test methods and unit testing , reviewed the hole structure of the code and found an alternative, 
     specified some instructions to be made by me and kaylum  
 
+Amirali, Developer/Designer, 2hrs, 2023/11/10 - 19:45 to 21:45, Fixed the structure of the code and placed the 
+methods in their corresponding classes, started writing the test code for card class using Junit 4.
+
+Amirali, Developer/Designer, 2hrs, 2023/11/11 - 14:00 to 16:00, Finished the testCard.java which tests the card class and created the correct
+test runner main to run all the test methods with annotation @Test.
+
+Amirali, Developer/Designer, 2hrs, 2023/11/11 - 18:00 to 20:00, improved the test methods and added some overloading test and 
+    worked on the documentation of the code.
+
+Amirali, Developer/Designer, 4hrs, 2023/11/12 - 11:00 to 15:00, enhanced the game logic and fixed some bugs spotted 
+    from test classes , worked on the threads and their communication with each other, finished the test for player class .
+
+    
+
 
 
 

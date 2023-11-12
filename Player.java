@@ -1,5 +1,4 @@
 
-
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,8 +13,6 @@ public class Player {
 
     protected LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
     protected LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
-    private LinkedList<Integer> pack;
-    private LinkedList<Integer> deck;
 
     public Player(LinkedList<LinkedList<Integer>> decks, LinkedList<LinkedList<Integer>> players) {
         this.decks = decks;
@@ -23,31 +20,53 @@ public class Player {
         this.players = players;
     }
 
+    public Player(int playerNumber) {
+        this.playerN = playerNumber;
+    }
+
     public String handToString(LinkedList<Integer> hand) {
         String sHand = "";
         if (hand.size() > 4) {
-            System.out.println("Wrong value for hand Detected");
+            // hand is in the wrong format 
         }
         for (Integer card : hand) {
-            sHand = sHand + Integer.toString(card) + " ";
+            if (card != null) {
+                sHand = sHand + Integer.toString(card) + " ";
+            } else {
+                sHand = sHand + " ";
+            }
         }
         return sHand;
     }
 
+    // change the names here
     public synchronized boolean hasDuplicates(LinkedList<Integer> hand) {
         Set<Integer> seen = new HashSet<>();
 
-        for (Integer card : hand) {
-            if (!seen.add(card)) {
-                return true;
+        try {
+            for (Integer card : hand) {
+                if (!seen.add(card)) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
-    
 
+    // change the names here
     public synchronized int getCard(LinkedList<Integer> hand) {
-        int card = 0;
+        if (playerWon(hand)) {
+
+            counter = -1;
+            this.win = true;
+            lock.notifyAll();
+            return 0;
+        }
+        if (hand.contains(null) || hand.isEmpty()) {
+            return 0;
+        }
 
         if (hasDuplicates(hand)) {
             Map<Integer, Integer> cardCount = new HashMap<>();
@@ -57,104 +76,103 @@ public class Player {
 
             for (int c : hand) {
                 if (cardCount.get(c) == 1) {
-                    System.out.println(c + " is not a duplicate in " + hand);
-                    card = c;
                     return c;
                 }
             }
-        } else {
-            System.out.println(hand + " has no duplicates, returning the first element");
-            card = hand.getFirst();
-        }
+        } 
 
         return hand.getLast();
     }
 
+    private volatile Boolean win = false;
+    private final Object lock = new Object();
     private int counter = 0;
+
     private class PlayerThread extends Thread {
 
         @Override
         public void run() {
-            while (!win) {
-                playTurn();
-            }
-        }
 
-        private Boolean win = false;
-        private final Object lock = new Object();
-        private final Object lock2 = new Object();
-
-        public void playTurn() {
-            synchronized (lock) { // the problem is with passing the insert top and discard bottom we have to use
-                                  // the shared resources
-                LinkedList<Integer> player = players.get(counter % playerN);
-                LinkedList<Integer> insertTop = decks.get(counter % playerN);
-                LinkedList<Integer> discardBottom = decks.get((counter + 1) % playerN);
-                
-                playerWon(player);
-
-                while (insertTop.isEmpty()) {
-                    try {
-                        if (insertTop.isEmpty()) {
-                            lock.wait();
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+            if (!players.get(0).isEmpty() && counter != -1) {
+                while (!win) {
+                    if (counter == -1) {
+                        break;
                     }
+
+                    playTurn();
                 }
-                System.out.println("Decks : " + decks);
-                System.out.println("Hands : " + players);
-                System.out.println("InsertTop : " + insertTop);
-                System.out.println("DiscardBottom : " + discardBottom);
-                System.out.println("Counter : " + counter + " counter % playernum : " + counter % playerN);
-
-                System.out.println(
-                        "player_" + (counter + 1) % playerN + " remove one card from Hand: "
-                                + handToString(player));
-
-                System.out.println("1.player hand: " + player);
-                System.out.println("1.discardBottom: " + discardBottom);
-                System.out.println("1.insertTop: " + insertTop);
-
-                System.out.println("1.Card: " + getCard(player));
-
-                synchronized (lock2) {
-
-                    int card = getCard(player);
-                    if (player.contains(card) && !insertTop.isEmpty()) {//write methode
-                        player.remove(player.indexOf(card));
-                        int takenCard = insertTop.removeFirst();
-                        player.add(takenCard);
-                        discardBottom.add(card);
-
-                        //Player j = new Player(deckNumber, null, null, null, null);
-
-                    } else {
-                        try {
-                            lock2.wait();
-                        } catch (InterruptedException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                System.out.println("2.player hand: " + player);
-                System.out.println("2.discardBottom: " + discardBottom);
-                System.out.println("2.insertTop: " + insertTop);
-                counter++;
-            }
-        }
-
-        public void playerWon(LinkedList<Integer> player) { // wining strategy 
-            if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
-                    && player.get(2).equals(player.get(3))) {
-                this.win = true;
-                System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!");
+            } else {
+                System.out.println("players have not been set please re run the game");
                 System.exit(0);
             }
         }
 
+        private final Object lock2 = new Object();
+
+        public void playTurn() {
+            synchronized (lock) { 
+
+                if (counter != -1 || win == false) {
+
+                    LinkedList<Integer> player = players.get(counter % playerN);
+                    LinkedList<Integer> insertTop = decks.get(counter % playerN);
+                    LinkedList<Integer> discardBottom = decks.get((counter + 1) % playerN);
+
+                    while (insertTop.isEmpty()) {
+                        try {
+                            if (insertTop.isEmpty()) {
+                                counter++;
+                                lock.wait(500);
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    System.out.println("round : " + counter + " player  : " + ((counter % playerN) + 1));
+
+                    synchronized (lock2) {
+
+                        int card = getCard(player);
+                        if (player.contains(card) && !insertTop.isEmpty() && card != 0) {// write methode
+                            player.remove(player.indexOf(card));
+                            int takenCard = insertTop.removeFirst();
+                            player.add(takenCard);
+                            discardBottom.add(card);
+
+                            // Player j = new Player(deckNumber, null, null, null, null);
+
+                        } else {
+                            try {
+                                lock2.wait(500);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+
+                        counter++;
+
+                        if (playerWon(player)) {
+                            counter = -1;
+                            lock.notifyAll();
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public boolean playerWon(LinkedList<Integer> player) { // wining strategy
+        if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
+                && player.get(2).equals(player.get(3))) {
+            System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!");
+            this.win = true;
+            return true;
+            // System.exit(0);
+        }
+        return false;
     }
 
     /*
@@ -281,48 +299,24 @@ public class Player {
  * }
  */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
- * EXTRA NOTES FOR IMPLMENTAION 
- * implements the Callable interface, which is part of Java's concurrency API and is often used in conjunction with threads.
-    interface similar to Runnable interface, but it allows for a return value and can throw exceptions. 
-    In the Player class, the call() method is implemented, which is the method that will be called when a Player object is used with an executor service, 
-    such as ExecutorService.submit(Callable<T> task)
+ * EXTRA NOTES FOR IMPLMENTAION
+ * implements the Callable interface, which is part of Java's concurrency API
+ * and is often used in conjunction with threads.
+ * interface similar to Runnable interface, but it allows for a return value and
+ * can throw exceptions.
+ * In the Player class, the call() method is implemented, which is the method
+ * that will be called when a Player object is used with an executor service,
+ * such as ExecutorService.submit(Callable<T> task)
  */
 
-
-
-
-
- /*
-  * to get the player output
-  need output file for player an card deck
-
-  for each one you need an attribute which is an output file for the objects
-
-  in the constructor need to inistilise the outoutfile
-
-  where card 
-  */
+/*
+ * to get the player output
+ * need output file for player an card deck
+ * 
+ * for each one you need an attribute which is an output file for the objects
+ * 
+ * in the constructor need to inistilise the outoutfile
+ * 
+ * where card
+ */
