@@ -98,7 +98,6 @@ public class Player {
                     if (counter == -1) {
                         break;
                     }
-
                     playTurn();
                 }
             } else {
@@ -114,13 +113,14 @@ public class Player {
 
                 if (counter != -1 || win == false) {
 
+                    // take from left , discard to right 
                     LinkedList<Integer> player = players.get(counter % playerN);
-                    LinkedList<Integer> insertTop = decks.get(counter % playerN);
-                    LinkedList<Integer> discardBottom = decks.get((counter + 1) % playerN);
+                    LinkedList<Integer> leftDeck = decks.get(counter % playerN);
+                    LinkedList<Integer> rightDeck = decks.get((counter + 1) % playerN);
 
-                    while (insertTop.isEmpty()) {
+                    while (leftDeck.isEmpty()) {
                         try {
-                            if (insertTop.isEmpty()) {
+                            if (leftDeck.isEmpty()) {
                                 counter++;
                                 lock.wait(500);
                             }
@@ -134,11 +134,11 @@ public class Player {
                     synchronized (lock2) {
 
                         int card = getCard(player);
-                        if (player.contains(card) && !insertTop.isEmpty() && card != 0) {// write methode
+                        if (player.contains(card) && !leftDeck.isEmpty() && card != 0) {// write methode
                             player.remove(player.indexOf(card));
-                            int takenCard = insertTop.removeFirst();
+                            int takenCard = leftDeck.removeFirst();
                             player.add(takenCard);
-                            discardBottom.add(card);
+                            rightDeck.add(card);
 
                             // Player j = new Player(deckNumber, null, null, null, null);
 
