@@ -116,6 +116,13 @@ public class Player {
                     // take from left , discard to right 
                     LinkedList<Integer> player = players.get(counter % playerN);
                     LinkedList<Integer> leftDeck = decks.get(counter % playerN);
+
+                    try {
+                        decks.get((counter + 1) % playerN);
+                    } catch (IndexOutOfBoundsException e) {
+                        
+                    }
+
                     LinkedList<Integer> rightDeck = decks.get((counter + 1) % playerN);
 
                     while (leftDeck.isEmpty()) {
@@ -129,7 +136,7 @@ public class Player {
                         }
                     }
 
-                    System.out.println("round : " + counter + " player  : " + ((counter % playerN) + 1));
+                    //System.out.println("Round : " + counter + " Player  : " + ((counter % playerN) + 1) + "Hand : " + player);
 
                     synchronized (lock2) {
 

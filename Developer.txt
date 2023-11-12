@@ -1,7 +1,4 @@
 Amirali : 
-    1. implementation of the code 
-    2. Structure of the code and the classes 
-    3. writing the test methods for each method and class that we have 
     4. Documentation of the code , better to do with javaDoc 
     5. Start working on the report
 
@@ -15,5 +12,4 @@ Kaylum :
 
     https://www.browserstack.com/guide/junit-test-suite
 
-    this website will help us for writing the test methods how to use Junit 4 and the assertEquals method ... 
-
+    this website will help you for writing the test methods how to use Junit 4 and the assertEquals method ... 

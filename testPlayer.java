@@ -117,8 +117,8 @@ public class testPlayer {
 
     }
 
-    @Test // this
-    public void testCardGameGameStability() {
+    @AfterClass // this
+    public static void testCardGameGameStability() {
 
         Card card = new Card();
 
@@ -138,9 +138,9 @@ public class testPlayer {
         player.decks.getFirst().add(0);
         player.decks.getFirst().add(1);
 
-        //player.startGame(); // empty hands and decks for the rest of the players works
+        player.startGame(); // empty hands and decks for the rest of the players works
 
-        card.playerNum = 3;
+        card.playerNum = 8;
         card.setPlayers();
         card.setDecks();
 
@@ -177,15 +177,17 @@ public class testPlayer {
     }
 
     // finishes in 20 to 30 seconds // unimplemented method 
+    @AfterClass
     public static void testStartGameOverload() {
         Card card = new Card(1000);
         Player player = new Player(card.getDecks(), card.getPlayers());
-        //player.startGame();
+        player.startGame();
         assertTrue(true); // game finished successfully
     }
 
     // takes too long and after a few minuets crashes // unimplemented method
-    public void testStartGameOverload10000() {
+    @AfterClass
+    public static void testStartGameOverload10000() {
         Card card = new Card(10000);
         Player player = new Player(card.getDecks(), card.getPlayers());
         // player.startGame();
@@ -193,7 +195,5 @@ public class testPlayer {
     }
 
     public static void main(String[] args) {
-        testPlayer test = new testPlayer();
-        test.testStartGameOverload();
     }
 }

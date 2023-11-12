@@ -69,6 +69,9 @@ Amirali, Developer/Designer, 2hrs, 2023/11/11 - 18:00 to 20:00, improved the tes
 Amirali, Developer/Designer, 4hrs, 2023/11/12 - 11:00 to 15:00, enhanced the game logic and fixed some bugs spotted 
     from test classes , worked on the threads and their communication with each other, finished the test for player class .
 
+
+Amirali, Developer/Designer, 3hrs, 2023/11/12 - 17:00 to 20:00, worked a little bit more on the test files, fixed some bugs, created the readmefiles
+    one for the tests and one for the project it self.
     
 
 

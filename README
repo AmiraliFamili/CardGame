@@ -1,0 +1,33 @@
+# Guide to Unite test of the MultiThreaded Card Game
+
+- All the relevant files regarding the test are in this directory (test) : 
+    total of 4 files and 1 directory
+
+    1. lib directory : 
+        jar files for Junit 4 and all relevant libraries required for the tests are stored in this directory (or jar files in the directory).
+    2. testRunner.java : 
+        the main class which should be used to run the tests with simply running the main.
+        it should print (All tests passed: true) which indicates that all tests in different test files passed successfully.
+    3. testCard.java : 
+        contains all the test methods for methods which are present in the card class (Card.java) 
+    4. testPlayer.java : 
+        contains all the test methods for methods which are present in the player class (Player.java)
+    5. InputOutput.java : 
+        contains ... 
+
+
+        # Instructions 
+
+    - After the cardsTest.zip is unzipped copy all the content in the test directory and 
+        paste them in the same directory as the source code.
+
+    - Then simply run the main method within the testRunner.java 
+
+        # Notes 
+
+    - Objects used for development and/or implementation of the game have not been tested 
+        with their individual test methods, Instead they are tested throughout the test classes within each test method, they have been used as mock objects. 
+    - ... 
+    
+
+
