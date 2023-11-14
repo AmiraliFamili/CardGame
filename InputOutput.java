@@ -51,8 +51,6 @@ public class InputOutput {
         this.discardRight = discard;
         this.pickupLeft = pickup;
         this.game = game;
-
-
     }
 
 

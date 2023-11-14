@@ -72,8 +72,12 @@ Amirali, Developer/Designer, 4hrs, 2023/11/12 - 11:00 to 15:00, enhanced the gam
 
 Amirali, Developer/Designer, 3hrs, 2023/11/12 - 17:00 to 20:00, worked a little bit more on the test files, fixed some bugs, created the readmefiles
     one for the tests and one for the project it self.
-    
 
 
+Amirali, Developer/Designer, 1.5hrs, 2023/11/13 - 11:30 to 13:00, worked on the structure of the code , commenting and improvement of 
+    testCard.java file.
+
+Amirali, Developer/Designer, 2hrs, 2023/11/14 - 16:30 to 18:30, worked on designing the code an well as documentation for the testCard.java and 
+        testPlayer.java.
 
 

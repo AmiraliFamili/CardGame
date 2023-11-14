@@ -2,6 +2,8 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
+
+
 public class testRunner {
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(testCard.class, testPlayer.class);

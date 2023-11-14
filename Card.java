@@ -27,6 +27,8 @@ public class Card {
         this.players = dealHands();
         this.decks = dealDecks();
 
+        //Player player = new Player(this.decks, this.players);
+
         // InputOutput inn = new InputOutput();// pack is empty here
 
         // InputOutput in = new InputOutput();
@@ -54,7 +56,7 @@ public class Card {
                 for (int j = 1; j <= 4; j++)
                     pack.add(i);
             }
-        } catch (Exception e) {
+        } catch (OutOfMemoryError e) {
             e.printStackTrace();
         }
         Collections.shuffle(pack);
@@ -120,5 +122,4 @@ public class Card {
     public LinkedList<LinkedList<Integer>> getDecks() {
         return this.decks;
     }
-
 }
