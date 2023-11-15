@@ -144,14 +144,12 @@ public class testCard {
     /**
      * @see testSetPlayers
      * 
-     *      - testSetPlayers is a void method, it set's the number of players and
-     *      then creates that many empty lists within the
+     *      - testSetPlayers is a void method, it creates 6 empty lists within the
      *      nested linked lists called players, then it would retrieve this list
      *      from Card class and after creating a local nested list
      *      of the same length, it would compare to see if they are the same lists.
      * 
      * @CardClassInstance card
-     * @InstanceAttributes playerNum
      * @CardClassMethods setPlayers(), getPlayers()
      * 
      * @author Amirali Famili
@@ -160,12 +158,11 @@ public class testCard {
     public void testSetPlayers() {
         Card card = new Card();
 
-        card.playerNum = 6;
-        card.setPlayers();
+        card.setPlayers(6);
         LinkedList<LinkedList<Integer>> actual = card.getPlayers();
         LinkedList<LinkedList<Integer>> expected = new LinkedList<LinkedList<Integer>>();
 
-        for (int i = 0; i < card.playerNum; i++) {
+        for (int i = 0; i < 6; i++) {
             expected.add(new LinkedList<Integer>());
         }
 
@@ -182,7 +179,6 @@ public class testCard {
      *      expected local list and compares the two lists for Equality and Size.
      * 
      * @CardClassInstance card
-     * @InstanceAttributes playerNum
      * @CardClassMethods setDecks(), getDecks()
      * 
      * @author Amirali Famili
@@ -192,12 +188,11 @@ public class testCard {
 
         Card card = new Card();
 
-        card.playerNum = 3;
-        card.setDecks();
+        card.setDecks(3);
         LinkedList<LinkedList<Integer>> actual = card.getDecks();
         LinkedList<LinkedList<Integer>> expected = new LinkedList<LinkedList<Integer>>();
 
-        for (int i = 0; i < card.playerNum; i++) {
+        for (int i = 0; i < 3; i++) {
             expected.add(new LinkedList<Integer>());
         }
 
@@ -237,7 +232,7 @@ public class testCard {
         int player5Card1 = pack.get(4);
         int player1Card2 = pack.get(5);
 
-        card.setPlayers();
+        card.setPlayers(card.playerNum);
         LinkedList<LinkedList<Integer>> actual = card.dealHands();
 
         assertTrue(player1Card1 == card.getPlayers().get(0).get(0));
@@ -286,7 +281,7 @@ public class testCard {
         card.pack.add(1);
 
         card.playerNum = 4;
-        card.setPlayers();
+        card.setPlayers(card.playerNum);
 
         LinkedList<LinkedList<Integer>> mockHands = card.dealHands();
         assertTrue(!card.players.getFirst().isEmpty());
@@ -326,9 +321,9 @@ public class testCard {
         card.createPack(card.playerNum);
         LinkedList<Integer> pack = card.getPack();
 
-        card.setPlayers();
+        card.setPlayers(card.playerNum);
         card.dealHands();
-        card.setDecks();
+        card.setDecks(card.playerNum);
         LinkedList<LinkedList<Integer>> actual = card.dealDecks();
 
         assertEquals(4, actual.get(0).size());
@@ -370,7 +365,7 @@ public class testCard {
         card.pack.add(134443);
 
         card.playerNum = 4;
-        card.setDecks();
+        card.setDecks(card.playerNum);
 
         LinkedList<LinkedList<Integer>> mockDecks = card.dealDecks();
 
@@ -393,7 +388,7 @@ public class testCard {
      * 
      * 
      * @CardClassInstance card
-     * @InstanceAttributes playerNum, players
+     * @InstanceAttributes players
      * @CardClassMethods setPlayers(), getPlayers()
      * 
      * @author Amirali Famili
@@ -401,8 +396,8 @@ public class testCard {
     @Test
     public void testGetPlayers() {
         Card card = new Card();
-        card.playerNum = 5;
-        card.setPlayers();
+
+        card.setPlayers(5);
         card.players.get(0).add(90);
         card.players.getLast().add(91);
 
@@ -418,7 +413,7 @@ public class testCard {
      * 
      * 
      * @CardClassInstance card
-     * @InstanceAttributes playerNum, decks
+     * @InstanceAttributes decks
      * @CardClassMethods setDecks(), getDecks()
      * 
      * @author Amirali Famili
@@ -426,8 +421,7 @@ public class testCard {
     @Test
     public void testGetDecks() {
         Card card = new Card();
-        card.playerNum = 7;
-        card.setDecks();
+        card.setDecks(7);
         card.decks.get(0).add(100);
         card.decks.getLast().add(101);
 

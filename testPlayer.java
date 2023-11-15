@@ -143,9 +143,9 @@ public class testPlayer {
 
         Card card = new Card();
 
-        card.playerNum = 5;
-        card.setPlayers();
-        card.setDecks();
+        card.playerNum = 7;
+        card.setPlayers(5);
+        card.setDecks(5);
 
         Player player = new Player(card.getDecks(), card.getPlayers());
 
@@ -216,8 +216,8 @@ public class testPlayer {
         Card card = new Card();
 
         card.playerNum = 8;
-        card.setPlayers();
-        card.setDecks();
+        card.setPlayers(8);
+        card.setDecks(8);
 
         Player player = new Player(card.getDecks(), card.getPlayers());
 
@@ -234,8 +234,8 @@ public class testPlayer {
         player.startGame(); // empty hands and decks for the rest of the players works
 
         card.playerNum = 8;
-        card.setPlayers();
-        card.setDecks();
+        card.setPlayers(8);
+        card.setDecks(8);
 
         player.players = card.getPlayers();
         player.decks = card.getDecks();
@@ -291,5 +291,9 @@ public class testPlayer {
         Player player = new Player(card.getDecks(), card.getPlayers());
         player.startGame();
         assertTrue(true); // game finished successfully
+    }
+    public static void main(String[] args) {
+        testPlayer test = new testPlayer();
+        test.testCardGameGameStability();
     }
 }

@@ -12,5 +12,6 @@ public class testRunner {
             System.out.println(failure.getMessage());
         }
         System.out.println("All tests passed: " + result.wasSuccessful());
+        System.exit(0);
     }
 }
