@@ -185,7 +185,7 @@ public class Player {
         @Override
         public void run() {
 
-            if (!players.get(0).isEmpty() && counter != -1) {
+            if (!players.get(0).isEmpty()) {
                 while (!win) {
                     if (counter == -1) {
                         break;
@@ -198,76 +198,73 @@ public class Player {
             }
         }
 
-        public void playTurn() {
-            // synchronized (lock) {
+        public synchronized void playTurn() {
+            // take from left , discard to right
+            LinkedList<Integer> player = players.get(counter % playerN);
+            LinkedList<Integer> leftDeck = decks.get(counter % playerN);
 
-            if (counter != -1 || win == false) {
-
-                // take from left , discard to right
-                LinkedList<Integer> player = players.get(counter % playerN);
-                LinkedList<Integer> leftDeck = decks.get(counter % playerN);
-
-                try {
-                    decks.get((counter + 1) % playerN);
-                } catch (IndexOutOfBoundsException e) {
-                    playTurn();
-                }
-
-                LinkedList<Integer> rightDeck = decks.get((counter + 1) % playerN);
-
-                System.out.println(
-                        "Round : " + counter + "\tPlayer  : " + ((counter % playerN) + 1) + "\t Hand : " + player);
-
-                if (playerWon(player)) {
-                    counter = -1;
-                    playTurn();
-                }
-                synchronized (lock2) {
-
-                    if (leftDeck.isEmpty()) {
-                        counter++;
-                        playTurn();
-                    }
-
-                    int card = getCard(player);
-                    if (player.contains(card) && !leftDeck.isEmpty() && card != 0) {// write methode
-                        try {
-                            player.remove(player.indexOf(card));
-                            int takenCard = leftDeck.removeFirst();
-                            player.add(takenCard);
-                            rightDeck.add(card);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                        if (playerWon(player)) {
-                            counter = -1;
-                            playTurn();
-                        }
-                    } else {
-                        try {
-                            lock2.wait(timeSlice);
-                        } catch (InterruptedException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-
-                    counter++;
-
-                }
+            try {
+                decks.get((counter + 1) % playerN);
+            } catch (IndexOutOfBoundsException e) {
+                playTurn();
             }
+
+            LinkedList<Integer> rightDeck = decks.get((counter + 1) % playerN);
+
+            synchronized (lock2) {
+                int card = getCard(player);
+                if (player.contains(card) && !leftDeck.isEmpty() && card != 0) {// write methode
+                    try {
+                        player.remove(player.indexOf(card));
+                        int takenCard = leftDeck.removeFirst();
+                        player.add(takenCard);
+                        rightDeck.add(card);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println(
+                            "Round : " + counter + "\tPlayer  : " + ((counter % playerN) + 1) + "\t Hand : " + player);
+
+                    if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
+                            && player.get(2).equals(player.get(3))) {
+                                System.out.println(player);
+                                try {
+                                    lock2.wait();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                System.exit(0);
+                    }
+                    win = playerWon(player);
+                    lock2.notifyAll();
+
+                } else {
+                    try {
+                        lock2.wait(timeSlice);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                counter++;
+            }
+
         }
     }
 
-    // }
+    boolean winner = false;
 
     public boolean playerWon(LinkedList<Integer> player) {
         if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
                 && player.get(2).equals(player.get(3))) {
-            System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!\tfinal Hand : " + player);
-            this.win = true;
-            System.exit(0);
+            if (!winner) {
+                System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!\tfinal Hand : " + player);
+                this.win = true;
+                counter = -1;
+                winner = true;
+                System.exit(0);
+            }
         }
         return false;
     }

@@ -81,3 +81,5 @@ Amirali, Developer/Designer, 2hrs, 2023/11/14 - 16:30 to 18:30, worked on design
         testPlayer.java.
 
 Amirali, Designer, 2.5hrs, 2023/11/14 - 19:00 to 21:30, worked on the report.
+
+Amirali, Designer, 2.5hrs, 2023/11/14 - 15:00 to 17:30, worked on the main game methods and threads.
