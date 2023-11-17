@@ -1,6 +1,6 @@
 Amirali : 
-    4. Documentation of the code , better to do with javaDoc 
-    5. Start working on the report
+    - how to separate players and decks to their own classes 
+    - 
 
 Kaylum :
     1. successfully printing the player data and deck data to their relevant file names in the obtained location 

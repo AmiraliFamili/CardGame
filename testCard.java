@@ -99,17 +99,17 @@ public class testCard {
         card.emptyPack();
         card.createPack(0);
 
-        assertEquals(0, card.getPack().size());
+        assertEquals(8, card.getPack().size());
 
         card.emptyPack();
         card.createPack(-1);
 
-        assertEquals(0, card.getPack().size());
+        assertEquals(8, card.getPack().size());
 
         card.emptyPack();
 
         card.createPack(-1001);
-        assertEquals(0, card.getPack().size());
+        assertEquals(8, card.getPack().size());
 
     }
 
@@ -473,24 +473,29 @@ public class testCard {
      */
 
     @Test 
-    public void testCardConstructor() {
+    public void testCardConstructor() { // this needs supporting pack files to load
+        Card card = new Card();
 
-        Card card1 = new Card(-74);
+        LinkedList<Integer> pack = card.createPack(-74);
+        Card card1 = new Card(-74, pack);
         assertEquals(1, card1.getPlayers().size());
 
-        Card card2 = new Card(0);
+        pack = card.createPack(0);
+        Card card2 = new Card(0, pack);
         assertEquals(1, card2.getPlayers().size());
 
-        Card card3 = new Card(100000);
+        pack = card.createPack(100000);
+        Card card3 = new Card(100000, pack);
         assertEquals(100000, card3.getPlayers().size());
 
         for (int i = 1; i < 11; i++) {
-            Card card4 = new Card(i);
+            pack = card.createPack(i);
+            Card card4 = new Card(i, pack);
             assertEquals(i, card4.getDecks().size());
         }
     }
     public static void main(String[] args) {
         testCard test = new testCard();
-        test.testCreatePackOverload();
+        test.testCardConstructor();
     }
 }

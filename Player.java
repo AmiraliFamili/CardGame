@@ -228,7 +228,6 @@ public class Player {
 
                     if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
                             && player.get(2).equals(player.get(3))) {
-                                System.out.println(player);
                                 try {
                                     lock2.wait();
                                 } catch (InterruptedException e) {
@@ -249,7 +248,6 @@ public class Player {
                 }
                 counter++;
             }
-
         }
     }
 

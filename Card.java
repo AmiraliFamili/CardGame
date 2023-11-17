@@ -34,16 +34,15 @@ public class Card {
      * @param playerNumber number of players which indicates the size of players and
      *                     decks list
      */
-    public Card(int playerNumber) {
+    public Card(int playerNumber, LinkedList<Integer> pack) {
         if (playerNumber > 0) {
             this.playerNum = playerNumber;
         } else {
             this.playerNum = 1;
         }
-        createPack(playerNumber);
-        setPlayers(playerNumber);
-        setDecks(playerNumber);
-
+        this.pack = pack;
+        setPlayers(this.playerNum);
+        setDecks(this.playerNum);
         this.players = dealHands();
         this.decks = dealDecks();
     }
@@ -97,6 +96,9 @@ public class Card {
     public LinkedList<Integer> createPack(int n) {
         if (this.pack == null) {
             emptyPack();
+        }
+        if (n < 1) {
+            n = 1;
         }
         try { // if fails due to the over load of the lists
             for (int i = 1; i <= (n * 2); i++) {
@@ -172,7 +174,7 @@ public class Card {
      * 
      *      - dealHands uses get1FromPack method to deal 1 card at a time to each
      *      player in the game, until each player's hand has 4 cards.
-     * 
+     *  
      */
     public LinkedList<LinkedList<Integer>> dealHands() {
         for (int i = 0; i < 4; i++) {

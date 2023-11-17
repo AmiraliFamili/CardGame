@@ -287,7 +287,9 @@ public class testPlayer {
      */
     @AfterClass
     public static void testStartGameOverload() {
-        Card card = new Card(2000);
+        Card cardPack = new Card();
+        LinkedList<Integer> pack = cardPack.createPack(2000);
+        Card card = new Card(2000, pack);
         Player player = new Player(card.getDecks(), card.getPlayers());
         player.startGame();
         assertTrue(true); // game finished successfully
