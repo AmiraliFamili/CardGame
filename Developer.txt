@@ -2,6 +2,11 @@ Amirali :
     - how to separate players and decks to their own classes 
     - multi threaded game 
 
+    ::: player class should have all the relevant methods for the game 
+    ::: card class should have methods for getting and assigning the deck, as well as the main deck it self 
+    ::: cardgame class should distribute the pack and send it to player and card class then start the game
+    ::: 
+
 Kaylum :
     rahat bash 
     https://www.browserstack.com/guide/junit-test-suite
