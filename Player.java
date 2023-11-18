@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
  * @author Amirali Famili
  */
 public class Player {
-    final private int timeSlice = 500;
+    final private int timeSlice = 50;
     final private int playerN;
 
     protected LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
@@ -60,31 +60,6 @@ public class Player {
         this.playerN = playerNumber;
     }
 
-    /**
-     * @see handToString(LinkedList)
-     * 
-     *      - handToString(LinkedList) is an unimplemented method, it is used for
-     *      converting LinkedList element to a String,
-     *      and then returning the String representation of the values.
-     * 
-     * @param hand a LinkedList consisting integers
-     * 
-     * @return the string representation of the values within the hand LinkedList
-     */
-    public String handToString(LinkedList<Integer> hand) {
-        String sHand = "";
-        if (hand.size() > 4) {
-            // hand is in the wrong format
-        }
-        for (Integer card : hand) {
-            if (card != null) {
-                sHand = sHand + Integer.toString(card) + " ";
-            } else {
-                sHand = sHand + " ";
-            }
-        }
-        return sHand;
-    }
 
     /**
      * @see hasDuplicates(LinkedList)
@@ -100,7 +75,6 @@ public class Player {
      */
     public synchronized boolean hasDuplicates(LinkedList<Integer> hand) {
         Set<Integer> dup = new HashSet<>();
-
         try {
             for (Integer card : hand) {
                 if (!dup.add(card)) {
@@ -208,6 +182,7 @@ public class Player {
             } catch (IndexOutOfBoundsException e) {
                 playTurn();
             }
+            
 
             LinkedList<Integer> rightDeck = decks.get((counter + 1) % playerN);
 
@@ -219,6 +194,7 @@ public class Player {
                         int takenCard = leftDeck.removeFirst();
                         player.add(takenCard);
                         rightDeck.add(card);
+                        InputOutput output = new InputOutput(player, takenCard, card, ((counter % playerN )+1));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -237,7 +213,6 @@ public class Player {
                     }
                     win = playerWon(player);
                     lock2.notifyAll();
-
                 } else {
                     try {
                         lock2.wait(timeSlice);
@@ -258,6 +233,7 @@ public class Player {
                 && player.get(2).equals(player.get(3))) {
             if (!winner) {
                 System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!\tfinal Hand : " + player);
+                InputOutput output = new InputOutput(player, players, decks);
                 this.win = true;
                 counter = -1;
                 winner = true;

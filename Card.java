@@ -45,6 +45,7 @@ public class Card {
         setDecks(this.playerNum);
         this.players = dealHands();
         this.decks = dealDecks();
+        InputOutput output = new InputOutput(players);
     }
 
     /**

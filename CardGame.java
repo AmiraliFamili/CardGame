@@ -14,8 +14,10 @@ import java.util.LinkedList;
 public class CardGame {
     public static void main(String[] args) {
         InputOutput obj = new InputOutput();
+
         int playerNumber = obj.getPlayerNumber();
         LinkedList<Integer> pack = obj.getPackFilePath();
+
         while (playerNumber * 6 >= pack.size()) {
             System.out.println("Your pack should have at least " + playerNumber * 6
                     + " cards inside it otherwise the game could not run");
@@ -26,8 +28,9 @@ public class CardGame {
             playerNumber = obj.getPlayerNumber();
             pack = obj.getPackFilePath();
         }
+
         Card cardGame = new Card(playerNumber, pack);
         Player player = new Player(cardGame.getDecks(), cardGame.getPlayers());
-        player.startGame();// main
+        player.startGame();// game starts
     }
 }

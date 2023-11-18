@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -54,7 +55,9 @@ public class InputOutput {
             List<String> lines = Files.readAllLines(path);
 
             for (String line : lines) {
-                // Parse each line as an integer and add it to the list
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
                 int value = Integer.parseInt(line.trim());
                 pack.add(value);
             }
@@ -65,164 +68,283 @@ public class InputOutput {
         return pack;
     }
 
-    // instance attributes
-
     private int playerNumber;
-    private LinkedList<Card> hand = new LinkedList<Card>(); // used prevously: static LinkedList<Integer> hand = new
-                                                            // LinkedList<Integer>();
-    private Card pickupLeft; // left was: discardBottom
-    private Card discardRight; // right was insertTop
-    private CardGame game; // might not be "game" but something else
+    private LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
 
-    // constructor:
-    // -------------------------------------------------------------------------
-
-    InputOutput(int playerNumber, Card discard, Card pickup, CardGame game, LinkedList<Card> hand) throws IOException {
-        this.playerNumber = playerNumber;
-        this.discardRight = discard;
-        this.pickupLeft = pickup;
-        this.game = game;
+    InputOutput(LinkedList<LinkedList<Integer>> players) { // run once
+        this.players = players;
+        this.playerNumber = players.size();
+        deletePlayerFiles();
+        deleteDeckFiles();
+        createPlayerFiles();
+        createDeckFiles();
+        initialHand(players);
     }
 
-    // setters and getters:
-    // -----------------------------------------------------------------------------
+    private int receivedCard;
+    private int discardedCard;
+    private LinkedList<Integer> hand = new LinkedList<Integer>();
+    private LinkedList<Integer> leftDeck = new LinkedList<Integer>();
+    private LinkedList<Integer> rightDeck = new LinkedList<Integer>();
 
-    // METHODS:
-    // ---------------------------------------------------------------------------
+    InputOutput(LinkedList<Integer> hand, int receivedCard, int discardedCard, int player) {
+        this.hand = hand;
+        this.receivedCard = receivedCard;
+        this.discardedCard = discardedCard;
+        writeDrawsCard(this.receivedCard, player);
+        writeDiscardsCard(this.discardedCard, player);
+        writeCurrentHand(this.hand, player);
+    }
 
-    // ------------------main methods for writting to the output
-    // --------------------
-    /*
-     * 
-     * we need to have a meeting on my code to help get some implemnation with your
-     * code as i found it hard to understand
-     */
+    InputOutput(LinkedList<Integer> winner, LinkedList<LinkedList<Integer>> players,
+            LinkedList<LinkedList<Integer>> decks) {
+        writeEndGame(players, winner);
+        writeDeckContents(decks);
+    }
 
-    // method to create files in the correct location
+    private void writeEndGame(LinkedList<LinkedList<Integer>> players, LinkedList<Integer> winner) {
+        for (LinkedList<Integer> player : players) {
+            try {
+                File newFile = new File("players/player" + (players.indexOf(player) + 1) + "_output.txt");
+                if (newFile.exists()) {
+                    try (FileWriter writer = new FileWriter(newFile, true)) {
+                        if (player != winner) {
+                            writer.write("player " + (players.indexOf(winner) + 1) + " has informed player "
+                                    + (players.indexOf(player) + 1) + " that player " + (players.indexOf(winner) + 1)
+                                    + " has won" + "\n");
+                            writer.write("player " + (players.indexOf(player) + 1) + " exits\n");
+                            writer.write("player " + (players.indexOf(player) + 1) + " final hand: " + player + "\n");
+                        } else {
+                            writer.write("player " + (players.indexOf(player) + 1) + " wins\n");
+                            writer.write("player " + (players.indexOf(player) + 1) + " exits\n");
+                            writer.write("player " + (players.indexOf(player) + 1) + " final hand: " + player + "\n");
+                        }
+
+                    } catch (IOException e) {
+                        System.out.println(
+                                "Error occurred whilst writing the hand " + handToString(hand) + " for player "
+                                        + player);
+                    }
+                } else {
+                    System.out.println(
+                            "File " + "players/player" + (players.indexOf(player) + 1) + "_output.txt does not exists");
+                }
+            } catch (Exception e) {
+                System.out.println("Error occurred whilst writing the winner information to file players/player"
+                        + (players.indexOf(player) + 1)
+                        + "_output.txt");
+            }
+        }
+    }
+
+    private void writeDrawsCard(int drawnCard, int player) {
+        try {
+            File newFile = new File("players/player" + player + "_output.txt");
+            if (newFile.exists()) {
+                try (FileWriter writer = new FileWriter(newFile, true)) {
+                    writer.write("player " + player + " draws a " + drawnCard + " from deck " + player + "\n");
+                } catch (IOException e) {
+                    System.out.println(
+                            "Error occurred whilst writing the drawn card " + drawnCard + " for player " + player);
+                }
+            } else {
+                System.out.println("File " + "players/player" + player + "_output.txt does not exists");
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred whilst writing the player's drawn card to file players/player" + player
+                    + "_output.txt");
+        }
+    }
+
+    private void writeDiscardsCard(int discardedCard, int player) {
+        try {
+            File newFile = new File("players/player" + player + "_output.txt");
+            if (newFile.exists()) {
+                try (FileWriter writer = new FileWriter(newFile, true)) {
+                    writer.write(
+                            "player " + player + " discards a " + discardedCard + " from deck " + (player + 1) + "\n");
+                } catch (IOException e) {
+                    System.out.println(
+                            "Error occurred whilst writing the discarded card " + discardedCard + " for player "
+                                    + player);
+                }
+            } else {
+                System.out.println("File " + "players/player" + player + "_output.txt does not exists");
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred whilst writing the player's discarded card to file players/player"
+                    + player + "_output.txt");
+        }
+    }
+
+    private void writeCurrentHand(LinkedList<Integer> hand, int player) {
+        try {
+            File newFile = new File("players/player" + player + "_output.txt");
+            if (newFile.exists()) {
+                try (FileWriter writer = new FileWriter(newFile, true)) {
+                    writer.write("player " + player + " current hand is " + handToString(hand) + "\n");
+                } catch (IOException e) {
+                    System.out.println(
+                            "Error occurred whilst writing the hand " + handToString(hand) + " for player " + player);
+                }
+            } else {
+                System.out.println("File " + "players/player" + player + "_output.txt does not exists");
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred whilst writing the player's current hand to file players/player" + player
+                    + "_output.txt");
+        }
+    }
+
+    private void writeDeckContents(LinkedList<LinkedList<Integer>> decks) {
+        for (LinkedList<Integer> deck : decks) {
+            try {
+                File newFile = new File("decks/deck" + (decks.indexOf(deck) + 1) + "_output.txt");
+                if (newFile.exists()) {
+                    try (FileWriter writer = new FileWriter(newFile, true)) {
+                        writer.write("deck " + (decks.indexOf(deck) + 1) + " contents " + handToString(deck) + "\n");
+                    } catch (IOException e) {
+                        System.out.println(
+                                "Error occurred whilst writing the final deck " + handToString(deck) + " for deck "
+                                        + (decks.indexOf(deck) + 1));
+                    }
+                } else {
+                    System.out.println(
+                            "File " + "decks/deck" + (decks.indexOf(deck) + 1) + "_output.txt does not exists");
+                }
+            } catch (Exception e) {
+                System.out.println(
+                        "Error occurred whilst writing the final deck to file decks/deck" + (decks.indexOf(deck) + 1)
+                                + "_output.txt");
+            }
+        }
+    }
 
     public InputOutput() {
     }
 
-    public void SetupOutputFile() { // look into then name of the method if that matters
-        try {
-            File newFile = new File("player" + playerNumber + "_output.txt"); // use this to create code
-            newFile.createNewFile();
-            System.out.println("File created: " + newFile.getName());
-        } catch (IOException e) {
-            System.out.println("error occurred while trying to create file");
-            e.printStackTrace();
+    public void createPlayerFiles() {
+        for (int i = 1; i <= playerNumber; i++) {
+            try {
+                File newFile = new File("players/player" + i + "_output.txt");
+                if (newFile.exists()) {
+                    try (FileWriter writer = new FileWriter(newFile)) {
+                        writer.write("");
+                    } catch (IOException e) {
+                        System.out.println("Error occurred while trying to clear file for player " + i);
+                    }
+                } else {
+                    newFile.createNewFile();
+                    System.out.println("File created: " + newFile.getName());
+                }
+            } catch (IOException e) {
+                System.out.println("Error occurred while trying to create file for player " + i);
+            }
         }
     }
 
+    public void createDeckFiles() {
+        for (int i = 1; i <= playerNumber; i++) {
+            try {
+                File newFile = new File("decks/deck" + i + "_output.txt");
+                if (newFile.exists()) {
+                    try (FileWriter writer = new FileWriter(newFile)) {
+                        writer.write("");
+                    } catch (IOException e) {
+                        System.out.println("Error occurred while trying to clear file for deck " + i);
+                    }
+                } else {
+                    newFile.createNewFile();
+                    System.out.println("File created: " + newFile.getName());
+                }
+            } catch (IOException e) {
+                System.out.println("Error occurred while trying to create file for deck " + i);
+            }
+        }
+    }
+
+    public void deleteDeckFiles() {
+        int counter = 1;
+        do {
+            File newFile = new File("decks/deck" + counter + "_output.txt");
+            if (newFile.exists()) {
+                try {
+                    Files.delete(Paths.get("decks/deck" + counter + "_output.txt"));
+                } catch (IOException e) {
+                    System.out
+                            .println("Error occurred while trying to delete file decks/deck" + counter + "_output.txt");
+                }
+                counter++;
+            } else {
+                break;
+            }
+        } while (true);
+    }
+
+    public void deletePlayerFiles() {
+        int counter = 1;
+        do {
+            File newFile = new File("players/player" + counter + "_output.txt");
+            if (newFile.exists()) {
+                try {
+                    Files.delete(Paths.get("players/player" + counter + "_output.txt"));
+                } catch (IOException e) {
+                    System.out
+                            .println("Error occurred while trying to delete file players/player" + counter
+                                    + "_output.txt");
+                }
+                counter++;
+            } else {
+                break;
+            }
+        } while (true);
+    }
+
     /**
-     * @see please fix the errors
-     *      //method to write into new file the inital hand
-     *      public void initialHand(){
-     *      String initialHand = "";
-     *      for (Card card:hand) {
-     *      initialHand += " " + card.getHand();//work on this
-     *      }
+     * @see handToString(LinkedList)
      * 
-     *      try{
-     *      FileWriter writer = new FileWriter("player" + playerNumber +
-     *      "_output.txt", true);
-     *      writer.write("player " + playerNumber + " initial hand " + initialHand +
-     *      "\n");
-     *      writer.close();
-     *      //add part of function to gte correct hand -- need more work
+     *      - handToString(LinkedList) is used for
+     *      converting LinkedList element to a String,
+     *      and then returning the String representation of the values.
      * 
-     *      } catch (IOException e) {
-     *      System.out.println("error occurred in initalhand method");
-     *      e.printStackTrace();
-     *      }
-     *      }
+     * @param hand a LinkedList consisting integers
      * 
-     *      public void discardAndPickUp(){
-     *      Card card = new Card(decks, players);
-     *      int selectedCard = game.getCard(hand);
-     *      hand.add(pickupLeft);
-     *      hand.remove(selectedCard);
-     * 
-     *      try {
-     * 
-     *      FileWriter writer = new FileWriter("player" + playerNumber +
-     *      "output.txt", true);
-     *      writer.write("player " + playerNumber + " draws a " +
-     *      hand.add(pickupLeft.getCard()) + " from deck \n" //
-     *      leftCardDeck.getDeckNumber() );
-     *      writer.write("\nplayer " + playerNumber + " discards a " +
-     *      hand.remove(selectedCard) + " to deck \n" //
-     *      rightCardDeck.getDeckNumber() ); // look at sorting this part and get
-     *      rifd and think of implmentation of deck
-     *      writer.close();
-     *      } catch (IOException e) {
-     *      System.out.println("An error occurred during writting of draw/discard card");
-     *      e.printStackTrace();
-     *      }
-     * 
-     *      }
-     * 
-     * 
-     *      public void currentHand(){
-     *      String currentHand = "";
-     *      for (Card card:hand) {
-     *      currentHand += " " + card.getCard();//work on this
-     *      }
-     * 
-     *      try {
-     *      FileWriter writer = new FileWriter("player" + playerNumber +
-     *      "output.txt", true);
-     *      writer.write("player " + playerNumber + " currents hand " + currentHand
-     *      +"\n"); // look at sorting this part and get rifd and think of
-     *      implmentation of deck
-     *      writer.close();
-     *      } catch (IOException e) {
-     *      System.out.println("An error occurred during writting of draw/discard card");
-     *      e.printStackTrace();
-     *      }
-     *      }
-     * 
-     * 
-     * 
-     *      public void winner(){
-     *      try{
-     *      FileWriter writer = new FileWriter("player"+ playerNumber
-     *      +"_output.txt", true);
-     *      writer.write("\nplayer " + playerNumber + " wins\n");
-     *      writer.write("player " + playerNumber + " exits\n");
-     *      writer.close();
-     * 
-     * 
-     *      } catch (IOException e) {
-     *      System.out.println("An error occurred writing this player's win to a file.");
-     *      e.printStackTrace();
-     * 
-     *      }
-     *      }
-     * 
-     * 
-     * 
-     *      public void finalhand(){
-     *      String finalHand = "";
-     *      for (Card card:hand) {
-     *      finalHand += " " + card.getHand();//work on this
-     *      }
-     *      try {
-     *      FileWriter writer = new FileWriter("player"+ playerNumber
-     *      +"_output.txt", true);
-     *      writer.write("player " + playerNumber + " final hand " + finalHand +
-     *      "\n");
-     *      writer.close();
-     * 
-     *      } catch (IOException e) {
-     *      System.out.println("An error occurred writing players final hand");
-     *      e.printStackTrace();
-     *      }
-     *      }
-     * 
-     * 
+     * @return the string representation of the values within the hand LinkedList
      */
+    public String handToString(LinkedList<Integer> hand) {
+        String sHand = "";
+        if (hand.size() > 4) {
+            // hand is in the wrong format
+        }
+        for (Integer card : hand) {
+            if (card != null) {
+                sHand = sHand + Integer.toString(card) + " ";
+            } else {
+                sHand = sHand + " ";
+            }
+        }
+        return sHand;
+    }
 
-    // ------------------ other methods ---------------------
+    private void initialHand(LinkedList<LinkedList<Integer>> players) {
+        for (LinkedList<Integer> player : players) {
+            try (FileWriter writer = new FileWriter("players/player" + (players.indexOf(player) + 1) + "_output.txt",
+                    true)) {
+                writer.write(
+                        "player " + (players.indexOf(player) + 1) + " initial hand " + handToString(player) + "\n");
+            } catch (IOException e) {
+                System.out.println("Error occurred while writing player's initial hand : " + player + " to file : "
+                        + "players/player" + (players.indexOf(player) + 1) + "_output.txt");
+            }
+        }
+    }
 
+    public static void main(String[] args) {
+        InputOutput in = new InputOutput();
+        in.playerNumber = 5;
+        in.createPlayerFiles();
+        in.createDeckFiles();
+        in.deleteDeckFiles();
+        in.deletePlayerFiles();
+    }
 }

@@ -1,0 +1,16 @@
+player 6 initial hand 1 4 8 9 
+player 6 draws a 3 from deck 6
+player 6 discards a 9 from deck 7
+player 6 current hand is 1 4 8 3 
+player 6 draws a 5 from deck 6
+player 6 discards a 3 from deck 7
+player 6 current hand is 1 4 8 5 
+player 6 draws a 4 from deck 6
+player 6 discards a 5 from deck 7
+player 6 current hand is 1 4 8 4 
+player 6 draws a 1 from deck 6
+player 6 discards a 1 from deck 7
+player 6 current hand is 4 8 4 1 
+player 3 has informed player 6 that player 3 has won
+player 6 exits
+player 6 final hand: [4, 8, 4, 1]

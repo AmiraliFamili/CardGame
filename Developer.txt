@@ -1,15 +1,9 @@
 Amirali : 
     - how to separate players and decks to their own classes 
-    - 
+    - multi threaded game 
 
 Kaylum :
-    1. successfully printing the player data and deck data to their relevant file names in the obtained location 
-    2. writing the test methods for the code written above 
-    3. working with Junit 4 and how to use it ... 
-    4. read the website 
-    5. write down the problems you had to face during the paired programming in the ReportContent.txt file 
-
-
+    rahat bash 
     https://www.browserstack.com/guide/junit-test-suite
 
     this website will help you for writing the test methods how to use Junit 4 and the assertEquals method ... 

@@ -42,7 +42,7 @@ public class testPlayer {
      * @author Amirali Famili
      */
     @Test
-    public void testHandToString() {
+    public void testHandToString() { // this method has been moved to InputOutput class
 
         Player player = new Player(-22);
 
