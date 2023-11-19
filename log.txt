@@ -94,4 +94,5 @@ Amirali, Designer, 0.5hrs, 2023/11/17 - 19:00 to 19:30, Structure of the game an
 Amirali, Designer, 4hrs, 2023/11/18 - 10:45 to 14:45, worked on and finished the InputOutput class and adapted it's functionality to the existing code, 
     as well as working on threads and their synchronized functionality as a whole.
 
-
+Amirali, Designer, 2hrs, 2023/11/18 - 18:35 to 20:35, worked on and finished the InputOutput class and adapted it's functionality to the existing code, 
+    as well as working on threads and their synchronized functionality as a whole.

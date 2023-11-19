@@ -1,19 +1,19 @@
 player 3 initial hand 3 2 6 8 
-player 3 draws a 6 from deck 3
-player 3 draws a 6 from deck 3
-player 3 discards a 6 from deck 4
-player 3 discards a 8 from deck 4
 player 3 current hand is 2 2 8 6 
 player 3 current hand is 3 2 6 6 
-player 3 draws a 5 from deck 3
-player 3 discards a 3 from deck 4
+player 3 current hand is 2 2 6 3 
 player 3 current hand is 2 6 6 5 
-player 3 draws a 6 from deck 3
-player 3 discards a 2 from deck 4
-player 3 current hand is 6 6 5 6 
-player 3 draws a 6 from deck 3
-player 3 discards a 5 from deck 4
+player 3 discards a 9 from deck 4
+player 3 draws a 3 from deck 3
+player 3 draws a 5 from deck 3
+player 3 draws a 9 from deck 3
+player 3 discards a 8 from deck 4
+player 3 discards a 3 from deck 4
+player 3 discards a 9 from deck 4
 player 3 current hand is 6 6 6 6 
-player 3 wins
+player 3 discards a 5 from deck 4
+player 3 draws a 4 from deck 3
+player 3 draws a 6 from deck 3
+player 3 has informed player 3 that player 3 has won
 player 3 exits
 player 3 final hand: [6, 6, 6, 6]

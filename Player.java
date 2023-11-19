@@ -17,11 +17,10 @@ import java.util.concurrent.Executors;
  * @author Amirali Famili
  */
 public class Player {
-    final private int timeSlice = 50;
-    final private int playerN;
+    private int playerNumber;
+    private int handCard;
 
-    protected LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
-    protected LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
+    protected static LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
 
     /**
      * @see Player(LinkedList, LinkedList)
@@ -37,9 +36,8 @@ public class Player {
      *                within the game
      * 
      */
-    public Player(LinkedList<LinkedList<Integer>> decks, LinkedList<LinkedList<Integer>> players) {
-        this.decks = decks;
-        this.playerN = decks.size();
+    public Player(LinkedList<LinkedList<Integer>> players) {
+        this.playerNumber = players.size();
         this.players = players;
     }
 
@@ -57,9 +55,23 @@ public class Player {
      * 
      */
     public Player(int playerNumber) {
-        this.playerN = playerNumber;
+        this.handCard = playerNumber;
     }
 
+    public Player(int discard, int draw, LinkedList<Integer> hand) {
+        try {
+            hand.remove(hand.indexOf(discard));
+            hand.add(draw);
+        } catch (Exception e) {
+        }
+    }
+
+    public Player() {
+    }
+
+    protected synchronized LinkedList<Integer> getPlayer(int index) {
+        return this.players.get((index % playerNumber));
+    }
 
     /**
      * @see hasDuplicates(LinkedList)
@@ -75,6 +87,7 @@ public class Player {
      */
     public synchronized boolean hasDuplicates(LinkedList<Integer> hand) {
         Set<Integer> dup = new HashSet<>();
+
         try {
             for (Integer card : hand) {
                 if (!dup.add(card)) {
@@ -82,7 +95,7 @@ public class Player {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
         return false;
     }
@@ -105,152 +118,35 @@ public class Player {
      * @return an integer representing the card to be removed by the player
      */
     public synchronized int getCard(LinkedList<Integer> hand) {
-        if (playerWon(hand)) {
-            counter = -1;
-            this.win = true;
-            return 0;
-        }
+        try {
         if (hand.contains(null) || hand.isEmpty()) {
             return 0;
         }
 
-        if (hasDuplicates(hand)) {
-            Map<Integer, Integer> cardCount = new HashMap<>();
-            for (int card : hand) {
-                cardCount.put(card, cardCount.getOrDefault(card, 0) + 1);
-            }
+        } catch (Exception e) {
+            return 0;
+        }
+        try {
+            if (hasDuplicates(hand)) {
+                Map<Integer, Integer> cardCount = new HashMap<>();
+                for (int card : hand) {
+                    cardCount.put(card, cardCount.getOrDefault(card, 0) + 1);
+                }
 
-            for (int card : hand) {
-                if (cardCount.get(card) == 1) {
-                    return card;
+                for (int card : hand) {
+                    if (cardCount.get(card) == 1) {
+                        return card;
+                    }
                 }
             }
+        } catch (Exception e) {
+            return 0;
         }
         return hand.getLast();
     }
 
-    private volatile Boolean win = false;
-    private final Object lock = new Object();
-    private int counter = 0;
-
-    /**
-     * @see PlayerThread
-     * 
-     *      - PlayerThread is a nested class responsible for handling player
-     *      threads, it extends Thread and has a run method in which it keeps
-     *      executing a player turn until a player wins the game.
-     * 
-     * @Note playerThread is an inner class of Player class mainly responsible for
-     *       multi threading of players and handling the threads to avoid any
-     *       problems such as race condition
-     */
-    private class PlayerThread extends Thread {
-
-        private final Object lock2 = new Object();
-
-        /**
-         * @see run
-         * 
-         *      - run method for threading the players each player will use this run
-         *      method to play the game from within their own thread.
-         * 
-         * @Note this method keeps executing player Turns until a player wins the game.
-         */
-        @Override
-        public void run() {
-
-            if (!players.get(0).isEmpty()) {
-                while (!win) {
-                    if (counter == -1) {
-                        break;
-                    }
-                    playTurn();
-                }
-            } else {
-                System.out.println("players have not been set please re run the game");
-                System.exit(0);
-            }
-        }
-
-        public synchronized void playTurn() {
-            // take from left , discard to right
-            LinkedList<Integer> player = players.get(counter % playerN);
-            LinkedList<Integer> leftDeck = decks.get(counter % playerN);
-
-            try {
-                decks.get((counter + 1) % playerN);
-            } catch (IndexOutOfBoundsException e) {
-                playTurn();
-            }
-            
-
-            LinkedList<Integer> rightDeck = decks.get((counter + 1) % playerN);
-
-            synchronized (lock2) {
-                int card = getCard(player);
-                if (player.contains(card) && !leftDeck.isEmpty() && card != 0) {// write methode
-                    try {
-                        player.remove(player.indexOf(card));
-                        int takenCard = leftDeck.removeFirst();
-                        player.add(takenCard);
-                        rightDeck.add(card);
-                        InputOutput output = new InputOutput(player, takenCard, card, ((counter % playerN )+1));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                    System.out.println(
-                            "Round : " + counter + "\tPlayer  : " + ((counter % playerN) + 1) + "\t Hand : " + player);
-
-                    if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
-                            && player.get(2).equals(player.get(3))) {
-                                try {
-                                    lock2.wait();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                System.exit(0);
-                    }
-                    win = playerWon(player);
-                    lock2.notifyAll();
-                } else {
-                    try {
-                        lock2.wait(timeSlice);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-                counter++;
-            }
-        }
+    public synchronized static LinkedList<LinkedList<Integer>> getPlayers() {
+        return players;
     }
 
-    boolean winner = false;
-
-    public boolean playerWon(LinkedList<Integer> player) {
-        if (player.size() >= 4 && player.get(0).equals(player.get(1)) && player.get(1).equals(player.get(2))
-                && player.get(2).equals(player.get(3))) {
-            if (!winner) {
-                System.out.println("Player_" + (players.indexOf(player) + 1) + " wins!\tfinal Hand : " + player);
-                InputOutput output = new InputOutput(player, players, decks);
-                this.win = true;
-                counter = -1;
-                winner = true;
-                System.exit(0);
-            }
-        }
-        return false;
-    }
-
-    public void startGame() {
-        ExecutorService executorService = Executors.newFixedThreadPool(players.size());
-
-        for (int i = 0; i < players.size(); i++) {
-            PlayerThread playerThread = new PlayerThread();
-            executorService.execute(playerThread);
-        }
-
-        executorService.shutdown();
-    }
 }
