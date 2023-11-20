@@ -59,11 +59,10 @@ public class Player {
     }
 
     public Player(int discard, int draw, LinkedList<Integer> hand) {
-        try {
+        synchronized(this){
             hand.remove(hand.indexOf(discard));
             hand.add(draw);
-        } catch (Exception e) {
-        }
+        } 
     }
 
     public Player() {

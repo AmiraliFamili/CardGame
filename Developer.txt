@@ -1,4 +1,4 @@
 Amirali : 
     - report
     - update the current tests and write the test for the two new classes 
-    - documentation of the rest of the code 
+    - documentation of the rest of the code and updating the current ones 

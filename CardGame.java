@@ -50,6 +50,7 @@ public class CardGame {
 
         System.out.println(players);
         System.out.println(decks);
+
         Player player = new Player(this.players);
         Card card = new Card(this.decks);
     }
@@ -259,8 +260,6 @@ public class CardGame {
      */
     private class PlayerThread extends Thread {
 
-        private final Object lock2 = new Object();
-
         /**
          * @see run
          * 
@@ -295,15 +294,16 @@ public class CardGame {
             } catch (IndexOutOfBoundsException e) {
                 playTurn();
             }
-
-            synchronized (lock2) {
-                LinkedList<Integer> hand = player.getPlayer(counter);
+            LinkedList<Integer> hand = player.getPlayer(counter);
                 LinkedList<Integer> leftDeck = card.getLeftDeck(counter);
                 LinkedList<Integer> rightDeck = card.getRightDeck(counter);
 
+            synchronized (lock) {
+                
+
                 while (leftDeck.isEmpty()) {
                     try {
-                        lock2.wait(timeSlice);
+                        lock.wait(timeSlice);
                     } catch (InterruptedException e) {
 
                     }
@@ -319,58 +319,64 @@ public class CardGame {
                         output.writeCurrentHand(hand, (counter % playerNumber) + 1);
                         output.writeDrawsCard(draw, (counter % playerNumber) + 1);
                         output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
+                        System.out.println("Round :  " + counter + "Player :  " + ((counter % playerNumber) + 1) + " Hand :  " + hand);
+                        win = playerWon(hand);
                     } catch (Exception e) {
                         try {
-                            lock2.wait(timeSlice);
+                            lock.wait(timeSlice);
                         } catch (Exception ee) {
-                            Thread.currentThread().interrupt();
+                            //Thread.currentThread().interrupt();
                         }
                     }
-
-                    win = playerWon(hand);
-                } else {
-                    try {
-                        lock2.wait(timeSlice);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
                 }
-                counter++;
             }
+            counter++;
         }
     }
 
     private static volatile boolean winnerDeclared = false;
 
     public synchronized boolean playerWon(LinkedList<Integer> player) {
-        LinkedList<Integer> hand = new LinkedList<>(player);
-        LinkedList<LinkedList<Integer>> allPlayers = new LinkedList<LinkedList<Integer>>(Player.getPlayers());
+        try {
+            if (player.size() != 4) {
+                return false;
+            }
+            LinkedList<Integer> hand = new LinkedList<Integer>(player);
+            if (hand.equals(null) || hand.contains(null)) {
+                return false;
+            }
+            LinkedList<LinkedList<Integer>> allPlayers = new LinkedList<LinkedList<Integer>>(Player.getPlayers());
 
-        if (!winnerDeclared && allPlayers != null) {
-            Iterator<LinkedList<Integer>> iterator = allPlayers.iterator();
-            while (iterator.hasNext()) {
-                LinkedList<Integer> currentPlayer = iterator.next();
+            if (!winnerDeclared && allPlayers != null) {
                 try {
-                    if (currentPlayer.equals(hand)) {
-                        if (hand.size() >= 4 && hand.get(0).equals(hand.get(1)) && hand.get(1).equals(hand.get(2))
-                                && hand.get(2).equals(hand.get(3))) {
-                            winnerDeclared = true;
-                            int playerIndex = allPlayers.indexOf(currentPlayer);
-                            if (playerIndex != -1) {
-                                System.out.println("Player_" + (playerIndex + 1) + " wins!");
-                                InputOutput output = new InputOutput(hand, Player.getPlayers(), Card.getDecks());
-                                this.win = true;
-                                counter = -1;
-                            } else {
-                                System.out.println("Error: Player not found in finalPlayers");
+                    synchronized (lock) {
+                        if (allPlayers.contains(hand)) {
+                            if (hand.get(0).equals(hand.get(1))
+                                    && hand.get(1).equals(hand.get(2))
+                                    && hand.get(2).equals(hand.get(3))) {
+                                winnerDeclared = true;
+                                int playerIndex = allPlayers.indexOf(hand);
+                                if (playerIndex != -1) {
+                                    System.out.println("Player_" + (playerIndex + 1) + " wins!");
+                                    InputOutput output = new InputOutput(hand, Player.getPlayers(),
+                                            Card.getDecks());
+                                    this.win = true;
+                                    counter = -1;
+                                } else {
+                                    System.out.println("Error: Player not found in finalPlayers");
+                                }
                             }
                         }
                     }
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         return false;
     }
 
@@ -388,19 +394,24 @@ public class CardGame {
 
     public static void main(String[] args) {
         InputOutput obj = new InputOutput();
+        CardGame card = new CardGame();
 
         int playerNumber = obj.getPlayerNumber();
-        LinkedList<Integer> pack = obj.getPackFilePath();
-
-        while (playerNumber * 6 >= pack.size()) {
-            System.out.println("Your pack should have at least " + playerNumber * 6
-                    + " cards inside it otherwise the game could not run");
-            System.out.println(
-                    "Please either decrease the number of players or change the pack file to match the requirements of the game");
-
-            playerNumber = obj.getPlayerNumber();
-            pack = obj.getPackFilePath();
-        }
+        LinkedList<Integer> pack = card.createPack(playerNumber);
+        /*
+         * LinkedList<Integer> pack = obj.getPackFilePath();
+         * 
+         * while (playerNumber * 6 >= pack.size()) {
+         * System.out.println("Your pack should have at least " + playerNumber * 6
+         * + " cards inside it otherwise the game could not run");
+         * System.out.println(
+         * "Please either decrease the number of players or change the pack file to match the requirements of the game"
+         * );
+         * 
+         * playerNumber = obj.getPlayerNumber();
+         * pack = obj.getPackFilePath();
+         * }
+         */
 
         CardGame cardGame = new CardGame(playerNumber, pack);
         cardGame.startGame();// game starts

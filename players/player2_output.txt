@@ -1,9 +1,0 @@
-player 2 initial hand 2 2 6 8 
-player 2 draws a 3 from deck 2
-player 2 discards a 3 from deck 3
-player 2 current hand is 2 2 3 3 
-player 2 discards a 6 from deck 3
-player 2 current hand is 2 2 3 4 
-player 3 has informed player 2 that player 3 has won
-player 2 exits
-player 2 final hand: [2, 2, 3, 4]
