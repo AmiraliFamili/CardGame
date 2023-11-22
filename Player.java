@@ -59,10 +59,10 @@ public class Player {
     }
 
     public Player(int discard, int draw, LinkedList<Integer> hand) {
-        synchronized(this){
+        synchronized (this) {
             hand.remove(hand.indexOf(discard));
             hand.add(draw);
-        } 
+        }
     }
 
     public Player() {
@@ -118,9 +118,9 @@ public class Player {
      */
     public synchronized int getCard(LinkedList<Integer> hand) {
         try {
-        if (hand.contains(null) || hand.isEmpty()) {
-            return 0;
-        }
+            if (hand.contains(null) || hand.isEmpty()) {
+                return 0;
+            }
 
         } catch (Exception e) {
             return 0;
@@ -146,6 +146,13 @@ public class Player {
 
     public synchronized static LinkedList<LinkedList<Integer>> getPlayers() {
         return players;
+    }
+
+    public synchronized static void setPlayers(int n) {
+        players = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            players.add(new LinkedList<Integer>());
+        }
     }
 
 }

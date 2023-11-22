@@ -1,9 +1,7 @@
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Handler;
 
 /**
  * @see CardGame
@@ -47,10 +45,6 @@ public class CardGame {
         this.players = dealHands();
         this.decks = dealDecks();
         InputOutput output = new InputOutput(players);
-
-        System.out.println(players);
-        System.out.println(decks);
-
         Player player = new Player(this.players);
         Card card = new Card(this.decks);
     }
@@ -88,6 +82,10 @@ public class CardGame {
      */
     public LinkedList<Integer> getPack() {
         return this.pack;
+    }
+
+    public void setPack(LinkedList<Integer> pack) {
+        this.pack = pack;
     }
 
     /**
@@ -136,7 +134,7 @@ public class CardGame {
             int card = this.pack.poll();
             return card;
         } catch (Exception e) {
-            return 0;
+            return -1;
         }
     }
 
@@ -190,7 +188,7 @@ public class CardGame {
             for (int j = 0; j < playerNumber; j++) {
                 LinkedList<Integer> playerN = this.players.get(j);
                 int card = get1FromPack();
-                if (card != 0) {
+                if (card != -1) {
                     playerN.add(card);
                 }
             }
@@ -211,7 +209,7 @@ public class CardGame {
         while (!this.pack.isEmpty()) {
             LinkedList<Integer> deck = this.decks.get(index);
             int card = get1FromPack();
-            if (card != 0) {
+            if (card != -1) {
                 deck.add(card);
             }
             index = (index + 1) % playerNumber;
@@ -295,17 +293,14 @@ public class CardGame {
                 playTurn();
             }
             LinkedList<Integer> hand = player.getPlayer(counter);
-                LinkedList<Integer> leftDeck = card.getLeftDeck(counter);
-                LinkedList<Integer> rightDeck = card.getRightDeck(counter);
+            LinkedList<Integer> leftDeck = card.getLeftDeck(counter);
+            LinkedList<Integer> rightDeck = card.getRightDeck(counter);
 
             synchronized (lock) {
-                
-
                 while (leftDeck.isEmpty()) {
                     try {
                         lock.wait(timeSlice);
                     } catch (InterruptedException e) {
-
                     }
                 }
 
@@ -313,19 +308,20 @@ public class CardGame {
                 if (hand.contains(discard) && !leftDeck.isEmpty() && discard != 0) {// write methode
                     try {
                         int draw = leftDeck.poll();
-                        Player turn = new Player(discard, draw, hand);
+                        Player turn = new Player(discard, draw, hand);// do this with methods instead of a constructor see if the speed improves 
                         rightDeck.add(discard);
                         InputOutput output = new InputOutput();
                         output.writeCurrentHand(hand, (counter % playerNumber) + 1);
                         output.writeDrawsCard(draw, (counter % playerNumber) + 1);
                         output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
-                        System.out.println("Round :  " + counter + "Player :  " + ((counter % playerNumber) + 1) + " Hand :  " + hand);
+                        System.out.println("Round :  " + counter + " Player :  " + ((counter % playerNumber) + 1)
+                                + " Hand :  " + hand);
                         win = playerWon(hand);
                     } catch (Exception e) {
                         try {
                             lock.wait(timeSlice);
                         } catch (Exception ee) {
-                            //Thread.currentThread().interrupt();
+                            // Thread.currentThread().interrupt();
                         }
                     }
                 }
@@ -362,6 +358,7 @@ public class CardGame {
                                             Card.getDecks());
                                     this.win = true;
                                     counter = -1;
+                                    System.exit(0);
                                 } else {
                                     System.out.println("Error: Player not found in finalPlayers");
                                 }
@@ -394,24 +391,18 @@ public class CardGame {
 
     public static void main(String[] args) {
         InputOutput obj = new InputOutput();
-        CardGame card = new CardGame();
-
         int playerNumber = obj.getPlayerNumber();
-        LinkedList<Integer> pack = card.createPack(playerNumber);
-        /*
-         * LinkedList<Integer> pack = obj.getPackFilePath();
-         * 
-         * while (playerNumber * 6 >= pack.size()) {
-         * System.out.println("Your pack should have at least " + playerNumber * 6
-         * + " cards inside it otherwise the game could not run");
-         * System.out.println(
-         * "Please either decrease the number of players or change the pack file to match the requirements of the game"
-         * );
-         * 
-         * playerNumber = obj.getPlayerNumber();
-         * pack = obj.getPackFilePath();
-         * }
-         */
+        LinkedList<Integer> pack = obj.getPackFilePath();
+
+        while (playerNumber * 6 >= pack.size()) {
+            System.out.println("Your pack should have at least " + playerNumber * 6
+                    + " cards inside it otherwise the game could not run");
+            System.out.println(
+                    "Please either decrease the number of players or change the pack file to match the requirements of the game");
+
+            playerNumber = obj.getPlayerNumber();
+            pack = obj.getPackFilePath();
+        }
 
         CardGame cardGame = new CardGame(playerNumber, pack);
         cardGame.startGame();// game starts

@@ -102,3 +102,6 @@ Amirali, Developer, 2.5hrs, 2023/11/19 - 18:00 to 20:35, fixed some bugs related
 Amirali, Developer, 1hrs, 2023/11/20 - 13:00 to 14:00, fixed and resolved some errors related to the main game method, the game is working 
     properly with high number of players (threads).
 
+Amirali, Developer, 2hrs, 2023/11/21 - 15:00 to 16:00, worked on the InputOutput method and it's tests.
+
+Amirali, Developer, 2hrs, 2023/11/22 - 18:00 to 16:00, continued working on the InputOutput method and it's tests.

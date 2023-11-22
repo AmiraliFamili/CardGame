@@ -3,12 +3,14 @@ import java.util.LinkedList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.List;
 
 public class InputOutput {
+
 
     public synchronized int getPlayerNumber() {
         Scanner scan = new Scanner(System.in);
@@ -47,7 +49,6 @@ public class InputOutput {
     }
 
     public synchronized LinkedList<Integer> readInputPack(String filePath) {
-
         LinkedList<Integer> pack = new LinkedList<Integer>();
 
         try {
@@ -59,6 +60,9 @@ public class InputOutput {
                     continue;
                 }
                 int value = Integer.parseInt(line.trim());
+                if (value < 0) {
+                    continue;
+                }
                 pack.add(value);
             }
         } catch (Exception e) {
@@ -68,7 +72,7 @@ public class InputOutput {
         return pack;
     }
 
-    private int playerNumber;
+    protected int playerNumber;
     private LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
     private final Object lock = new Object();
 
@@ -80,7 +84,7 @@ public class InputOutput {
             deleteDeckFiles();
             createPlayerFiles();
             createDeckFiles();
-            initialHand(players);
+            initialHand(this.players);
         }
     }
     
@@ -90,24 +94,31 @@ public class InputOutput {
         writeEndGame(players, winner);
     }
 
-    private synchronized void writeEndGame(LinkedList<LinkedList<Integer>> players, LinkedList<Integer> winner) {
+    protected synchronized void writeEndGame(LinkedList<LinkedList<Integer>> players, LinkedList<Integer> winner) {
+        if (players == null) {
+            players = new LinkedList<>();
+        }
+        if (winner == null){
+            winner = new LinkedList<>();
+        }
         LinkedList<LinkedList<Integer>> allPlayers = new LinkedList<LinkedList<Integer>> (players);
         LinkedList<Integer> Winner = new LinkedList<Integer>(winner);
+        int index = 1;
         for (LinkedList<Integer> player : allPlayers) {
             try {
-                File newFile = new File("players/player" + (allPlayers.indexOf(player) + 1) + "_output.txt");
+                File newFile = new File("players/player" + index + "_output.txt");
                 if (newFile.exists()) {
                     try (FileWriter writer = new FileWriter(newFile, true)) {
                         if (player != Winner) {
                             writer.write("player " + (allPlayers.indexOf(Winner) + 1) + " has informed player "
-                                    + (allPlayers.indexOf(player) + 1) + " that player " + (allPlayers.indexOf(Winner) + 1)
+                                    + index + " that player " + (allPlayers.indexOf(Winner) + 1)
                                     + " has won" + "\n");
-                            writer.write("player " + (allPlayers.indexOf(player) + 1) + " exits\n");
-                            writer.write("player " + (allPlayers.indexOf(player) + 1) + " final hand: " + player + "\n");
+                            writer.write("player " + index + " exits\n");
+                            writer.write("player " + index + " final hand: " + cardsToString(player) + "\n");
                         } else {
-                            writer.write("player " + (allPlayers.indexOf(player) + 1) + " wins\n");
-                            writer.write("player " + (allPlayers.indexOf(player) + 1) + " exits\n");
-                            writer.write("player " + (allPlayers.indexOf(player) + 1) + " final hand: " + player + "\n");
+                            writer.write("player " + index + " wins\n");
+                            writer.write("player " + index + " exits\n");
+                            writer.write("player " + index + " final hand: " + cardsToString(player) + "\n");
                         }
 
                     } catch (IOException e) {
@@ -124,8 +135,8 @@ public class InputOutput {
                         + (allPlayers.indexOf(player) + 1)
                         + "_output.txt");
             }
+            index ++;
         }
-        System.exit(0);
     }
 
     protected synchronized void writeDrawsCard(int drawnCard, int player) {
@@ -338,15 +349,17 @@ public class InputOutput {
     }
 
     private synchronized void initialHand(LinkedList<LinkedList<Integer>> players) {
+        int index = 1;
         for (LinkedList<Integer> player : players) {
-            try (FileWriter writer = new FileWriter("players/player" + (players.indexOf(player) + 1) + "_output.txt",
+            try (FileWriter writer = new FileWriter("players/player" + index + "_output.txt",
                     true)) {
                 writer.write(
-                        "player " + (players.indexOf(player) + 1) + " initial hand " + cardsToString(player) + "\n");
+                        "player " + index + " initial hand " + cardsToString(player) + "\n");
             } catch (IOException e) {
                 System.out.println("Error occurred while writing player's initial hand : " + player + " to file : "
-                        + "players/player" + (players.indexOf(player) + 1) + "_output.txt");
+                        + "players/player" + index + "_output.txt");
             }
+            index ++;
         }
     }
 }
