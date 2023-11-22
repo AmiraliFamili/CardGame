@@ -1,20 +1,16 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * @see Card
  * 
- *      - Class Card is used for generating the required data for the main game
- *      to work, it's responsible for generating a pack and passing it's values
- *      to the main instances of this project which are players and decks which
- *      are later used in Player class.
+ *      - Class Card is used for managing decks, it receives the initial decks
+ *      from CardGame class and communicates to the main game method with it,
+ *      it's also responsible for deck related operations such as taking an
+ *      element from the left deck and inserting an element to the right deck.
  * 
- * @Note this class's main purpose is to generate hands and decks each in a 4
- *       card format by just receiving an integer.
+ * @Note decks live information is only available within this class and can be
+ *       easily accessed using a static reference
  * 
  * @author Amirali Famili
  */
@@ -23,7 +19,7 @@ public class Card extends Thread {
     private int playerNumber;
     private int deckCard;
 
-    Card(int value){
+    Card(int value) {
         this.deckCard = value;
     }
 
@@ -33,9 +29,10 @@ public class Card extends Thread {
     }
 
     public Card() {
+        // default constructor
     }
 
-    protected static synchronized LinkedList<LinkedList<Integer>> getDecks(){
+    protected static synchronized LinkedList<LinkedList<Integer>> getDecks() {
         return decks;
     }
 

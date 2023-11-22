@@ -22,3 +22,20 @@ we have to start with the report as well as test methods we don't have much time
 
 
 
+
+when the game is played in two there is a chance that the game might get caught in an infinite loop when both player are looking for the same suite of cards to gather 
+    (if there is only 4 cards of the same suit in the game)
+
+since the game involves creating/ deleting and modifying files it should not be played with more than 1500-2000 players otherwise the game will crash 
+
+when a winner is declared, all players will play once more (this couldn't be stopped with notifyAll method not synchronized blocks or run only once codes, anything but system.exit), and there is a slight possibility that the game might have two or
+           more winners system.exit is used to prevent that from happening although it's not a professional method of ending the game but I couldn't find any other solution to this problem.
+
++ all the critical operation for threads is happening inside a synchronized block, however the game is being played in parallel. 
+
+
+
+since the write end game method is looking for the winner hand inside players there shouldn't be two hand of the same cards declared as winner, 
+although it should never happen since a player is declared as winner when they have 4 card of the same suit, their hand is basically unique 
+
+

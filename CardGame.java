@@ -6,11 +6,16 @@ import java.util.concurrent.Executors;
 /**
  * @see CardGame
  * 
- *      - CardGame Class is the main class which runs the game, it asks for the
- *      number of players and the location of a pack
- *      then passes those arguments ...
+ *      - CardGame Class is the core class of this project, it's constructor
+ *      will take an Integer as number of players and a LinkedList of Integers
+ *      which demonstrates the pack, then it would distribute the cards inside
+ *      that pack to the players in a round robin fashion and fills the decks
+ *      with the remaining cards, it would then pass the created players and
+ *      decks lists to their relevant classes, and uses InputOutput class to
+ *      write the players initial hand.
  * 
- * @Note ...
+ * @Note this class follows the requirements described inside the specification
+ *       of this project
  * 
  * @author Amirali Famili
  */
@@ -23,15 +28,24 @@ public class CardGame {
     protected LinkedList<Integer> pack;
 
     /**
-     * @see Card(int)
+     * @see CardGame(int)
      * 
-     *      - Card(int) is the main constructor for Card class, it receives an
-     *      integer which indicates the number of players, then it would create a
-     *      pack of size 8 times player number.
-     *      and then it deals the cards within that pack among players and decks.
+     *      - CardGame(int) is the main constructor for CardGame class, it receives
+     *      an
+     *      integer which indicates the number of players and a LinkedList which
+     *      indicates the pack, then it would create players and decks lists with
+     *      playerNumber empty LinkedLists inside them, deals the cards to players
+     *      and fills the decks with remaining cards from pack, then it would
+     *      captures the initial hand with InputOutput class and pass players and
+     *      decks to their corresponding classes.
+     * 
+     * @Note if the playerNumber is in the wrong format, constructor will assume a
+     *       single player game should be played.
      * 
      * @param playerNumber number of players which indicates the size of players and
      *                     decks list
+     * @param pack         a LinkedList which should contain all the cards played in
+     *                     this game for both players and decks.
      */
     public CardGame(int playerNumber, LinkedList<Integer> pack) {
         if (playerNumber > 0) {
@@ -95,6 +109,10 @@ public class CardGame {
      *      from 1 to n*2 each repeated 4 times .
      *      , after the creating of such pack it uses Collections.shuffle to shuffle
      *      the pack in a random way.
+     * 
+     * @Note this is an unimplemented method, it's mostly used within the test
+     *       classes for creating a mock pack instead of receiving a pack file each
+     *       time.
      * 
      * @param n an integer to determine the size and content of the pack
      * 
@@ -241,6 +259,7 @@ public class CardGame {
         return this.decks;
     }
 
+    private static volatile boolean winnerDeclared = false;
     private volatile Boolean win = false;
     private final Object lock = new Object();
     private int counter = 0;
@@ -282,6 +301,19 @@ public class CardGame {
             }
         }
 
+        /**
+         * @see playTurn
+         * 
+         *      - playerTurn is a void method, it operates the actions made by each
+         *      player (thread) in their turn, including discarding a card to their
+         *      right deck and taking a card from their left deck as well as logging all
+         *      the actions made by them to their relevant files.
+         * 
+         * @Note all the actions in this method is thread safe, although all the players
+         *       are attempting to take a turn at the same time.
+         * 
+         * @ClassesUsed Card, Player, InputOutput
+         */
         public synchronized void playTurn() {
 
             Card card = new Card(decks);
@@ -305,12 +337,13 @@ public class CardGame {
                 }
 
                 int discard = player.getCard(hand);
-                if (hand.contains(discard) && !leftDeck.isEmpty() && discard != 0) {// write methode
+                if (hand.contains(discard) && !leftDeck.isEmpty() && discard != 0) {
                     try {
-                        int draw = leftDeck.poll();
-                        Player turn = new Player(discard, draw, hand);// do this with methods instead of a constructor see if the speed improves 
-                        rightDeck.add(discard);
-                        InputOutput output = new InputOutput();
+                        int draw = leftDeck.poll(); // should be in it's own class
+                        Player turn = new Player(discard, draw, hand);// do this with methods instead of a constructor
+                                                                      // see if the speed improves
+                        rightDeck.add(discard); // should be in it's own class
+                        InputOutput output = new InputOutput(); // is it better to do this with a constructor ?
                         output.writeCurrentHand(hand, (counter % playerNumber) + 1);
                         output.writeDrawsCard(draw, (counter % playerNumber) + 1);
                         output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
@@ -321,7 +354,7 @@ public class CardGame {
                         try {
                             lock.wait(timeSlice);
                         } catch (Exception ee) {
-                            // Thread.currentThread().interrupt();
+                            Thread.currentThread().interrupt();
                         }
                     }
                 }
@@ -330,8 +363,32 @@ public class CardGame {
         }
     }
 
-    private static volatile boolean winnerDeclared = false;
-
+    /**
+     * @see playerWon
+     * 
+     *      - playerWon is method that checks the players hands for a win condition
+     *      (if they hold the exact same 4 cards in their hand)
+     *      it does this by creating new instances of player hand and all players
+     *      (since the hand might change with all the threads it needs to capture
+     *      it)
+     *      after that it validates both the hand and players and runs a run only
+     *      once code so that we would have one winner, the winner then notifies
+     *      other players that they have won using InputOutput class and the game
+     *      will end.
+     * 
+     * @Note event with notifyAll method and locks used, threads still seem to be
+     *       running the playerTurn once before the winner is declared, that is the
+     *       reason there are many restrictions in this method and system.exit is
+     *       used since after all players will play once more when the winner is
+     *       declared there is a slight possibility that the game might have two or
+     *       more winners system.exit is used to prevent that from happening.
+     * 
+     * @param player represents a player hand which should be checked for winning condition 
+     * 
+     * @ClassesUsed Card, Player, InputOutput
+     * 
+     * @return true if player is a winning hand, false if it's not
+     */
     public synchronized boolean playerWon(LinkedList<Integer> player) {
         try {
             if (player.size() != 4) {
@@ -377,6 +434,23 @@ public class CardGame {
         return false;
     }
 
+    /**
+     * @see startGame
+     * 
+     *      - startGame is a void method, it creates a thread pool for as many
+     *      players as the game has ,
+     *      then it would call the PlayerThread Class and assign each player with
+     *      their own thread,
+     *      they execute the run method which has the playerTurn method inside it.
+     * 
+     *      - this class is the main class that runs the game.
+     * 
+     * @Note I have used ExecutorService for assigning threads I found it a more
+     *       efficient and easier way.
+     * 
+     * 
+     * @ClassesUsed PlayerThread
+     */
     public void startGame() {
         ExecutorService executorService = Executors.newFixedThreadPool(players.size());
 
@@ -389,13 +463,30 @@ public class CardGame {
 
     }
 
+    /**
+     * @see main
+     * 
+     *      - the game can be played from here, the program asks for a player number
+     *      which should be a valid Integer and a location for a pack to load which
+     *      should be a valid pack and an assessable location.
+     *      - It would then pass those to the CardGame class and prepare the
+     *      essential content for running the game, then it would initiate the game
+     *      using the startGame() method.
+     * 
+     * 
+     * @Note the while loop used is for making sure that player number and number of
+     *       elements in a valid pack match the requirements for running the game.
+     * 
+     * 
+     * @ClassesUsed InputOutput, CardGame
+     */
     public static void main(String[] args) {
         InputOutput obj = new InputOutput();
         int playerNumber = obj.getPlayerNumber();
         LinkedList<Integer> pack = obj.getPackFilePath();
 
-        while (playerNumber * 6 >= pack.size()) {
-            System.out.println("Your pack should have at least " + playerNumber * 6
+        while (playerNumber * 8 >= pack.size()) {
+            System.out.println("Your pack should have at least " + playerNumber * 8
                     + " cards inside it otherwise the game could not run");
             System.out.println(
                     "Please either decrease the number of players or change the pack file to match the requirements of the game");

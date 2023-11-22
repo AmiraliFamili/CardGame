@@ -1,7 +1,5 @@
 
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @see Player
@@ -18,8 +16,6 @@ import java.util.concurrent.Executors;
  */
 public class Player {
     private int playerNumber;
-    private int handCard;
-
     protected static LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
 
     /**
@@ -41,24 +37,7 @@ public class Player {
         this.players = players;
     }
 
-    /**
-     * @see Player(int)
-     * 
-     *      - Player(int) is another constructor for the Player class it just
-     *      assigns the number of players in the game, mainly used
-     *      by the test Classes to manually manipulate the size and structure of the
-     *      main lists decks and players.
-     * 
-     * 
-     * @param playerNumber an integer representing the number of players in the
-     *                     game.
-     * 
-     */
-    public Player(int playerNumber) {
-        this.handCard = playerNumber;
-    }
-
-    public Player(int discard, int draw, LinkedList<Integer> hand) {
+    public Player(int discard, int draw, LinkedList<Integer> hand) { // should be methods 
         synchronized (this) {
             hand.remove(hand.indexOf(discard));
             hand.add(draw);
@@ -66,6 +45,7 @@ public class Player {
     }
 
     public Player() {
+        // default constructor 
     }
 
     protected synchronized LinkedList<Integer> getPlayer(int index) {
@@ -141,7 +121,8 @@ public class Player {
         } catch (Exception e) {
             return 0;
         }
-        return hand.getLast();
+
+        return hand.getLast(); // it's better if it was in random 
     }
 
     public synchronized static LinkedList<LinkedList<Integer>> getPlayers() {

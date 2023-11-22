@@ -1,4 +1,5 @@
 Amirali : 
-    - report
+    - report : write logs 
     - update the current tests and write the test for the two new classes 
     - documentation of the rest of the code and updating the current ones 
+    - main game method changes : deck operations to their class, player constructor to methods
