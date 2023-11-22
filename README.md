@@ -24,17 +24,16 @@
 
         # Instructions 
 
-    - After the cardsTest.zip is unzipped copy all the content in the test directory and 
-        paste them in the same directory as the source code.
+            - After the cardsTest.zip is unzipped copy all the content in the test directory and 
+                paste them in the same directory as the source code.
 
-    - Then simply run the main method within the testRunner.java which runs all the test suits. 
+            - Then simply run the main method within the testRunner.java which runs all the test suits. 
 
         # Notes 
 
-    - Objects used for development and/or implementation of the game have not been tested 
-        with their individual test methods, Instead they are tested throughout the test classes within each test method (testing their functionality whilst using them), they have been used as mock objects. 
-    - these tests should be in the exact location of the source code in order to be executed, they also rely on the players and decks       
-        directories to write players and decks information to their relevant files.
+            - Objects used for development and/or implementation of the game have not been tested 
+                with their individual test methods, Instead they are tested throughout the test classes within each test method (testing their functionality whilst using them), they have been used as mock objects. 
+            - these tests should be in the exact location of the source code in order to be executed, they also rely on the players and decks directories to write players and decks information to their relevant files.
     
 
 
