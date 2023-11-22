@@ -12,14 +12,14 @@
 
 # File Guide
 
-- 
+### There are Total of 7 Files and 2 Directories 
 
 # Developer
 
-Name : Amirali
-Last Name : Famili
-Student Number : 720060845
-Candidate Number : 206898
-Module : ECM2414
-Module Leader : Majeed Soufian
-Academic Year : 2023-2024
+- Name : Amirali
+- Last Name : Famili
+- Student Number : 720060845
+- Candidate Number : 206898
+- Module : ECM2414
+- Module Leader : Majeed Soufian
+- Academic Year : 2023-2024
