@@ -3,3 +3,9 @@ Amirali :
     - update the current tests and write the test for the two new classes 
     - documentation of the rest of the code and updating the current ones 
     - main game method changes : deck operations to their class, player constructor to methods
+
+Jamie : 
+    - better design for the code 
+    - using design patterns for the code 
+    - better structure for the code 
+    - if any bugs found whilst running the game in your machine (it works on my mac i don't know if you have any other laptop or pc)

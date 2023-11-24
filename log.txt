@@ -105,3 +105,5 @@ Amirali, Developer, 1hrs, 2023/11/20 - 13:00 to 14:00, fixed and resolved some e
 Amirali, Developer, 2hrs, 2023/11/21 - 15:00 to 16:00, worked on the InputOutput method and it's tests.
 
 Amirali, Developer, 2hrs, 2023/11/22 - 18:00 to 16:00, continued working on the InputOutput method and it's tests.
+
+Amirali, Developer, 2hrs, 2023/11/24 - 16:00 to 18:00, continued working on the InputOutput method and it's tests.

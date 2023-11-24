@@ -12,7 +12,7 @@
 
     # File Guide
 
-    ### There are Total of 7 Files and 2 Directories for this Card Game : 
+    ### There are Total of 7 Files and 3 Directories for this Card Game : 
 
     1. CardGame.java : is the main class in which the main game is implemented, when the constructor of this class is called it takes an Integer and a LinkedList representing the number of players and the pack respectively. It would then distribute the cards among players, fill the decks with remaining cards in the pack, passes the players and decks lists to their relevant Classes (Card.java, Player.java), it would also call the InputOutput class to get it to write players initial hand to their corresponding files.
 
@@ -29,6 +29,8 @@
     7. players : is a directory that is used for creating, deleting and modifying player files using InputOutput class.
 
     8. decks : is a directory that is used for creating, deleting and modifying deck files using InputOutput class.
+
+    9. test : is a directory which contains all the test suites sufficient for unit testing the entire project, to check, validate and test the functionality, availability, correctness and robustness of the entire project, further information is available inside the README.md file inside the test directory.
 
 
 

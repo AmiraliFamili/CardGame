@@ -339,16 +339,15 @@ public class CardGame {
                 int discard = player.getCard(hand);
                 if (hand.contains(discard) && !leftDeck.isEmpty() && discard != 0) {
                     try {
-                        int draw = leftDeck.poll(); // should be in it's own class
-                        Player turn = new Player(discard, draw, hand);// do this with methods instead of a constructor
-                                                                      // see if the speed improves
-                        rightDeck.add(discard); // should be in it's own class
+                        int draw = card.getCardFromLeftDeck(leftDeck); 
+                        player.replaceCard(discard, draw, hand);
+                        card.putCardToRightDeck(discard, rightDeck);
                         InputOutput output = new InputOutput(); // is it better to do this with a constructor ?
                         output.writeCurrentHand(hand, (counter % playerNumber) + 1);
                         output.writeDrawsCard(draw, (counter % playerNumber) + 1);
                         output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
                         System.out.println("Round :  " + counter + " Player :  " + ((counter % playerNumber) + 1)
-                                + " Hand :  " + hand);
+                                + " Hand :  " + players + " decks : " + decks );
                         win = playerWon(hand);
                     } catch (Exception e) {
                         try {
