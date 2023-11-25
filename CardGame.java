@@ -339,16 +339,18 @@ public class CardGame {
                 int discard = player.getCard(hand);
                 if (hand.contains(discard) && !leftDeck.isEmpty() && discard != 0) {
                     try {
-                        int draw = card.getCardFromLeftDeck(leftDeck); 
-                        player.replaceCard(discard, draw, hand);
-                        card.putCardToRightDeck(discard, rightDeck);
-                        InputOutput output = new InputOutput(); // is it better to do this with a constructor ?
-                        output.writeCurrentHand(hand, (counter % playerNumber) + 1);
-                        output.writeDrawsCard(draw, (counter % playerNumber) + 1);
-                        output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
-                        System.out.println("Round :  " + counter + " Player :  " + ((counter % playerNumber) + 1)
-                                + " Hand :  " + players + " decks : " + decks );
-                        win = playerWon(hand);
+                        int draw = card.getCardFromLeftDeck(leftDeck);
+
+                        if (draw != -1) {
+                            player.replaceCard(discard, draw, hand);
+                            card.putCardToRightDeck(discard, rightDeck);
+                            InputOutput output = new InputOutput(); // is it better to do this with a constructor ?
+                            output.writeCurrentHand(hand, (counter % playerNumber) + 1);
+                            output.writeDrawsCard(draw, (counter % playerNumber) + 1);
+                            output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
+                            // System.out.println("Round :  " + counter + " Player :  " + ((counter % playerNumber) + 1) + " Hand :  " + hand);
+                            win = playerWon(hand);
+                        }
                     } catch (Exception e) {
                         try {
                             lock.wait(timeSlice);
@@ -382,7 +384,8 @@ public class CardGame {
      *       declared there is a slight possibility that the game might have two or
      *       more winners system.exit is used to prevent that from happening.
      * 
-     * @param player represents a player hand which should be checked for winning condition 
+     * @param player represents a player hand which should be checked for winning
+     *               condition
      * 
      * @ClassesUsed Card, Player, InputOutput
      * 

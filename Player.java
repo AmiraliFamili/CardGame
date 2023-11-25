@@ -15,7 +15,7 @@ import java.util.*;
  * @author Amirali Famili
  */
 public class Player {
-    private int playerNumber;
+    protected int playerNumber;
     protected static LinkedList<LinkedList<Integer>> players = new LinkedList<LinkedList<Integer>>();
 
     /**
@@ -51,8 +51,12 @@ public class Player {
      * 
      */
     public synchronized void replaceCard(int discard, int draw, LinkedList<Integer> hand) {
-        hand.remove(hand.indexOf(discard));
-        hand.add(draw);
+        if (hand != null && discard >= 0 && draw >= 0) {
+            if (hand.contains(discard)) {
+                hand.remove(hand.indexOf(discard));
+                hand.add(draw);
+            }
+        }
     }
 
     public Player() {
@@ -165,12 +169,16 @@ public class Player {
      * @see setPlayers
      * 
      *      - setPlayers is a synchronized void method, it receives an integer n
-     *      which represents the number of players and creates a players LinkedList with n
+     *      which represents the number of players and creates a players LinkedList
+     *      with n
      *      nested LinkedList inside it.
      * 
      */
-    public synchronized static void setPlayers(int n) {
+    public synchronized void setPlayers(int n) {
         players = new LinkedList<>();
+        if (n <= 0) {
+            n = 1;
+        }
         for (int i = 0; i < n; i++) {
             players.add(new LinkedList<Integer>());
         }

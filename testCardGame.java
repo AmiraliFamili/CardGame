@@ -11,12 +11,15 @@ import static org.junit.Assert.*;
 /**
  * @see testCardGame
  * 
- *      - Class testCardGame is used for testing all the methods and objects as well
+ *      - Class testCardGame is used for testing all the methods and objects as
+ *      well
  *      as the constructors of the
- *      CardGame Class, It checks the code for certain exceptions that could occur.
- *      It's also testing the main game method. 
+ *      CardGame Class, It checks the code for certain exceptions that could
+ *      occur.
+ *      It's also testing the main game method.
  * 
- * @Note most test methods within this test class are testing multiple aspects of the class such as other methods and objects 
+ * @Note most test methods within this test class are testing multiple aspects
+ *       of the class such as other methods and objects
  * 
  * @author Amirali Famili
  */
@@ -60,7 +63,7 @@ public class testCardGame {
      * @link CardGame.java
      * 
      * @CardGameClassInstance cardGame
-     * @CardGameClassMethods createPack(int), getPack() 
+     * @CardGameClassMethods createPack(int), getPack()
      */
     @Test
     public void testGetPack() {
@@ -172,7 +175,8 @@ public class testCardGame {
      * @see testSetDecks
      * 
      *      - testSetDecks is a void method, similarly to the testSetPlayers method
-     *      it would set the decks within the CardGame Class and retrieves it and then
+     *      it would set the decks within the CardGame Class and retrieves it and
+     *      then
      *      creates the
      *      expected local list and compares the two lists for Equality and Size.
      * 
@@ -213,7 +217,8 @@ public class testCardGame {
      * 
      * @CardGameClassInstance cardGame
      * @InstanceAttributes playerNumber
-     * @CardGameClassMethods createPack(int), setPlayers(), getPlayers(), dealHands()
+     * @CardGameClassMethods createPack(int), setPlayers(), getPlayers(),
+     *                       dealHands()
      */
     @Test
     public void testDealHands() {
@@ -308,8 +313,9 @@ public class testCardGame {
      * 
      * @CardGameClassInstance cardGame
      * @InstanceAttributes playerNumber
-     * @CardGameClassMethods createPack(int), setPlayers(), dealHands(), dealDecks(),
-     *                   seDecks(), getPack()
+     * @CardGameClassMethods createPack(int), setPlayers(), dealHands(),
+     *                       dealDecks(),
+     *                       seDecks(), getPack()
      */
     @Test
     public void testDealDecks() {
@@ -379,7 +385,8 @@ public class testCardGame {
      * @see testGetPlayers
      * 
      *      - testGetPlayers is a void method, it checks the functionality of
-     *      getPlayers by adding some elements to the main players list within CardGame
+     *      getPlayers by adding some elements to the main players list within
+     *      CardGame
      *      Class,
      *      and checking the validity of the players afterwards.
      * 
@@ -507,8 +514,9 @@ public class testCardGame {
      * @link Player.java, Card.java, CardGame.java
      * 
      * @CardGameClassInstance cardGame
-     * @InstanceAttributes playerNumber 
-     * @CardGameClassMethods setPlayers(), setDecks(), getPlayers(), getDecks(), startGame()
+     * @InstanceAttributes playerNumber
+     * @CardGameClassMethods setPlayers(), setDecks(), getPlayers(), getDecks(),
+     *                       startGame()
      * 
      * @PlayerClassInstance player
      * @PlayerClassMethods Player.getPlayers()
@@ -516,7 +524,7 @@ public class testCardGame {
      * @CardClassInstance card
      * @CardClassMethods Card.getDecks()
      */
-    @AfterClass
+    @BeforeClass
     public static void testCardGameGameStability() {
 
         CardGame cardGame = new CardGame();
@@ -590,19 +598,23 @@ public class testCardGame {
      * @CardClassInstance card
      * @CardClassMethods getPlayers(), getDecks()
      */
-    @AfterClass
+    @BeforeClass
     public static void testStartGameOverload() {
-        CardGame cardGame = new CardGame();
-        cardGame.playerNumber = 1000;
-        LinkedList<Integer> pack = cardGame.createPack(4000);
-        cardGame.setPack(pack);
-        cardGame.setPlayers(cardGame.playerNumber);
-        cardGame.setDecks(cardGame.playerNumber);
-        InputOutput output = new InputOutput(cardGame.dealHands());
-        cardGame.dealDecks();
-        Player player = new Player(cardGame.getPlayers());
-        Card card = new Card(cardGame.getDecks());
-        cardGame.startGame();
-        assertTrue(true); // game finished successfully
+        try {
+            CardGame cardGame = new CardGame();
+            cardGame.playerNumber = 1000;
+            LinkedList<Integer> pack = cardGame.createPack(4000);
+            cardGame.setPack(pack);
+            cardGame.setPlayers(cardGame.playerNumber);
+            cardGame.setDecks(cardGame.playerNumber);
+            InputOutput output = new InputOutput(cardGame.dealHands());
+            cardGame.dealDecks();
+            Player player = new Player(cardGame.getPlayers());
+            Card card = new Card(cardGame.getDecks());
+            cardGame.startGame();
+            assertTrue(true); // game finished successfully with no errors
+        } catch (Exception e) {
+            fail("testStartGameOverload due to an unknwon error");
+        }
     }
 }

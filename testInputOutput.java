@@ -26,6 +26,12 @@ import static org.junit.Assert.*;
  * @Note most test methods within this test class are testing multiple aspects
  *       of the class such as other methods and objects
  * 
+ * @Note methods deleteDeckFiles(), deletePlayerFiles(), createDeckFiles(),
+ *       createPlayerFiles(), functionality has been tested from within other
+ *       test methods, these methods have only one dynamic value used within
+ *       them (playerNumber) which is being checked and validated inside each
+ *       method.
+ * 
  * @author Amirali Famili
  */
 public class testInputOutput {
@@ -377,8 +383,10 @@ public class testInputOutput {
             }
         }
 
+        players.add(null); // add a null value instead of hand
+
         InputOutput player = new InputOutput();
-        player.playerNumber = 5;
+        player.playerNumber = 6;
         player.deleteDeckFiles();
         player.deletePlayerFiles();
         player.createDeckFiles();
@@ -390,6 +398,7 @@ public class testInputOutput {
         Path playerPath3 = Paths.get("players/player3_output.txt");
         Path playerPath4 = Paths.get("players/player4_output.txt");
         Path playerPath5 = Paths.get("players/player5_output.txt");
+        Path playerPath6 = Paths.get("players/player6_output.txt");
 
         try {
             assertTrue(Files.size(playerPath1) != 0);
@@ -397,6 +406,7 @@ public class testInputOutput {
             assertTrue(Files.size(playerPath3) != 0);
             assertTrue(Files.size(playerPath4) != 0);
             assertTrue(Files.size(playerPath5) != 0);
+            assertTrue(Files.size(playerPath6) == 0); // check to see if the code can handle a null hand
         } catch (IOException e) {
             fail("Error checking player final writes in : testWriteEndGameSamePlayers");
         }
@@ -411,7 +421,8 @@ public class testInputOutput {
      * 
      * @link InputOutput.java
      * 
-     * @Note the method shouldn't print anything to the files but it should execute the code with no errors.
+     * @Note the method shouldn't print anything to the files but it should execute
+     *       the code with no errors.
      * 
      * @InputOutputClassInstance player
      * @InputOutputClassMethods deleteDeckFiles(), deletePlayerFiles(),
@@ -421,13 +432,6 @@ public class testInputOutput {
      */
     @Test
     public void testWriteEndGameNull() {
-        LinkedList<LinkedList<Integer>> players = new LinkedList<>();
-        for (int i = 0; i < 5; i++) {
-            players.add(new LinkedList<>());
-            for (int j = 0; j < 6; j++) {
-                players.get(i).add(j);
-            }
-        }
 
         InputOutput player = new InputOutput();
         player.playerNumber = 5;
@@ -454,7 +458,294 @@ public class testInputOutput {
         }
     }
 
-    
+    /**
+     * @see testWriteDrawsCard
+     * 
+     *      - testWriteDrawsCard is a void method, It tests the method
+     *      writeDrawsCard in the InputOutput Class by passing wrong values as
+     *      player index and check to see if something will be written in their file
+     *      or an error will occur.
+     * 
+     * @link InputOutput.java
+     * 
+     * @Note since the drawnCard argument inside writeDrawsCard method doesn't need
+     *       any validation checks, since it's just writing the argument as a
+     *       string, I have avoided testing this parameter.
+     * 
+     * @InputOutputClassInstance draw
+     * @InputOutputClassMethods deleteDeckFiles(), deletePlayerFiles(),
+     *                          createDeckFiles(), createPlayerFiles(),
+     *                          writeDrawsCard(int, int)
+     */
+    @Test
+    public void testWriteDrawsCard() {
+        InputOutput draw = new InputOutput();
+        draw.deleteDeckFiles();
+        draw.deletePlayerFiles();
+        draw.playerNumber = 1;
+        draw.createDeckFiles();
+        draw.createPlayerFiles();
+
+        draw.writeDrawsCard(-8743, -3);
+
+        Path playerPath1 = Paths.get("players/player1_output.txt");
+        try {
+            // the file should be empty because a player with index -3 does not exists
+            assertTrue(Files.size(playerPath1) == 0);
+        } catch (IOException e) {
+            fail("Internal error at testWriteDrawsCard method");
+        }
+
+        draw.writeDrawsCard(-8374, 1);
+        try {
+            // the file shouldn't be empty since the player has drawn a -8374 from their
+            // left deck
+            assertTrue(Files.size(playerPath1) != 0);
+        } catch (IOException e) {
+            fail("Internal error at testWriteDrawsCard method");
+        }
+    }
+
+    /**
+     * @see testWriteDiscardsCard
+     * 
+     *      - testWriteDiscardsCard is a void method, It tests the method
+     *      writeDiscardsCard in the InputOutput Class by passing wrong values as
+     *      player index and check to see if something will be written in their file
+     *      or an error will occur.
+     * 
+     * @link InputOutput.java
+     * 
+     * @Note since the discardedCard argument inside writeDiscardsCard method
+     *       doesn't need
+     *       any validation checks, since it's just writing the argument as a
+     *       string, I have avoided testing this parameter.
+     * 
+     * @InputOutputClassInstance discard
+     * @InputOutputClassMethods deleteDeckFiles(), deletePlayerFiles(),
+     *                          createDeckFiles(), createPlayerFiles(),
+     *                          writeDiscardsCard(int, int)
+     */
+    @Test
+    public void testWriteDiscardsCard() {
+        InputOutput discard = new InputOutput();
+        discard.deleteDeckFiles();
+        discard.deletePlayerFiles();
+        discard.playerNumber = 3;
+        discard.createDeckFiles();
+        discard.createPlayerFiles();
+
+        discard.writeDrawsCard(-843, -37);
+        discard.writeDrawsCard(-843, -38);
+        discard.writeDrawsCard(-843, -3934);
+
+        Path playerPath1 = Paths.get("players/player1_output.txt");
+        Path playerPath2 = Paths.get("players/player2_output.txt");
+        Path playerPath3 = Paths.get("players/player3_output.txt");
+        try {
+            // the file should be empty because a player with index -3 does not exists
+            assertTrue(Files.size(playerPath1) == 0);
+            assertTrue(Files.size(playerPath2) == 0);
+            assertTrue(Files.size(playerPath3) == 0);
+        } catch (IOException e) {
+            fail("Internal error at testWriteDrawsCard method");
+        }
+
+        discard.writeDrawsCard(-874, 1);
+        discard.writeDrawsCard(-874, 2);
+        discard.writeDrawsCard(-874, 3);
+
+        try {
+            // the file shouldn't be empty since the player has discarded a -874 from their
+            // right deck
+            assertTrue(Files.size(playerPath1) != 0);
+            assertTrue(Files.size(playerPath2) != 0);
+            assertTrue(Files.size(playerPath3) != 0);
+        } catch (IOException e) {
+            fail("Internal error at testWriteDrawsCard method");
+        }
+    }
+
+    /**
+     * @see testWriteCurrentHand
+     * 
+     *      - testWriteCurrentHand is a void method, It tests the method
+     *      writeCurrentHand in the InputOutput Class by passing wrong values as
+     *      player index and player's hand to check if something will be written in
+     *      their file
+     *      or an error will occur.
+     * 
+     * @Note this method will check the size of the file created to validate that
+     *       the correct information is being printed in the files, it's also
+     *       checking if the current hand is being added successfully.
+     * 
+     * @link InputOutput.java
+     * 
+     * @InputOutputClassInstance current
+     * @InputOutputClassMethods deleteDeckFiles(), deletePlayerFiles(),
+     *                          createDeckFiles(), createPlayerFiles(),
+     *                          writeCurrentHand(LinkedList<Integer>, int)
+     */
+    @Test
+    public void testWriteCurrentHand() {
+        InputOutput current = new InputOutput();
+        current.deleteDeckFiles();
+        current.deletePlayerFiles();
+        current.playerNumber = 2;
+        current.createDeckFiles();
+        current.createPlayerFiles();
+
+        Path playerPath1 = Paths.get("players/player1_output.txt");
+        Path playerPath2 = Paths.get("players/player2_output.txt");
+
+        current.writeCurrentHand(null, 1);
+        current.writeCurrentHand(null, 2);
+
+        try { // nothing should be written to the files since hand is null
+            assertTrue(Files.size(playerPath1) == 0);
+            assertTrue(Files.size(playerPath2) == 0);
+        } catch (IOException e) {
+            fail("testWriteCurrentHand failed because something was written to the files with a null hand");
+        }
+
+        current.writeCurrentHand(new LinkedList<>(), 0);
+        current.writeCurrentHand(new LinkedList<>(), -3);
+
+        try { // nothing should be written to the files since player's index has the wrong
+              // value
+            assertTrue(Files.size(playerPath1) == 0);
+            assertTrue(Files.size(playerPath2) == 0);
+        } catch (IOException e) {
+            fail("testWriteCurrentHand failed because something was written to the files with a null hand");
+        }
+
+        current.writeCurrentHand(new LinkedList<>(), 1);
+        current.writeCurrentHand(new LinkedList<>(), 2);
+
+        try { // nothing should be written to the files since player's index has the wrong
+              // value
+            assertEquals(26, Files.size(playerPath1));
+            assertEquals(26, Files.size(playerPath2));
+        } catch (IOException e) {
+            fail("testWriteCurrentHand failed because something was written to the files with a null hand");
+        }
+
+        LinkedList<Integer> mockHand = new LinkedList<>();
+        mockHand.add(null);
+        mockHand.add(-2);
+        mockHand.add(-1);
+        mockHand.add(0);
+        mockHand.add(1);
+        mockHand.add(2);
+
+        current.writeCurrentHand(mockHand, 1);
+        current.writeCurrentHand(mockHand, 2);
+
+        try { // nothing should be written to the files since player's index has the wrong
+              // value
+            assertEquals(65, Files.size(playerPath1));
+            assertEquals(65, Files.size(playerPath2));
+        } catch (IOException e) {
+            fail("testWriteCurrentHand failed because something was written to the files with a null hand");
+        }
+    }
+
+    /**
+     * @see testWriteDeckContents
+     * 
+     *      - testWriteDeckContents is a void method, It tests the method
+     *      writeDeckContents in the InputOutput Class by passing wrong values as
+     *      decks LinkedList and see if we get an error, it also validates that the
+     *      correct information is being written in the text files.
+     * 
+     * @Note this method will check the size of the file created to validate that
+     *       the correct information is being printed in the files.
+     * 
+     * @link InputOutput.java
+     * 
+     * @InputOutputClassInstance deck
+     * @InputOutputClassMethods deleteDeckFiles(), deletePlayerFiles(),
+     *                          createDeckFiles(), createPlayerFiles(),
+     *                          writeDeckContents(LinkedList<LinkedList<Integer>>)
+     */
+    @Test
+    public void testWriteDeckContents() {
+
+        InputOutput deck = new InputOutput();
+        deck.deleteDeckFiles();
+        deck.deletePlayerFiles();
+        deck.playerNumber = 3;
+        deck.createDeckFiles();
+
+        Path deckPath1 = Paths.get("decks/deck1_output.txt");
+        Path deckPath2 = Paths.get("decks/deck2_output.txt");
+        Path deckPath3 = Paths.get("decks/deck3_output.txt");
+        Path deckPath4 = Paths.get("decks/deck4_output.txt");
+
+        LinkedList<LinkedList<Integer>> decks = new LinkedList<>();
+        for (int i = 0; i < 3; i++) {
+            decks.add(new LinkedList<>());
+        }
+
+        decks.get(0).add(null);
+        decks.get(0).add(0);
+        decks.get(0).add(1);
+
+        decks.get(1).add(null);
+        decks.get(1).add(-1);
+
+        decks.get(2).add(null);
+        decks.get(2).add(34);
+        decks.get(2).add(null);
+        decks.get(2).add(-15);
+
+        deck.writeDeckContents(null);
+
+        try { // nothing should be written to the files since decks is null
+            assertEquals(0, Files.size(deckPath1));
+            assertEquals(0, Files.size(deckPath2));
+            assertEquals(0, Files.size(deckPath3));
+        } catch (IOException e) {
+            fail("testWriteDeckContents failed because decks was null");
+        }
+
+        deck.writeDeckContents(new LinkedList<>());
+
+        try { // nothing should be written to the files since decks is empty
+            assertEquals(0, Files.size(deckPath1));
+            assertEquals(0, Files.size(deckPath2));
+            assertEquals(0, Files.size(deckPath3));
+        } catch (IOException e) {
+            fail("testWriteDeckContents failed because decks was empty");
+        }
+
+        deck.writeDeckContents(decks);
+
+        try { // null values will not be written
+            assertEquals(22, Files.size(deckPath1));
+            assertEquals(21, Files.size(deckPath2));
+            assertEquals(26, Files.size(deckPath3));
+        } catch (IOException e) {
+            fail("testWriteDeckContents failed because something is wrong with the source code");
+        }
+
+        deck.playerNumber = 4;
+        deck.deleteDeckFiles();
+        deck.createDeckFiles();
+        decks.add(null);
+
+        deck.writeDeckContents(decks);
+
+        try { // null values will not be written even as main elements
+            assertEquals(22, Files.size(deckPath1));
+            assertEquals(21, Files.size(deckPath2));
+            assertEquals(26, Files.size(deckPath3));
+            assertEquals(0, Files.size(deckPath4));
+        } catch (IOException e) {
+            fail("testWriteDeckContents failed because an element in decks was null");
+        }
+    }
+
     /**
      * @see testCardsToString
      * 
@@ -464,7 +755,7 @@ public class testInputOutput {
      * 
      * @link InputOutput.java
      * 
-     * @InputOutputClassInstance player
+     * @InputOutputClassInstance sHand
      * @InputOutputClassMethods handToString(LinkedList<Integer>)
      */
     @Test
@@ -487,10 +778,66 @@ public class testInputOutput {
         assertEquals(28, actual.length());
         // since there are 19 characters and 9 spaces , given that null is counted as a
         // space
+
+        assertEquals("", sHand.cardsToString(null));
+        assertEquals("", sHand.cardsToString(new LinkedList<>()));
     }
 
-    public static void main(String[] args) {
-        testInputOutput test = new testInputOutput();
-        test.testInputOutputConstructorLinkedList();
+    /**
+     * @see testCardsToString
+     * 
+     *      - testCardsToString is a void method, it tests the method cardsToString
+     *      method by creating a mock hand with wrong format and values and passing
+     *      it to this method without any errors.
+     * 
+     * @link InputOutput.java
+     * 
+     * @InputOutputClassInstance player
+     * @InputOutputClassMethods handToString(LinkedList<Integer>)
+     */
+    @Test
+    public void testInitialHand() {
+
+        InputOutput initial = new InputOutput();
+        initial.deleteDeckFiles();
+        initial.deletePlayerFiles();
+        initial.playerNumber = 4;
+        initial.createDeckFiles();
+        initial.createPlayerFiles();
+
+        Path playerPath1 = Paths.get("players/player1_output.txt");
+        Path playerPath2 = Paths.get("players/player2_output.txt");
+        Path playerPath3 = Paths.get("players/player3_output.txt");
+        Path playerPath4 = Paths.get("players/player4_output.txt");
+
+        LinkedList<LinkedList<Integer>> players = new LinkedList<>();
+        for (int i = 0; i < 3; i++) {
+            players.add(new LinkedList<>());
+        }
+
+        players.add(null);
+
+        players.get(0).add(null);
+        players.get(0).add(null);
+        players.get(0).add(null);
+        players.get(0).add(null);
+        players.get(1).add(5);
+        players.get(1).add(-45);
+        players.get(1).add(-7834);
+        players.get(2).add(1);
+        players.get(2).add(1);
+        players.get(2).add(345678976);
+
+
+        initial.initialHand(players);
+
+            try {
+                assertEquals(27 ,Files.size(playerPath1));
+                assertEquals(35 ,Files.size(playerPath2));
+                assertEquals(37 ,Files.size(playerPath3));
+                assertEquals(0 ,Files.size(playerPath4));
+            } catch (IOException e) {
+                fail("testInitialHand failed because of a problem with null values");
+            }
     }
 }

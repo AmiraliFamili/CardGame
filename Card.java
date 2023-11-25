@@ -17,8 +17,7 @@ import java.util.LinkedList;
 public class Card extends Thread {
 
     private static LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
-    private int playerNumber;
-    private int deckCard;
+    protected int deckNumber;
 
     /**
      * @see Card
@@ -33,7 +32,7 @@ public class Card extends Thread {
      */
     public Card(LinkedList<LinkedList<Integer>> decks) {
         this.decks = decks;
-        this.playerNumber = decks.size();
+        this.deckNumber = decks.size();
     }
 
     public Card() {
@@ -65,7 +64,10 @@ public class Card extends Thread {
      * @return the leftDeck of the player whom the index is associated with
      */
     protected synchronized LinkedList<Integer> getLeftDeck(int index) {
-        return decks.get((index % playerNumber));
+        if (index < 0) {
+            index = 0;
+        }
+        return decks.get((index % deckNumber));
     }
 
     /**
@@ -81,7 +83,10 @@ public class Card extends Thread {
      * @return the rightDeck of the player whom the index is associated with
      */
     protected synchronized LinkedList<Integer> getRightDeck(int index) {
-        return decks.get((((index + 1) % playerNumber)));
+        if (index < 0) {
+            index = 0;
+        }
+        return decks.get((((index + 1) % deckNumber)));
     }
 
     /**
@@ -96,7 +101,12 @@ public class Card extends Thread {
      * @return the rightDeck of the player whom the index is associated with
      */
     protected synchronized int getCardFromLeftDeck(LinkedList<Integer> leftDeck) {
-        return leftDeck.poll();
+
+        try {
+            return leftDeck.poll();
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -112,6 +122,8 @@ public class Card extends Thread {
      * @return the rightDeck of the player whom the index is associated with
      */
     protected synchronized void putCardToRightDeck(int discard, LinkedList<Integer> rightDeck) {
-        rightDeck.add(discard);
+        if (rightDeck != null) {
+            rightDeck.add(discard);
+        }
     }
 }
