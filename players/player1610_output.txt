@@ -1,0 +1,465 @@
+player 1610 draws a 11920 from deck 1610
+player 1610 discards a 13502 from deck 1611
+player 1610 current hand is 7015 3671 2157 4250 
+player 1610 draws a 4250 from deck 1610
+player 1610 discards a 13149 from deck 1611
+player 1610 current hand is 8605 14885 2756 9175 
+player 1610 draws a 9175 from deck 1610
+player 1610 discards a 11126 from deck 1611
+player 1610 current hand is 8605 14885 2756 12952 
+player 1610 draws a 12952 from deck 1610
+player 1610 discards a 10439 from deck 1611
+player 1610 current hand is 11781 7262 14504 14062 
+player 1610 draws a 14062 from deck 1610
+player 1610 discards a 4341 from deck 1611
+player 1610 current hand is 9903 39 5535 11934 
+player 1610 draws a 11934 from deck 1610
+player 1610 discards a 7755 from deck 1611
+player 1610 current hand is 6226 14097 3909 2722 
+player 1610 draws a 2722 from deck 1610
+player 1610 discards a 2689 from deck 1611
+player 1610 current hand is 9263 10359 2545 10764 
+player 1610 draws a 10764 from deck 1610
+player 1610 discards a 3126 from deck 1611
+player 1610 current hand is 13238 12590 4909 2471 
+player 1610 draws a 2471 from deck 1610
+player 1610 discards a 4912 from deck 1611
+player 1610 current hand is 9466 1487 10025 11845 
+player 1610 draws a 11845 from deck 1610
+player 1610 discards a 9417 from deck 1611
+player 1610 current hand is 9095 1218 11276 919 
+player 1610 draws a 919 from deck 1610
+player 1610 discards a 2799 from deck 1611
+player 1610 current hand is 13464 13625 14876 2735 
+player 1610 draws a 2735 from deck 1610
+player 1610 discards a 4661 from deck 1611
+player 1610 current hand is 14756 12396 1545 8161 
+player 1610 draws a 8161 from deck 1610
+player 1610 discards a 11492 from deck 1611
+player 1610 current hand is 5346 1032 6170 1113 
+player 1610 draws a 1113 from deck 1610
+player 1610 discards a 3246 from deck 1611
+player 1610 current hand is 3535 11916 14534 3858 
+player 1610 draws a 3858 from deck 1610
+player 1610 discards a 8892 from deck 1611
+player 1610 current hand is 90 3409 906 1433 
+player 1610 draws a 1433 from deck 1610
+player 1610 discards a 6041 from deck 1611
+player 1610 current hand is 8699 553 6396 6094 
+player 1610 draws a 6094 from deck 1610
+player 1610 discards a 12435 from deck 1611
+player 1610 current hand is 5994 11374 6729 11227 
+player 1610 draws a 11227 from deck 1610
+player 1610 discards a 3167 from deck 1611
+player 1610 current hand is 14879 15734 9106 4736 
+player 1610 draws a 4736 from deck 1610
+player 1610 discards a 15394 from deck 1611
+player 1610 current hand is 3045 5431 6196 2515 
+player 1610 draws a 2515 from deck 1610
+player 1610 discards a 14109 from deck 1611
+player 1610 current hand is 8605 14885 2756 3485 
+player 1610 draws a 3485 from deck 1610
+player 1610 discards a 15607 from deck 1611
+player 1610 current hand is 104 11266 92 10751 
+player 1610 draws a 10751 from deck 1610
+player 1610 discards a 9005 from deck 1611
+player 1610 current hand is 8078 5422 14418 5607 
+player 1610 draws a 5607 from deck 1610
+player 1610 discards a 12543 from deck 1611
+player 1610 current hand is 8605 14885 2756 4083 
+player 1610 draws a 4083 from deck 1610
+player 1610 discards a 489 from deck 1611
+player 1610 current hand is 8605 14885 2756 13159 
+player 1610 draws a 13159 from deck 1610
+player 1610 discards a 2675 from deck 1611
+player 1610 current hand is 1208 11147 2229 4446 
+player 1610 draws a 4446 from deck 1610
+player 1610 discards a 7482 from deck 1611
+player 1610 current hand is 5653 4831 9388 6330 
+player 1610 draws a 6330 from deck 1610
+player 1610 discards a 13115 from deck 1611
+player 1610 current hand is 10174 14811 4146 2805 
+player 1610 draws a 2805 from deck 1610
+player 1610 discards a 8187 from deck 1611
+player 1610 current hand is 15444 4773 2426 46 
+player 1610 draws a 46 from deck 1610
+player 1610 discards a 10547 from deck 1611
+player 1610 current hand is 12514 2234 15936 14818 
+player 1610 draws a 14818 from deck 1610
+player 1610 discards a 6243 from deck 1611
+player 1610 current hand is 8605 14885 2756 5503 
+player 1610 draws a 5503 from deck 1610
+player 1610 discards a 5630 from deck 1611
+player 1610 current hand is 11167 9926 10219 5946 
+player 1610 draws a 5946 from deck 1610
+player 1610 discards a 14209 from deck 1611
+player 1610 current hand is 15828 159 11116 12638 
+player 1610 draws a 12638 from deck 1610
+player 1610 discards a 3168 from deck 1611
+player 1610 current hand is 2043 1284 5574 7336 
+player 1610 draws a 7336 from deck 1610
+player 1610 discards a 2658 from deck 1611
+player 1610 current hand is 4216 7060 8131 10969 
+player 1610 draws a 10969 from deck 1610
+player 1610 discards a 10770 from deck 1611
+player 1610 current hand is 5828 3849 15431 11785 
+player 1610 draws a 11785 from deck 1610
+player 1610 discards a 5793 from deck 1611
+player 1610 current hand is 2364 8278 6014 6758 
+player 1610 draws a 6758 from deck 1610
+player 1610 discards a 11239 from deck 1611
+player 1610 current hand is 9837 9447 12033 13609 
+player 1610 draws a 13609 from deck 1610
+player 1610 discards a 8616 from deck 1611
+player 1610 current hand is 4918 691 12917 1704 
+player 1610 draws a 1704 from deck 1610
+player 1610 discards a 11515 from deck 1611
+player 1610 current hand is 6540 5950 7666 980 
+player 1610 draws a 980 from deck 1610
+player 1610 discards a 1940 from deck 1611
+player 1610 current hand is 5487 2809 12783 8900 
+player 1610 draws a 8900 from deck 1610
+player 1610 discards a 4986 from deck 1611
+player 1610 current hand is 8605 14885 2756 937 
+player 1610 draws a 937 from deck 1610
+player 1610 discards a 13642 from deck 1611
+player 1610 current hand is 1548 3097 13764 10246 
+player 1610 draws a 10246 from deck 1610
+player 1610 discards a 503 from deck 1611
+player 1610 current hand is 9448 8008 13005 2878 
+player 1610 draws a 2878 from deck 1610
+player 1610 discards a 14837 from deck 1611
+player 1610 current hand is 2904 3352 11688 6040 
+player 1610 draws a 6040 from deck 1610
+player 1610 discards a 8869 from deck 1611
+player 1610 current hand is 6660 11585 10878 5741 
+player 1610 draws a 5741 from deck 1610
+player 1610 discards a 10190 from deck 1611
+player 1610 current hand is 5565 11286 13782 11892 
+player 1610 draws a 11892 from deck 1610
+player 1610 discards a 8791 from deck 1611
+player 1610 current hand is 9529 15546 7925 3903 
+player 1610 draws a 3903 from deck 1610
+player 1610 discards a 4638 from deck 1611
+player 1610 current hand is 15153 1201 5296 15993 
+player 1610 draws a 15993 from deck 1610
+player 1610 discards a 8404 from deck 1611
+player 1610 current hand is 4830 2571 4420 5139 
+player 1610 draws a 5139 from deck 1610
+player 1610 discards a 3773 from deck 1611
+player 1610 current hand is 8605 14885 2756 6571 
+player 1610 draws a 6571 from deck 1610
+player 1610 discards a 6622 from deck 1611
+player 1610 current hand is 13144 12585 7704 11109 
+player 1610 draws a 11109 from deck 1610
+player 1610 discards a 15970 from deck 1611
+player 1610 current hand is 4541 15487 13638 13134 
+player 1610 draws a 13134 from deck 1610
+player 1610 discards a 3756 from deck 1611
+player 1610 current hand is 2217 2972 5244 9703 
+player 1610 draws a 9703 from deck 1610
+player 1610 discards a 8889 from deck 1611
+player 1610 current hand is 9552 6712 9404 10437 
+player 1610 current hand is 15936 5967 1755 13688 
+player 1610 draws a 13688 from deck 1610
+player 1610 discards a 6890 from deck 1611
+player 1610 current hand is 2167 4568 12904 10555 
+player 1610 draws a 10555 from deck 1610
+player 1610 discards a 11085 from deck 1611
+player 1610 current hand is 8605 14885 2756 10048 
+player 1610 draws a 10048 from deck 1610
+player 1610 discards a 11158 from deck 1611
+player 1610 current hand is 1663 4776 12424 6792 
+player 1610 draws a 6792 from deck 1610
+player 1610 discards a 13065 from deck 1611
+player 1610 current hand is 11732 13437 14723 9216 
+player 1610 draws a 9216 from deck 1610
+player 1610 discards a 3186 from deck 1611
+player 1610 current hand is 15110 4673 455 3096 
+player 1610 draws a 3096 from deck 1610
+player 1610 discards a 7243 from deck 1611
+player 1610 current hand is 9887 8895 2093 10866 
+player 1610 draws a 10866 from deck 1610
+player 1610 discards a 14412 from deck 1611
+player 1610 current hand is 15724 8971 11224 13912 
+player 1610 draws a 13912 from deck 1610
+player 1610 discards a 5889 from deck 1611
+player 1610 current hand is 7728 12654 11391 8704 
+player 1610 draws a 8704 from deck 1610
+player 1610 discards a 13881 from deck 1611
+player 1610 current hand is 5828 3849 15431 15986 
+player 1610 draws a 15986 from deck 1610
+player 1610 discards a 14810 from deck 1611
+player 1610 current hand is 1994 5933 3582 9131 
+player 1610 draws a 9131 from deck 1610
+player 1610 discards a 11440 from deck 1611
+player 1610 current hand is 8569 8063 9188 9585 
+player 1610 draws a 9585 from deck 1610
+player 1610 discards a 5821 from deck 1611
+player 1610 current hand is 7090 7066 708 10058 
+player 1610 draws a 10058 from deck 1610
+player 1610 discards a 784 from deck 1611
+player 1610 current hand is 11168 5429 10481 11615 
+player 1610 draws a 11615 from deck 1610
+player 1610 discards a 3132 from deck 1611
+player 1610 current hand is 13848 10505 12068 11028 
+player 1610 draws a 11028 from deck 1610
+player 1610 discards a 5406 from deck 1611
+player 1610 current hand is 2910 3614 1322 3578 
+player 1610 draws a 3578 from deck 1610
+player 1610 discards a 4118 from deck 1611
+player 1610 current hand is 14756 8608 11592 4518 
+player 1610 draws a 4518 from deck 1610
+player 1610 discards a 15823 from deck 1611
+player 1610 current hand is 8605 14885 2756 12399 
+player 1610 draws a 12399 from deck 1610
+player 1610 discards a 1670 from deck 1611
+player 1610 current hand is 11837 230 9525 14308 
+player 1610 draws a 14308 from deck 1610
+player 1610 discards a 929 from deck 1611
+player 1610 current hand is 8605 14885 2756 5605 
+player 1610 current hand is 12158 11571 13076 1725 
+player 1610 draws a 1725 from deck 1610
+player 1610 discards a 2360 from deck 1611
+player 1610 current hand is 9296 5658 12849 1975 
+player 1610 draws a 1975 from deck 1610
+player 1610 discards a 13347 from deck 1611
+player 1610 current hand is 8605 14885 2756 13401 
+player 1610 draws a 13401 from deck 1610
+player 1610 discards a 1545 from deck 1611
+player 1610 current hand is 8605 14885 2756 8996 
+player 1610 current hand is 7608 3758 7337 1223 
+player 1610 draws a 1223 from deck 1610
+player 1610 discards a 9616 from deck 1611
+player 1610 draws a 12194 from deck 1610
+player 1610 discards a 457 from deck 1611
+player 1610 current hand is 9775 5306 729 8879 
+player 1610 draws a 8879 from deck 1610
+player 1610 discards a 14421 from deck 1611
+player 1610 current hand is 3046 3046 15638 14886 
+player 1610 draws a 14886 from deck 1610
+player 1610 discards a 903 from deck 1611
+player 1610 current hand is 14969 4548 14344 1872 
+player 1610 draws a 1872 from deck 1610
+player 1610 discards a 15683 from deck 1611
+player 1610 current hand is 8605 14885 2756 2925 
+player 1610 draws a 2925 from deck 1610
+player 1610 discards a 5476 from deck 1611
+player 1610 current hand is 9755 1683 7935 4791 
+player 1610 draws a 4791 from deck 1610
+player 1610 discards a 6752 from deck 1611
+player 1610 current hand is 2956 6327 5962 12420 
+player 1610 draws a 12420 from deck 1610
+player 1610 discards a 10309 from deck 1611
+player 1610 current hand is 8605 14885 2756 293 
+player 1610 draws a 293 from deck 1610
+player 1610 discards a 3501 from deck 1611
+player 1610 current hand is 8189 12760 7247 4319 
+player 1610 draws a 4319 from deck 1610
+player 1610 discards a 14013 from deck 1611
+player 1610 current hand is 8605 14885 2756 12327 
+player 1610 draws a 12327 from deck 1610
+player 1610 discards a 8856 from deck 1611
+player 1610 current hand is 9082 4830 8993 14522 
+player 1610 draws a 14522 from deck 1610
+player 1610 discards a 3064 from deck 1611
+player 1610 current hand is 10288 3814 9946 6496 
+player 1610 draws a 6496 from deck 1610
+player 1610 discards a 13976 from deck 1611
+player 1610 current hand is 7039 5976 3929 6269 
+player 1610 draws a 6269 from deck 1610
+player 1610 discards a 10136 from deck 1611
+player 1610 current hand is 15929 8306 8065 1314 
+player 1610 draws a 1314 from deck 1610
+player 1610 discards a 14774 from deck 1611
+player 1610 current hand is 83 5094 13274 11211 
+player 1610 draws a 11211 from deck 1610
+player 1610 discards a 9427 from deck 1611
+player 1610 current hand is 2430 5561 1351 15592 
+player 1610 draws a 15592 from deck 1610
+player 1610 discards a 13378 from deck 1611
+player 1610 current hand is 10923 13723 6721 11802 
+player 1610 draws a 11802 from deck 1610
+player 1610 discards a 15112 from deck 1611
+player 1610 current hand is 54 11135 3076 3257 
+player 1610 draws a 3257 from deck 1610
+player 1610 discards a 7686 from deck 1611
+player 1610 current hand is 6151 3225 3292 7757 
+player 1610 draws a 7757 from deck 1610
+player 1610 discards a 6051 from deck 1611
+player 1610 current hand is 8605 14885 2756 12283 
+player 1610 draws a 12283 from deck 1610
+player 1610 discards a 9444 from deck 1611
+player 1610 current hand is 4531 14766 10330 8050 
+player 1610 draws a 8050 from deck 1610
+player 1610 discards a 2011 from deck 1611
+player 1610 current hand is 3862 2494 14144 7897 
+player 1610 draws a 7897 from deck 1610
+player 1610 discards a 12150 from deck 1611
+player 1610 draws a 9719 from deck 1610
+player 1610 discards a 1430 from deck 1611
+player 1610 current hand is 11300 7326 13546 3704 
+player 1610 draws a 3704 from deck 1610
+player 1610 discards a 2758 from deck 1611
+player 1610 current hand is 5138 7646 713 15263 
+player 1610 draws a 15263 from deck 1610
+player 1610 discards a 4497 from deck 1611
+player 1610 current hand is 1601 10861 12249 952 
+player 1610 draws a 952 from deck 1610
+player 1610 discards a 2351 from deck 1611
+player 1610 current hand is 7898 10942 9864 3177 
+player 1610 draws a 3177 from deck 1610
+player 1610 discards a 15535 from deck 1611
+player 1610 current hand is 8605 14885 2756 13346 
+player 1610 draws a 13346 from deck 1610
+player 1610 discards a 3087 from deck 1611
+player 1610 current hand is 11160 5013 13992 3894 
+player 1610 draws a 3894 from deck 1610
+player 1610 discards a 2367 from deck 1611
+player 1610 current hand is 14303 7655 1022 15705 
+player 1610 draws a 15705 from deck 1610
+player 1610 discards a 540 from deck 1611
+player 1610 current hand is 9965 6453 6118 12135 
+player 1610 draws a 12135 from deck 1610
+player 1610 discards a 7025 from deck 1611
+player 1610 current hand is 15399 11836 5501 11655 
+player 1610 draws a 11655 from deck 1610
+player 1610 discards a 3253 from deck 1611
+player 1610 current hand is 5662 4544 2398 2004 
+player 1610 draws a 2004 from deck 1610
+player 1610 discards a 13586 from deck 1611
+player 1610 current hand is 9704 6653 11882 1996 
+player 1610 draws a 1996 from deck 1610
+player 1610 discards a 9254 from deck 1611
+player 1610 current hand is 4853 9105 1398 13982 
+player 1610 draws a 13982 from deck 1610
+player 1610 discards a 15404 from deck 1611
+player 1610 current hand is 15829 3566 2031 9267 
+player 1610 draws a 9267 from deck 1610
+player 1610 discards a 11115 from deck 1611
+player 1610 current hand is 11468 15758 11909 9326 
+player 1610 draws a 9326 from deck 1610
+player 1610 discards a 7041 from deck 1611
+player 1610 current hand is 11000 9195 14650 11964 
+player 1610 draws a 11964 from deck 1610
+player 1610 discards a 3268 from deck 1611
+player 1610 current hand is 8605 14885 2756 7492 
+player 1610 draws a 7492 from deck 1610
+player 1610 discards a 7393 from deck 1611
+player 1610 current hand is 7054 14982 9178 8165 
+player 1610 draws a 8165 from deck 1610
+player 1610 discards a 13984 from deck 1611
+player 1610 current hand is 3012 6874 8098 1946 
+player 1610 draws a 1946 from deck 1610
+player 1610 discards a 5550 from deck 1611
+player 1610 current hand is 11843 14817 12155 15227 
+player 1610 draws a 15227 from deck 1610
+player 1610 discards a 336 from deck 1611
+player 1610 current hand is 8605 14885 2756 4374 
+player 1610 draws a 4374 from deck 1610
+player 1610 discards a 1799 from deck 1611
+player 1610 current hand is 14057 1130 1491 13580 
+player 1610 draws a 13580 from deck 1610
+player 1610 discards a 13215 from deck 1611
+player 1610 current hand is 10715 2477 7624 2460 
+player 1610 draws a 2460 from deck 1610
+player 1610 discards a 5426 from deck 1611
+player 1610 current hand is 9671 8996 2591 9791 
+player 1610 draws a 9791 from deck 1610
+player 1610 discards a 2694 from deck 1611
+player 1610 current hand is 2421 15772 11159 10630 
+player 1610 draws a 10630 from deck 1610
+player 1610 discards a 12622 from deck 1611
+player 1610 current hand is 13217 8639 7442 15626 
+player 1610 draws a 15626 from deck 1610
+player 1610 discards a 2461 from deck 1611
+player 1610 current hand is 14649 8582 6282 1248 
+player 1610 draws a 1248 from deck 1610
+player 1610 discards a 14355 from deck 1611
+player 1610 current hand is 5289 3369 14306 3329 
+player 1610 draws a 3329 from deck 1610
+player 1610 discards a 1792 from deck 1611
+player 1610 current hand is 3485 2125 10453 4303 
+player 1610 draws a 4303 from deck 1610
+player 1610 discards a 4887 from deck 1611
+player 1610 current hand is 9782 582 13127 15033 
+player 1610 draws a 15033 from deck 1610
+player 1610 discards a 15304 from deck 1611
+player 1610 current hand is 13256 15481 3162 10091 
+player 1610 draws a 10091 from deck 1610
+player 1610 discards a 12564 from deck 1611
+player 1610 current hand is 8605 14885 2756 9483 
+player 1610 draws a 9483 from deck 1610
+player 1610 discards a 2395 from deck 1611
+player 1610 current hand is 11451 624 1089 15978 
+player 1610 draws a 15978 from deck 1610
+player 1610 discards a 6933 from deck 1611
+player 1610 current hand is 4651 14605 15467 13522 
+player 1610 draws a 13522 from deck 1610
+player 1610 discards a 468 from deck 1611
+player 1610 current hand is 3150 2283 15186 39 
+player 1610 draws a 39 from deck 1610
+player 1610 discards a 9316 from deck 1611
+player 1610 current hand is 15444 4773 2426 11744 
+player 1610 draws a 11744 from deck 1610
+player 1610 discards a 11368 from deck 1611
+player 1610 current hand is 13295 441 6655 949 
+player 1610 draws a 949 from deck 1610
+player 1610 discards a 10751 from deck 1611
+player 1610 current hand is 15577 8177 10972 1638 
+player 1610 draws a 1638 from deck 1610
+player 1610 discards a 13391 from deck 1611
+player 1610 current hand is 14111 13786 5213 482 
+player 1610 draws a 482 from deck 1610
+player 1610 discards a 6262 from deck 1611
+player 1610 current hand is 8605 14885 2756 2188 
+player 1610 draws a 2188 from deck 1610
+player 1610 discards a 5369 from deck 1611
+player 1610 current hand is 1069 1424 9852 14263 
+player 1610 draws a 14263 from deck 1610
+player 1610 discards a 13076 from deck 1611
+player 1610 current hand is 8605 14885 2756 998 
+player 1610 draws a 998 from deck 1610
+player 1610 discards a 940 from deck 1611
+player 1610 current hand is 8605 14885 2756 366 
+player 1610 draws a 366 from deck 1610
+player 1610 discards a 8291 from deck 1611
+player 1610 current hand is 11599 7619 12209 12836 
+player 1610 draws a 12836 from deck 1610
+player 1610 discards a 11520 from deck 1611
+player 1610 current hand is 8279 393 14753 3725 
+player 1610 draws a 3725 from deck 1610
+player 1610 discards a 12873 from deck 1611
+player 1610 current hand is 8605 14885 2756 15864 
+player 1610 draws a 15864 from deck 1610
+player 1610 discards a 4696 from deck 1611
+player 1610 current hand is 8605 14885 2756 8170 
+player 1610 draws a 8170 from deck 1610
+player 1610 discards a 15864 from deck 1611
+player 1610 current hand is 10716 6825 11122 4301 
+player 1610 draws a 4301 from deck 1610
+player 1610 discards a 12185 from deck 1611
+player 1610 current hand is 8605 14885 2756 927 
+player 1610 draws a 927 from deck 1610
+player 1610 discards a 8557 from deck 1611
+player 1610 current hand is 8605 14885 2756 12255 
+player 1610 draws a 12255 from deck 1610
+player 1610 discards a 2025 from deck 1611
+player 1610 current hand is 5637 4623 13757 15360 
+player 1610 draws a 15360 from deck 1610
+player 1610 discards a 4832 from deck 1611
+player 1610 current hand is 3093 15245 14143 10313 
+player 1610 draws a 10313 from deck 1610
+player 1610 discards a 14760 from deck 1611
+player 1610 current hand is 8605 14885 2756 4964 
+player 1610 draws a 4964 from deck 1610
+player 1610 discards a 6254 from deck 1611
+player 1610 current hand is 2907 2907 10664 293 
+player 1610 draws a 293 from deck 1610
+player 1610 discards a 3723 from deck 1611
+player 1610 current hand is 5660 8969 13411 2056 
+player 1610 draws a 2056 from deck 1610
+player 1610 discards a 2515 from deck 1611
+player 1610 current hand is 5297 4755 13470 1029 
+player 1610 draws a 1029 from deck 1610
+player 1610 discards a 4180 from deck 1611

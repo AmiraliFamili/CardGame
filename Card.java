@@ -14,7 +14,7 @@ import java.util.LinkedList;
  * 
  * @author Amirali Famili
  */
-public class Card extends Thread {
+public class Card {
 
     private static LinkedList<LinkedList<Integer>> decks = new LinkedList<LinkedList<Integer>>();
     protected int deckNumber;
@@ -49,6 +49,25 @@ public class Card extends Thread {
      */
     protected static synchronized LinkedList<LinkedList<Integer>> getDecks() {
         return decks;
+    }
+
+    /**
+     * @see setDecks
+     * 
+     *      - setDecks is an unimplemented synchronized void method, it receives an integer n
+     *      which represents the number of players and creates a decks LinkedList
+     *      with n
+     *      nested LinkedList inside it.
+     * 
+     */
+    public synchronized static void setDecks(int n) {
+        decks = new LinkedList<>();
+        if (n <= 0) {
+            n = 1;
+        }
+        for (int i = 0; i < n; i++) {
+            decks.add(new LinkedList<Integer>());
+        }
     }
 
     /**

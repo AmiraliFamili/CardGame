@@ -81,7 +81,6 @@ public class CardGame {
      * 
      *      - emptyPack is a void method, used for emptying the pack by assigning it
      *      to a new LinkedList.
-     * 
      */
     public void emptyPack() {
         this.pack = new LinkedList<Integer>();
@@ -293,7 +292,7 @@ public class CardGame {
                     if (counter == -1) {
                         break;
                     }
-                    playTurn();
+                    playerTurn();
                 }
             } else {
                 System.out.println("players have not been set please re run the game");
@@ -302,7 +301,7 @@ public class CardGame {
         }
 
         /**
-         * @see playTurn
+         * @see playerTurn
          * 
          *      - playerTurn is a void method, it operates the actions made by each
          *      player (thread) in their turn, including discarding a card to their
@@ -314,7 +313,7 @@ public class CardGame {
          * 
          * @ClassesUsed Card, Player, InputOutput
          */
-        public synchronized void playTurn() {
+        public synchronized void playerTurn() {
 
             Card card = new Card(decks);
             Player player = new Player(players);
@@ -322,7 +321,7 @@ public class CardGame {
             try {
                 card.getRightDeck((counter + 1) % playerNumber);
             } catch (IndexOutOfBoundsException e) {
-                playTurn();
+                playerTurn();
             }
             LinkedList<Integer> hand = player.getPlayer(counter);
             LinkedList<Integer> leftDeck = card.getLeftDeck(counter);

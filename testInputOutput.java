@@ -6,13 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedList;
-import javax.naming.spi.DirStateFactory.Result;
-import org.junit.BeforeClass;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
 
 /**

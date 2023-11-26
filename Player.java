@@ -168,13 +168,13 @@ public class Player {
     /**
      * @see setPlayers
      * 
-     *      - setPlayers is a synchronized void method, it receives an integer n
+     *      - setPlayers is an unimplemented synchronized void method, it receives an integer n
      *      which represents the number of players and creates a players LinkedList
      *      with n
      *      nested LinkedList inside it.
      * 
      */
-    public synchronized void setPlayers(int n) {
+    public synchronized static void setPlayers(int n) {
         players = new LinkedList<>();
         if (n <= 0) {
             n = 1;
