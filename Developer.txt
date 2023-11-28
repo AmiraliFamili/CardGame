@@ -1,5 +1,0 @@
-Jamie : 
-    - better design for the code 
-    - Object Oriented design of the code
-    - better structure for the code 
-    - if any bugs found whilst running the game in your machine (it works on my mac i don't know if you have any other laptop or pc)

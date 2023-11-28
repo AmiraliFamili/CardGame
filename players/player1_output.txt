@@ -1,1 +1,1 @@
-player 1 initial hand 0 1 2 3 4 5 
+player 1 draws a -8374 from deck 1

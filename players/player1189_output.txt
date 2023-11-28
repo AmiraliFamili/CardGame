@@ -1,0 +1,475 @@
+player 1189 discards a 2584 from deck 1190
+player 1189 current hand is 7794 7211 11549 6487 
+player 1189 draws a 6487 from deck 1189
+player 1189 discards a 12724 from deck 1190
+player 1189 current hand is 70 14189 2310 746 
+player 1189 draws a 746 from deck 1189
+player 1189 discards a 15618 from deck 1190
+player 1189 current hand is 12947 13339 71 7143 
+player 1189 draws a 7143 from deck 1189
+player 1189 discards a 436 from deck 1190
+player 1189 current hand is 13228 4609 9717 5775 
+player 1189 draws a 5775 from deck 1189
+player 1189 discards a 9165 from deck 1190
+player 1189 current hand is 2950 7628 13106 1365 
+player 1189 draws a 1365 from deck 1189
+player 1189 discards a 12160 from deck 1190
+player 1189 current hand is 6594 2451 12632 12954 
+player 1189 draws a 12954 from deck 1189
+player 1189 discards a 2447 from deck 1190
+player 1189 current hand is 9104 6692 6564 1967 
+player 1189 draws a 1967 from deck 1189
+player 1189 discards a 4774 from deck 1190
+player 1189 current hand is 7007 12166 14587 14582 
+player 1189 draws a 14582 from deck 1189
+player 1189 discards a 359 from deck 1190
+player 1189 current hand is 343 5031 3277 10122 
+player 1189 draws a 10122 from deck 1189
+player 1189 discards a 4027 from deck 1190
+player 1189 current hand is 689 13202 375 9131 
+player 1189 draws a 9131 from deck 1189
+player 1189 discards a 14150 from deck 1190
+player 1189 current hand is 15503 7815 7909 14641 
+player 1189 draws a 14641 from deck 1189
+player 1189 discards a 13226 from deck 1190
+player 1189 current hand is 3853 2127 13616 3925 
+player 1189 draws a 3925 from deck 1189
+player 1189 discards a 8422 from deck 1190
+player 1189 current hand is 1482 1607 3698 15273 
+player 1189 draws a 15273 from deck 1189
+player 1189 discards a 12140 from deck 1190
+player 1189 current hand is 3853 2127 13616 8167 
+player 1189 draws a 8167 from deck 1189
+player 1189 discards a 3054 from deck 1190
+player 1189 current hand is 8084 15449 11300 7535 
+player 1189 draws a 7535 from deck 1189
+player 1189 discards a 12998 from deck 1190
+player 1189 current hand is 15145 1190 7198 690 
+player 1189 draws a 690 from deck 1189
+player 1189 discards a 4263 from deck 1190
+player 1189 current hand is 3853 2127 13616 1800 
+player 1189 draws a 1800 from deck 1189
+player 1189 discards a 10316 from deck 1190
+player 1189 current hand is 10754 12554 13218 9947 
+player 1189 draws a 9947 from deck 1189
+player 1189 discards a 6018 from deck 1190
+player 1189 current hand is 3720 15000 12848 4735 
+player 1189 draws a 4735 from deck 1189
+player 1189 discards a 14275 from deck 1190
+player 1189 current hand is 6561 10413 9784 10473 
+player 1189 draws a 10473 from deck 1189
+player 1189 discards a 8699 from deck 1190
+player 1189 current hand is 11645 4536 4169 9831 
+player 1189 draws a 9831 from deck 1189
+player 1189 discards a 11505 from deck 1190
+player 1189 current hand is 7827 8860 13638 7414 
+player 1189 draws a 7414 from deck 1189
+player 1189 discards a 5189 from deck 1190
+player 1189 current hand is 8838 11058 13191 2535 
+player 1189 draws a 2535 from deck 1189
+player 1189 discards a 14084 from deck 1190
+player 1189 current hand is 12844 1133 14928 6967 
+player 1189 draws a 6967 from deck 1189
+player 1189 discards a 9734 from deck 1190
+player 1189 current hand is 1940 2716 11582 12665 
+player 1189 draws a 12665 from deck 1189
+player 1189 discards a 1079 from deck 1190
+player 1189 current hand is 15764 14630 9645 730 
+player 1189 draws a 730 from deck 1189
+player 1189 discards a 15268 from deck 1190
+player 1189 current hand is 11094 13284 3490 1662 
+player 1189 draws a 1662 from deck 1189
+player 1189 discards a 11078 from deck 1190
+player 1189 current hand is 11144 1777 1458 9494 
+player 1189 draws a 9494 from deck 1189
+player 1189 discards a 3001 from deck 1190
+player 1189 current hand is 1847 8058 6460 14817 
+player 1189 draws a 14817 from deck 1189
+player 1189 discards a 6476 from deck 1190
+player 1189 current hand is 3853 2127 13616 10084 
+player 1189 draws a 10084 from deck 1189
+player 1189 discards a 2674 from deck 1190
+player 1189 current hand is 9312 13123 4303 12332 
+player 1189 draws a 12332 from deck 1189
+player 1189 discards a 1589 from deck 1190
+player 1189 current hand is 15362 14231 10535 6373 
+player 1189 draws a 6373 from deck 1189
+player 1189 discards a 12992 from deck 1190
+player 1189 current hand is 2017 9990 5289 8617 
+player 1189 draws a 8617 from deck 1189
+player 1189 discards a 11599 from deck 1190
+player 1189 current hand is 15313 15803 10095 12835 
+player 1189 draws a 12835 from deck 1189
+player 1189 discards a 8557 from deck 1190
+player 1189 current hand is 8288 15470 10036 2187 
+player 1189 draws a 2187 from deck 1189
+player 1189 discards a 6795 from deck 1190
+player 1189 current hand is 14340 5589 11521 4077 
+player 1189 draws a 4077 from deck 1189
+player 1189 discards a 13429 from deck 1190
+player 1189 current hand is 12174 3233 11117 11490 
+player 1189 draws a 11490 from deck 1189
+player 1189 discards a 12525 from deck 1190
+player 1189 current hand is 15193 15782 10389 618 
+player 1189 draws a 618 from deck 1189
+player 1189 discards a 3116 from deck 1190
+player 1189 current hand is 3196 7837 11045 7492 
+player 1189 draws a 7492 from deck 1189
+player 1189 discards a 15880 from deck 1190
+player 1189 current hand is 9850 8388 8991 8825 
+player 1189 draws a 8825 from deck 1189
+player 1189 discards a 6240 from deck 1190
+player 1189 current hand is 5940 14477 13703 9277 
+player 1189 draws a 9277 from deck 1189
+player 1189 discards a 971 from deck 1190
+player 1189 current hand is 975 11463 8205 1997 
+player 1189 draws a 1997 from deck 1189
+player 1189 discards a 13096 from deck 1190
+player 1189 current hand is 15201 12695 4541 995 
+player 1189 draws a 995 from deck 1189
+player 1189 discards a 6144 from deck 1190
+player 1189 current hand is 4922 7016 6034 7831 
+player 1189 draws a 7831 from deck 1189
+player 1189 discards a 2102 from deck 1190
+player 1189 current hand is 8729 68 11909 4682 
+player 1189 draws a 4682 from deck 1189
+player 1189 discards a 11954 from deck 1190
+player 1189 current hand is 465 13011 10364 8374 
+player 1189 draws a 8374 from deck 1189
+player 1189 discards a 3167 from deck 1190
+player 1189 current hand is 447 8099 7551 5516 
+player 1189 draws a 5516 from deck 1189
+player 1189 discards a 14553 from deck 1190
+player 1189 current hand is 3853 2127 13616 8820 
+player 1189 draws a 8820 from deck 1189
+player 1189 discards a 6803 from deck 1190
+player 1189 current hand is 4808 6359 10943 5250 
+player 1189 draws a 5250 from deck 1189
+player 1189 discards a 7040 from deck 1190
+player 1189 current hand is 3552 12497 12089 13939 
+player 1189 draws a 13939 from deck 1189
+player 1189 discards a 1636 from deck 1190
+player 1189 current hand is 1382 13836 10640 13250 
+player 1189 draws a 13250 from deck 1189
+player 1189 discards a 6758 from deck 1190
+player 1189 current hand is 13527 4361 6937 6830 
+player 1189 draws a 6830 from deck 1189
+player 1189 discards a 10063 from deck 1190
+player 1189 current hand is 10195 12163 7077 4814 
+player 1189 draws a 4814 from deck 1189
+player 1189 discards a 8403 from deck 1190
+player 1189 current hand is 5333 2458 6604 8806 
+player 1189 draws a 8806 from deck 1189
+player 1189 discards a 11125 from deck 1190
+player 1189 current hand is 10394 9945 5397 14551 
+player 1189 draws a 14551 from deck 1189
+player 1189 discards a 4613 from deck 1190
+player 1189 current hand is 2420 4674 9694 11749 
+player 1189 draws a 11749 from deck 1189
+player 1189 discards a 3342 from deck 1190
+player 1189 current hand is 1514 15553 1517 4875 
+player 1189 draws a 4875 from deck 1189
+player 1189 discards a 3073 from deck 1190
+player 1189 current hand is 1522 4448 15731 6418 
+player 1189 draws a 6418 from deck 1189
+player 1189 discards a 1093 from deck 1190
+player 1189 current hand is 4150 573 10306 15427 
+player 1189 draws a 15427 from deck 1189
+player 1189 discards a 11842 from deck 1190
+player 1189 current hand is 12588 14608 13052 7323 
+player 1189 draws a 7323 from deck 1189
+player 1189 discards a 3722 from deck 1190
+player 1189 current hand is 3945 1053 9585 12911 
+player 1189 draws a 12911 from deck 1189
+player 1189 discards a 3925 from deck 1190
+player 1189 current hand is 4365 6903 2165 14383 
+player 1189 draws a 14383 from deck 1189
+player 1189 discards a 2014 from deck 1190
+player 1189 current hand is 3853 2127 13616 8684 
+player 1189 draws a 8684 from deck 1189
+player 1189 discards a 13682 from deck 1190
+player 1189 current hand is 6403 6907 13795 3474 
+player 1189 draws a 3474 from deck 1189
+player 1189 discards a 3013 from deck 1190
+player 1189 current hand is 3853 2127 13616 5509 
+player 1189 draws a 5509 from deck 1189
+player 1189 discards a 2409 from deck 1190
+player 1189 current hand is 14027 4565 12594 10034 
+player 1189 draws a 10034 from deck 1189
+player 1189 discards a 11195 from deck 1190
+player 1189 current hand is 2676 13160 9257 5253 
+player 1189 draws a 5253 from deck 1189
+player 1189 discards a 7460 from deck 1190
+player 1189 current hand is 3853 2127 13616 3908 
+player 1189 draws a 3908 from deck 1189
+player 1189 discards a 11970 from deck 1190
+player 1189 current hand is 3853 2127 13616 3688 
+player 1189 draws a 3688 from deck 1189
+player 1189 discards a 3077 from deck 1190
+player 1189 current hand is 1480 6320 15083 12366 
+player 1189 draws a 12366 from deck 1189
+player 1189 discards a 9960 from deck 1190
+player 1189 current hand is 8610 14981 12015 1007 
+player 1189 draws a 1007 from deck 1189
+player 1189 discards a 1267 from deck 1190
+player 1189 current hand is 6257 15917 277 5862 
+player 1189 draws a 5862 from deck 1189
+player 1189 discards a 14894 from deck 1190
+player 1189 current hand is 14619 2005 4593 6668 
+player 1189 draws a 6668 from deck 1189
+player 1189 discards a 14260 from deck 1190
+player 1189 current hand is 14052 3093 11672 5724 
+player 1189 draws a 5724 from deck 1189
+player 1189 discards a 7986 from deck 1190
+player 1189 current hand is 1454 2457 5808 13634 
+player 1189 draws a 13634 from deck 1189
+player 1189 discards a 3153 from deck 1190
+player 1189 current hand is 15693 15740 9574 12222 
+player 1189 draws a 12222 from deck 1189
+player 1189 discards a 6294 from deck 1190
+player 1189 current hand is 9312 13123 4303 7248 
+player 1189 draws a 7248 from deck 1189
+player 1189 discards a 5650 from deck 1190
+player 1189 current hand is 14785 11400 5040 6665 
+player 1189 draws a 6665 from deck 1189
+player 1189 discards a 14010 from deck 1190
+player 1189 current hand is 962 8915 3047 10485 
+player 1189 draws a 10485 from deck 1189
+player 1189 discards a 7773 from deck 1190
+player 1189 current hand is 13426 3014 2817 711 
+player 1189 draws a 711 from deck 1189
+player 1189 discards a 13696 from deck 1190
+player 1189 current hand is 4488 13619 10546 7824 
+player 1189 draws a 7824 from deck 1189
+player 1189 discards a 11597 from deck 1190
+player 1189 current hand is 6870 7229 13625 15615 
+player 1189 draws a 15615 from deck 1189
+player 1189 discards a 996 from deck 1190
+player 1189 current hand is 12315 13653 479 12962 
+player 1189 draws a 12962 from deck 1189
+player 1189 discards a 13279 from deck 1190
+player 1189 current hand is 3853 2127 13616 7319 
+player 1189 draws a 7319 from deck 1189
+player 1189 discards a 4567 from deck 1190
+player 1189 current hand is 4270 9187 1756 14732 
+player 1189 draws a 14732 from deck 1189
+player 1189 discards a 2031 from deck 1190
+player 1189 current hand is 10432 1437 9579 8363 
+player 1189 draws a 8363 from deck 1189
+player 1189 discards a 3106 from deck 1190
+player 1189 current hand is 5080 12050 3799 3573 
+player 1189 draws a 3573 from deck 1189
+player 1189 discards a 12799 from deck 1190
+player 1189 current hand is 13761 11314 3337 15027 
+player 1189 draws a 15027 from deck 1189
+player 1189 discards a 10626 from deck 1190
+player 1189 current hand is 4224 6995 13519 11529 
+player 1189 draws a 11529 from deck 1189
+player 1189 discards a 10033 from deck 1190
+player 1189 current hand is 13161 6849 4044 11641 
+player 1189 draws a 11641 from deck 1189
+player 1189 discards a 12497 from deck 1190
+player 1189 current hand is 15001 9108 10462 8624 
+player 1189 draws a 8624 from deck 1189
+player 1189 discards a 6771 from deck 1190
+player 1189 current hand is 3744 5705 2011 792 
+player 1189 draws a 792 from deck 1189
+player 1189 discards a 212 from deck 1190
+player 1189 current hand is 141 9223 2611 4667 
+player 1189 draws a 4667 from deck 1189
+player 1189 discards a 11243 from deck 1190
+player 1189 current hand is 11144 1777 1458 1786 
+player 1189 draws a 1786 from deck 1189
+player 1189 discards a 12321 from deck 1190
+player 1189 current hand is 7932 8530 8507 8337 
+player 1189 draws a 8337 from deck 1189
+player 1189 discards a 13652 from deck 1190
+player 1189 current hand is 9228 15907 12009 10545 
+player 1189 draws a 10545 from deck 1189
+player 1189 discards a 12846 from deck 1190
+player 1189 current hand is 12831 15414 2510 2279 
+player 1189 draws a 2279 from deck 1189
+player 1189 discards a 15812 from deck 1190
+player 1189 current hand is 14619 2005 4593 9368 
+player 1189 draws a 9368 from deck 1189
+player 1189 discards a 644 from deck 1190
+player 1189 current hand is 14946 15706 6100 12176 
+player 1189 draws a 12176 from deck 1189
+player 1189 discards a 15827 from deck 1190
+player 1189 current hand is 12966 14360 10444 15794 
+player 1189 draws a 15794 from deck 1189
+player 1189 discards a 6460 from deck 1190
+player 1189 current hand is 5440 2848 11091 4751 
+player 1189 draws a 4751 from deck 1189
+player 1189 discards a 10907 from deck 1190
+player 1189 current hand is 8048 6406 13799 10941 
+player 1189 draws a 10941 from deck 1189
+player 1189 discards a 3692 from deck 1190
+player 1189 current hand is 14538 3844 7491 15094 
+player 1189 draws a 15094 from deck 1189
+player 1189 discards a 1312 from deck 1190
+player 1189 current hand is 14527 5081 2392 13300 
+player 1189 draws a 13300 from deck 1189
+player 1189 discards a 83 from deck 1190
+player 1189 current hand is 3087 14017 10950 13463 
+player 1189 draws a 13463 from deck 1189
+player 1189 discards a 14337 from deck 1190
+player 1189 current hand is 3853 2127 13616 12277 
+player 1189 draws a 12277 from deck 1189
+player 1189 discards a 15455 from deck 1190
+player 1189 current hand is 4378 10414 3886 1313 
+player 1189 draws a 1313 from deck 1189
+player 1189 discards a 9456 from deck 1190
+player 1189 current hand is 12858 13974 12788 3412 
+player 1189 draws a 3412 from deck 1189
+player 1189 discards a 6668 from deck 1190
+player 1189 current hand is 3853 2127 13616 5718 
+player 1189 draws a 5718 from deck 1189
+player 1189 discards a 10385 from deck 1190
+player 1189 current hand is 3853 2127 13616 10894 
+player 1189 draws a 10894 from deck 1189
+player 1189 discards a 5718 from deck 1190
+player 1189 current hand is 7747 8649 392 5102 
+player 1189 draws a 5102 from deck 1189
+player 1189 discards a 8801 from deck 1190
+player 1189 current hand is 3853 2127 13616 13973 
+player 1189 draws a 13973 from deck 1189
+player 1189 discards a 4564 from deck 1190
+player 1189 current hand is 13656 5290 11508 15828 
+player 1189 draws a 15828 from deck 1189
+player 1189 discards a 1730 from deck 1190
+player 1189 current hand is 3853 2127 13616 1857 
+player 1189 draws a 1857 from deck 1189
+player 1189 discards a 13973 from deck 1190
+player 1189 current hand is 10561 14654 6606 685 
+player 1189 draws a 685 from deck 1189
+player 1189 discards a 7104 from deck 1190
+player 1189 current hand is 3853 2127 13616 9363 
+player 1189 draws a 9363 from deck 1189
+player 1189 discards a 4088 from deck 1190
+player 1189 current hand is 10192 11750 7254 2904 
+player 1189 draws a 2904 from deck 1189
+player 1189 discards a 5301 from deck 1190
+player 1189 current hand is 3853 2127 13616 8682 
+player 1189 draws a 8682 from deck 1189
+player 1189 discards a 246 from deck 1190
+player 1189 current hand is 1557 10578 5952 7456 
+player 1189 draws a 7456 from deck 1189
+player 1189 discards a 15712 from deck 1190
+player 1189 current hand is 10130 12751 15277 2613 
+player 1189 draws a 2613 from deck 1189
+player 1189 discards a 15473 from deck 1190
+player 1189 current hand is 1032 282 14088 6523 
+player 1189 draws a 6523 from deck 1189
+player 1189 discards a 4784 from deck 1190
+player 1189 current hand is 7129 1113 11590 2623 
+player 1189 draws a 2623 from deck 1189
+player 1189 discards a 12328 from deck 1190
+player 1189 current hand is 2156 11504 3808 5842 
+player 1189 draws a 5842 from deck 1189
+player 1189 discards a 14934 from deck 1190
+player 1189 current hand is 9250 11808 14073 11642 
+player 1189 draws a 11642 from deck 1189
+player 1189 discards a 3367 from deck 1190
+player 1189 current hand is 14818 7503 1430 8289 
+player 1189 draws a 8289 from deck 1189
+player 1189 discards a 13940 from deck 1190
+player 1189 current hand is 3853 2127 13616 7124 
+player 1189 draws a 7124 from deck 1189
+player 1189 discards a 6085 from deck 1190
+player 1189 current hand is 9784 9784 5999 7846 
+player 1189 draws a 7846 from deck 1189
+player 1189 discards a 7380 from deck 1190
+player 1189 current hand is 3853 2127 13616 14607 
+player 1189 draws a 14607 from deck 1189
+player 1189 discards a 910 from deck 1190
+player 1189 current hand is 3853 2127 13616 1853 
+player 1189 draws a 1853 from deck 1189
+player 1189 discards a 15211 from deck 1190
+player 1189 current hand is 15140 1813 11129 13204 
+player 1189 draws a 13204 from deck 1189
+player 1189 discards a 8065 from deck 1190
+player 1189 current hand is 3853 2127 13616 5760 
+player 1189 draws a 5760 from deck 1189
+player 1189 discards a 1853 from deck 1190
+player 1189 current hand is 8526 11957 8824 6368 
+player 1189 draws a 6368 from deck 1189
+player 1189 discards a 7068 from deck 1190
+player 1189 current hand is 6802 19 15800 4134 
+player 1189 draws a 4134 from deck 1189
+player 1189 discards a 4167 from deck 1190
+player 1189 current hand is 3853 2127 13616 7136 
+player 1189 draws a 7136 from deck 1189
+player 1189 discards a 14784 from deck 1190
+player 1189 current hand is 8866 400 12025 5501 
+player 1189 draws a 5501 from deck 1189
+player 1189 discards a 295 from deck 1190
+player 1189 current hand is 3853 2127 13616 10639 
+player 1189 draws a 10639 from deck 1189
+player 1189 discards a 4519 from deck 1190
+player 1189 current hand is 5149 13824 1947 6595 
+player 1189 draws a 6595 from deck 1189
+player 1189 discards a 3782 from deck 1190
+player 1189 current hand is 3853 2127 13616 13017 
+player 1189 draws a 13017 from deck 1189
+player 1189 discards a 1644 from deck 1190
+player 1189 current hand is 11825 3572 943 6016 
+player 1189 draws a 6016 from deck 1189
+player 1189 discards a 8108 from deck 1190
+player 1189 current hand is 9149 6412 3288 4575 
+player 1189 draws a 4575 from deck 1189
+player 1189 discards a 7212 from deck 1190
+player 1189 current hand is 3853 2127 13616 2454 
+player 1189 draws a 2454 from deck 1189
+player 1189 discards a 13710 from deck 1190
+player 1189 current hand is 3853 2127 13616 8979 
+player 1189 draws a 8979 from deck 1189
+player 1189 discards a 2454 from deck 1190
+player 1189 current hand is 13953 12220 10760 6105 
+player 1189 draws a 6105 from deck 1189
+player 1189 discards a 11704 from deck 1190
+player 1189 current hand is 5523 11825 121 7022 
+player 1189 draws a 7022 from deck 1189
+player 1189 discards a 9031 from deck 1190
+player 1189 current hand is 14358 14534 2406 10669 
+player 1189 draws a 10669 from deck 1189
+player 1189 discards a 12465 from deck 1190
+player 1189 current hand is 15478 3436 14584 2685 
+player 1189 draws a 2685 from deck 1189
+player 1189 discards a 7576 from deck 1190
+player 1189 current hand is 13931 1342 2976 4219 
+player 1189 draws a 4219 from deck 1189
+player 1189 discards a 45 from deck 1190
+player 1189 current hand is 14407 12221 2627 11732 
+player 1189 draws a 11732 from deck 1189
+player 1189 discards a 4809 from deck 1190
+player 1189 current hand is 6837 8020 7983 9898 
+player 1189 draws a 9898 from deck 1189
+player 1189 discards a 4117 from deck 1190
+player 1189 current hand is 3853 2127 13616 14885 
+player 1189 draws a 14885 from deck 1189
+player 1189 discards a 8818 from deck 1190
+player 1189 current hand is 8408 396 3670 4942 
+player 1189 draws a 4942 from deck 1189
+player 1189 discards a 3258 from deck 1190
+player 1189 current hand is 7130 5396 10341 6072 
+player 1189 draws a 6072 from deck 1189
+player 1189 discards a 12277 from deck 1190
+player 1189 current hand is 3853 2127 13616 14963 
+player 1189 draws a 14963 from deck 1189
+player 1189 discards a 7980 from deck 1190
+player 1189 current hand is 11080 11013 11156 9370 
+player 1189 draws a 9370 from deck 1189
+player 1189 discards a 13355 from deck 1190
+player 1189 current hand is 5750 12956 5951 12324 
+player 1189 draws a 12324 from deck 1189
+player 1189 discards a 2378 from deck 1190
+player 1189 current hand is 2097 10560 11260 5284 
+player 1189 draws a 5284 from deck 1189
+player 1189 discards a 9702 from deck 1190
+player 1189 current hand is 12632 106 3031 15733 
+player 1189 draws a 15733 from deck 1189
+player 1189 discards a 11982 from deck 1190
+player 1189 current hand is 5182 11595 1553 4216 
+player 1189 draws a 4216 from deck 1189
+player 1189 discards a 9703 from deck 1190

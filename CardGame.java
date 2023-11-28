@@ -347,7 +347,7 @@ public class CardGame {
                             output.writeCurrentHand(hand, (counter % playerNumber) + 1);
                             output.writeDrawsCard(draw, (counter % playerNumber) + 1);
                             output.writeDiscardsCard(discard, (counter % playerNumber) + 1);
-                            // System.out.println("Round :  " + counter + " Player :  " + ((counter % playerNumber) + 1) + " Hand :  " + hand);
+                            System.out.println("Round :  " + counter + " Player :  " + ((counter % playerNumber) + 1) + " Hand :  " + hand);
                             win = playerWon(hand);
                         }
                     } catch (Exception e) {
@@ -486,6 +486,8 @@ public class CardGame {
         int playerNumber = obj.getPlayerNumber();
         LinkedList<Integer> pack = obj.getPackFilePath();
 
+        // this while loop will make sure that the combination of pack and player number is correct
+        // Note that the game is runnable with any integer values but it just might never end !
         while (playerNumber * 8 >= pack.size()) {
             System.out.println("Your pack should have at least " + playerNumber * 8
                     + " cards inside it otherwise the game could not run");
@@ -495,6 +497,7 @@ public class CardGame {
             playerNumber = obj.getPlayerNumber();
             pack = obj.getPackFilePath();
         }
+
 
         CardGame cardGame = new CardGame(playerNumber, pack);
         cardGame.startGame();// game starts
