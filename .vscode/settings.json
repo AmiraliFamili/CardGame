@@ -1,4 +1,8 @@
 {
     "java.debug.settings.onBuildFailureProceed": true,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "java.project.referencedLibraries": [
+        "lib/junit-4.13.2.jar",
+        "lib/hamcrest-core-1.3.jar"
+    ]
 }

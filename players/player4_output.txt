@@ -1,0 +1,61 @@
+player 4 initial hand 1 2 4 7 
+player 4 current hand is 1 2 4 8 
+player 4 draws a 8 from deck 4
+player 4 discards a 7 from deck 5
+player 4 current hand is 1 2 4 9 
+player 4 draws a 9 from deck 4
+player 4 discards a 8 from deck 5
+player 4 current hand is 1 1 4 5 
+player 4 draws a 5 from deck 4
+player 4 discards a 5 from deck 5
+player 4 current hand is 1 2 4 3 
+player 4 draws a 3 from deck 4
+player 4 discards a 3 from deck 5
+player 4 current hand is 1 2 4 5 
+player 4 draws a 5 from deck 4
+player 4 discards a 3 from deck 5
+player 4 current hand is 1 2 4 5 
+player 4 draws a 5 from deck 4
+player 4 discards a 5 from deck 5
+player 4 current hand is 1 2 4 4 
+player 4 draws a 4 from deck 4
+player 4 discards a 5 from deck 5
+player 4 current hand is 2 4 4 2 
+player 4 draws a 2 from deck 4
+player 4 discards a 1 from deck 5
+player 4 current hand is 4 4 2 6 
+player 4 draws a 6 from deck 4
+player 4 discards a 2 from deck 5
+player 4 current hand is 4 4 6 8 
+player 4 draws a 8 from deck 4
+player 4 discards a 2 from deck 5
+player 4 current hand is 4 4 8 8 
+player 4 draws a 8 from deck 4
+player 4 discards a 6 from deck 5
+player 4 current hand is 4 4 8 6 
+player 4 draws a 6 from deck 4
+player 4 discards a 8 from deck 5
+player 4 current hand is 4 4 6 2 
+player 4 draws a 2 from deck 4
+player 4 discards a 8 from deck 5
+player 4 current hand is 4 4 2 6 
+player 4 draws a 6 from deck 4
+player 4 discards a 6 from deck 5
+player 4 current hand is 4 4 6 6 
+player 4 draws a 6 from deck 4
+player 4 discards a 2 from deck 5
+player 4 current hand is 4 4 6 6 
+player 4 draws a 6 from deck 4
+player 4 discards a 6 from deck 5
+player 4 current hand is 4 4 6 6 
+player 4 draws a 6 from deck 4
+player 4 discards a 6 from deck 5
+player 4 current hand is 4 4 6 8 
+player 4 draws a 8 from deck 4
+player 4 discards a 6 from deck 5
+player 4 current hand is 4 4 8 8 
+player 4 draws a 8 from deck 4
+player 4 discards a 6 from deck 5
+player 2 has informed player 4 that player 2 has won
+player 4 exits
+player 4 final hand: 4 4 8 8 
