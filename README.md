@@ -12,7 +12,11 @@
 
     # File Guide
 
-    ### There are Total of 7 Files and 3 Directories for this Card Game : 
+    ## There are Total of 5 Files and 3 Directories for this Card Game : 
+
+    ## cards.jar : is the main jar file used to run this project
+
+    ### Inside Jar : 
 
     1. CardGame.java : is the main class in which the main game is implemented, when the constructor of this class is called it takes an Integer and a LinkedList representing the number of players and the pack respectively. It would then distribute the cards among players, fill the decks with remaining cards in the pack, passes the players and decks lists to their relevant Classes (Card.java, Player.java), it would also call the InputOutput class to get it to write players initial hand to their corresponding files.
 
@@ -24,13 +28,17 @@
 
     5. pack.txt : a pack used for testing the functionality of the game and for demonstrating what a valid pack looks like.
 
-    6. CardGameReport.pdf : contains a full scaled report regarding the source code and test suites, mostly about the design used for development of these classes and the known problems to the developer as well as a detailed description of how these classes are operating together.
+    6. Report.pdf : contains a full scaled report regarding the source code and test suites, mostly about the design used for development of these classes and the known problems to the developer as well as a detailed description of how these classes are operating together.
 
-    7. players : is a directory that is used for creating, deleting and modifying player files using InputOutput class.
+    ### Outside Jar : 
 
-    8. decks : is a directory that is used for creating, deleting and modifying deck files using InputOutput class.
+    1. players : is a directory that is used for creating, deleting and modifying player files using InputOutput class.
 
-    9. test : is a directory which contains all the test suites sufficient for unit testing the entire project, to check, validate and test the functionality, availability, correctness and robustness of the entire project, further information is available inside the README.md file inside the test directory.
+    2. decks : is a directory that is used for creating, deleting and modifying deck files using InputOutput class.
+
+    3. cardsTest.zip : is a directory which contains all the test suites sufficient for unit testing the entire project, to check, validate and test the functionality, availability, correctness and robustness of the entire project, further information is available inside the README.md file inside the test directory.
+
+    4. CardGamePrintOutCode.pdf : is the printout of all the source files including test classes
 
 
 
