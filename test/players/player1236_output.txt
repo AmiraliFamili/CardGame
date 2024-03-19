@@ -1,0 +1,10 @@
+player 1236 discards a 15290 from deck 1237
+player 1236 current hand is 6143 7651 11230 5171 
+player 1236 draws a 5171 from deck 1236
+player 1236 discards a 7674 from deck 1237
+player 1236 current hand is 5766 9474 13015 15550 
+player 1236 draws a 15550 from deck 1236
+player 1236 discards a 4546 from deck 1237
+player 1236 current hand is 2712 9202 153 1508 
+player 1236 draws a 1508 from deck 1236
+player 1236 discards a 7800 from deck 1237

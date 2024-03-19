@@ -1,0 +1,8 @@
+player 1293 draws a 8101 from deck 1293
+player 1293 discards a 3866 from deck 1294
+player 1293 current hand is 11337 4693 1820 7190 
+player 1293 draws a 7190 from deck 1293
+player 1293 discards a 3263 from deck 1294
+player 1293 current hand is 9557 7407 13155 3064 
+player 1293 draws a 3064 from deck 1293
+player 1293 discards a 1580 from deck 1294

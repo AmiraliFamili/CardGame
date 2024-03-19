@@ -1,0 +1,11 @@
+player 1190 draws a 2413 from deck 1190
+player 1190 discards a 2058 from deck 1191
+player 1190 current hand is 4797 15804 14557 1613 
+player 1190 draws a 1613 from deck 1190
+player 1190 discards a 9371 from deck 1191
+player 1190 current hand is 9483 2952 2678 10509 
+player 1190 draws a 10509 from deck 1190
+player 1190 discards a 9224 from deck 1191
+player 1190 current hand is 102 11676 12570 1405 
+player 1190 draws a 1405 from deck 1190
+player 1190 discards a 8255 from deck 1191

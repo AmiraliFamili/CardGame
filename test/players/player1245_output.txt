@@ -1,0 +1,9 @@
+player 1245 current hand is 3613 14335 12755 11067 
+player 1245 draws a 11067 from deck 1245
+player 1245 discards a 13887 from deck 1246
+player 1245 current hand is 9958 5317 5580 13876 
+player 1245 draws a 13876 from deck 1245
+player 1245 discards a 15904 from deck 1246
+player 1245 current hand is 7591 14418 214 13057 
+player 1245 draws a 13057 from deck 1245
+player 1245 discards a 3222 from deck 1246
